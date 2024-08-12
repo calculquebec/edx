@@ -22,11 +22,11 @@ module "openstack" {
   image        = "Alma-9"
 
   instances = {
-    puppet = { type = "p4-6gb", tags = ["puppet"], count = 1 }
-    mgmt   = { type = "p4-6gb", tags = ["mgmt", "nfs"], count = 1, disk_size=100, disk_type = "OS or Database" }
+    puppet = { type = "p2-3.75gb", tags = ["puppet"], count = 1 }
+    mgmt   = { type = "p2-3.75gb", tags = ["mgmt", "nfs"], count = 1, disk_size=100, disk_type = "OS or Database" }
     login  = { type = "c8-60gb", tags = ["login", "public", "worldssh"], count = 1}
-    jupyter  = { type = "p1-1.5gb", tags = ["proxy", "public"], count = 1 }
-    #haproxy  = { type = "p1-1.5gb", tags = ["haproxy"], count = 1 }
+    jupyter  = { type = "p1-2gb", tags = ["proxy", "public"], count = 1 }
+    #haproxy  = { type = "p1-2gb", tags = ["haproxy"], count = 1 }
     node   = { type = "c8-60gb", tags = ["node" ], count = 4 }
     edx = { type = "c8-60gb", tags = ["edx", "public"], count = 1 }
   }
