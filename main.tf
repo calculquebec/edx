@@ -17,7 +17,7 @@ module "openstack" {
   config_git_url = "https://github.com/mboisson/puppet-magic_castle.git"
   config_version = "main"
 
-  cluster_name = "edx"
+  cluster_name = "ed-dev"
   domain       = "calculquebec.cloud"
   image        = "AlmaLinux-9"
 
