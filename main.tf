@@ -17,7 +17,7 @@ module "openstack" {
   config_git_url = "https://github.com/mboisson/puppet-magic_castle.git"
   config_version = "main"
 
-  cluster_name = "ed-dev"
+  cluster_name = "edx"
   domain       = "calculquebec.cloud"
   image        = "AlmaLinux-9"
 
@@ -25,7 +25,7 @@ module "openstack" {
     mgmt   = { type = "p4-7.5gb", tags = ["puppet", "mgmt", "nfs"], count = 1, disk_size=100}
     login  = { type = "c8-60gb", tags = ["login", "public", "proxy"], count = 1}
     node   = { type = "c8-60gb", tags = ["node" ], count = 1 }
-    edx = { type = "c8-60gb", tags = ["edx", "public"], count = 1 }
+    edx = { type = "c8-60gb", tags = ["edx"], count = 1 }
   }
 
   # var.pool is managed by Slurm through Terraform REST API.
