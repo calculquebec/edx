@@ -53,7 +53,7 @@ module "openstack" {
 			"profile::slurm::controller::tfe_workspace" = data.tfe_workspace.test.id
 		},
 	))
-  hieradata_folder_path = "hieradata"
+  hieradata_dir = "hieradata"
   software_stack = "computecanada"
 
   puppetfile = file("Puppetfile")
