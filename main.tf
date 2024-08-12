@@ -19,7 +19,7 @@ module "openstack" {
 
   cluster_name = "edx"
   domain       = "calculquebec.cloud"
-  image        = "Alma-9"
+  image        = "AlmaLinux-9"
 
   instances = {
     puppet = { type = "p2-3.75gb", tags = ["puppet"], count = 1 }
