@@ -22,11 +22,8 @@ module "openstack" {
   image        = "AlmaLinux-9"
 
   instances = {
-    puppet = { type = "p2-3.75gb", tags = ["puppet"], count = 1 }
-    mgmt   = { type = "p2-3.75gb", tags = ["mgmt", "nfs"], count = 1, disk_size=100}
-    login  = { type = "c8-60gb", tags = ["login", "public", "worldssh"], count = 1}
-    jupyter  = { type = "p1-2gb", tags = ["proxy", "public"], count = 1 }
-    #haproxy  = { type = "p1-2gb", tags = ["haproxy"], count = 1 }
+    mgmt   = { type = "p4-7.5gb", tags = ["puppet", "mgmt", "nfs"], count = 1, disk_size=100}
+    login  = { type = "c8-60gb", tags = ["login", "public", "proxy"], count = 1}
     node   = { type = "c8-60gb", tags = ["node" ], count = 1 }
     edx = { type = "c8-60gb", tags = ["edx", "public"], count = 1 }
   }
@@ -36,20 +33,6 @@ module "openstack" {
   # When using Terraform CLI, this parameter is ignored.
   # Refer to Magic Castle Documentation - Enable Magic Castle Autoscaling
   pool = var.pool
-#  os_floating_ips = {
-#    login1 = "206.12.97.59"
-#    jupyter1 = "206.12.100.156"
-#    cvmfs-client1 = "206.12.95.235"
-#    cvmfs-client-dev1 = "206.12.94.16"
-#    publisher1 = "206.12.97.173"
-#  }
-
-  firewall_rules = {
-    ssh      = { "from_port" = 22,    "to_port" = 22,    tag = "login", "protocol" = "tcp", "cidr" = "0.0.0.0/0" },
-    worldssh = { "from_port" = 22,    "to_port" = 22,    tag = "worldssh", "protocol" = "tcp", "cidr" = "0.0.0.0/0" },
-    http     = { "from_port" = 80,    "to_port" = 80,    tag = "proxy", "protocol" = "tcp", "cidr" = "0.0.0.0/0" },
-    https    = { "from_port" = 443,   "to_port" = 443,   tag = "proxy", "protocol" = "tcp", "cidr" = "0.0.0.0/0" },
-  }
 
   volumes = {
         nfs = {
