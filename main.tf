@@ -1,3 +1,13 @@
+terraform {
+  required_version = ">= 1.4.0"
+  required_providers {
+    cloudflare = {
+      source  = "cloudflare/cloudflare"
+      version = "~> 4.38.0"
+    }
+  }
+}
+
 variable "pool" {
   description = "Slurm pool of compute nodes"
   default = []
