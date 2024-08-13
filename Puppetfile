@@ -1,3 +1,4 @@
-mod 'puppetlabs-haproxy', '8.0.0'
-mod 'puppetlabs-docker', '10.0.1'
+mod 'puppet-tutor', 
+    :git => 'https://github.com/calculquebec/puppet-tutor.git',
+    :ref => 'main'
 

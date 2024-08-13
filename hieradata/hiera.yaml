@@ -2,4 +2,4 @@ magic_castle::site::tags:
   haproxy:
     - haproxy
   edx:
-    - docker
+    - tutor
