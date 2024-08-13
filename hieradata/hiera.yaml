@@ -4,6 +4,9 @@ magic_castle::site::tags:
   edx:
     - tutor
 
+profile::reverse_proxy::subdomains:
+  edx: edx1.int.%{lookup('terraform.data.domain_name')}
+
 tutor::config:
   - ["LANGUAGE_CODE", "fr"]
   - ["PLATFORM_NAME", "EdX Calcul Québec"]
