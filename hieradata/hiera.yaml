@@ -4,8 +4,7 @@ magic_castle::site::tags:
   edx:
     - tutor
 
-tutor:
-  config:
-    - LANGUAGE: "en"
-    - PLATFORM_NAME: "EdX Calcul Québec"
-    - CONTACT_EMAIL: "noreply@calculquebec.ca"
+tutor::config:
+  - LANGUAGE: "en"
+  - PLATFORM_NAME: "EdX Calcul Québec"
+  - CONTACT_EMAIL: "noreply@calculquebec.ca"
