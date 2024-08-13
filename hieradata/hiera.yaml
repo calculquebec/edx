@@ -3,3 +3,9 @@ magic_castle::site::tags:
     - haproxy
   edx:
     - tutor
+
+tutor:
+  config:
+    - LANGUAGE: "en"
+    - PLATFORM_NAME: "EdX Calcul Québec"
+    - CONTACT_EMAIL: "noreply@calculquebec.ca"
