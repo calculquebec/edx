@@ -5,10 +5,10 @@ magic_castle::site::tags:
     - tutor
 
 profile::reverse_proxy::subdomains:
-  edx: "https://edx1.int.%{lookup('terraform.data.domain_name')}"
-  preview.edx: "https://edx1.int.%{lookup('terraform.data.domain_name')}"
-  studio.edx: "https://edx1.int.%{lookup('terraform.data.domain_name')}"
-  apps.edx: "https://edx1.int.%{lookup('terraform.data.domain_name')}"
+  edx: "http://edx1.int.%{lookup('terraform.data.domain_name')}"
+  preview.edx: "http://edx1.int.%{lookup('terraform.data.domain_name')}"
+  studio.edx: "http://edx1.int.%{lookup('terraform.data.domain_name')}"
+  apps.edx: "http://edx1.int.%{lookup('terraform.data.domain_name')}"
 
 tutor::config:
   - ["LANGUAGE_CODE", "fr"]
