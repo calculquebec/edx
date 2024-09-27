@@ -86,6 +86,7 @@ module "dns" {
    public_instances = module.openstack.public_instances
    ssh_private_key  = module.openstack.ssh_private_key
    sudoer_username  = module.openstack.accounts.sudoer.username
+   vhosts           = ["edx", "ipa", "jupyter", "mokey", "explore"]
 }
 
 ## Uncomment to register your domain name with Google Cloud
