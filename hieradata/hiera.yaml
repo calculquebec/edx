@@ -6,9 +6,14 @@ magic_castle::site::tags:
 
 profile::reverse_proxy::subdomains:
   edx: "http://edx1.int.%{lookup('terraform.data.domain_name')}"
+  preview.edx: "http://edx1.int.%{lookup('terraform.data.domain_name')}"
+  studio.edx: "http://edx1.int.%{lookup('terraform.data.domain_name')}"
+  apps.edx: "http://edx1.int.%{lookup('terraform.data.domain_name')}"
 
 tutor::config:
   - ["LANGUAGE_CODE", "fr"]
   - ["PLATFORM_NAME", "EdX Calcul Québec"]
   - ["CONTACT_EMAIL", "noreply@calculquebec.ca"]
   - ["LMS_HOST", "edx.edx.calculquebec.cloud"]
+  - ["CMS_HOST", "studio.edx.calculquebec.cloud"]
+  - ["PREVIEW_LMS_HOST", "preview.edx.calculquebec.cloud"]
