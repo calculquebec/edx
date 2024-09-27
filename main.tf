@@ -79,7 +79,7 @@ output "public_ip" {
 
 ## Uncomment to register your domain name with CloudFlare
 module "dns" {
-   source           = "git::https://github.com/ComputeCanada/magic_castle.git//dns/cloudflare?ref=main"
+   source           = "git::https://github.com/ComputeCanada/magic_castle.git//dns/cloudflare?ref=759b89282ede46de81f9b94a03596a250adbe276"
    name             = module.openstack.cluster_name
    domain           = module.openstack.domain
    bastions         = module.openstack.bastions
