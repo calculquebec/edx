@@ -17,4 +17,3 @@ tutor::config:
   - ["LMS_HOST", "edx.edx.calculquebec.cloud"]
   - ["CMS_HOST", "studio.edx.edx.calculquebec.cloud"]
   - ["PREVIEW_LMS_HOST", "preview.edx.edx.calculquebec.cloud"]
-  - ["ENABLE_HTTPS", "true"]
