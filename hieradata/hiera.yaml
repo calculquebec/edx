@@ -15,5 +15,5 @@ tutor::config:
   - ["PLATFORM_NAME", "EdX Calcul Québec"]
   - ["CONTACT_EMAIL", "noreply@calculquebec.ca"]
   - ["LMS_HOST", "edx.edx.calculquebec.cloud"]
-  - ["CMS_HOST", "studio.edx.calculquebec.cloud"]
-  - ["PREVIEW_LMS_HOST", "preview.edx.calculquebec.cloud"]
+  - ["CMS_HOST", "studio.edx.edx.calculquebec.cloud"]
+  - ["PREVIEW_LMS_HOST", "preview.edx.edx.calculquebec.cloud"]
