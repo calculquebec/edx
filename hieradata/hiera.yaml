@@ -10,7 +10,7 @@ profile::reverse_proxy::subdomains:
   studio: "http://edx1.int.%{lookup('terraform.data.domain_name')}"
   apps: "http://edx1.int.%{lookup('terraform.data.domain_name')}"
   jupyter: "https://127.0.0.1:8000"
-profile::reverse_proxy::main2sub_redit: "edx"
+profile::reverse_proxy::main2sub_redir: "edx"
 
 tutor::admin_email: "noreply@calculquebec.ca"
 tutor::admin_password: "%{alias('edx_admin_password')}"
