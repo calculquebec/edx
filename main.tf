@@ -63,16 +63,11 @@ module "openstack" {
   # Shared password, randomly chosen if blank
   guest_passwd = ""
   hieradata = yamlencode(merge(
-  		{
-			"profile::slurm::controller::tfe_workspace" = data.tfe_workspace.test.id
-		},
-	))
-
-  hieradata = yamlencode(
-    {
-      "edx_admin_password" = var.edx_admin_password
-    }
-  )
+  {
+    "profile::slurm::controller::tfe_workspace" = data.tfe_workspace.test.id
+    "edx_admin_password" = var.edx_admin_password
+  },
+  ))
 
   hieradata_dir = "hieradata"
   software_stack = "computecanada"
