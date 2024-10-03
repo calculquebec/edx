@@ -11,7 +11,7 @@ profile::reverse_proxy::subdomains:
   apps.edx: "http://edx1.int.%{lookup('terraform.data.domain_name')}"
 
 tutor::config:
-  - ["LANGUAGE_CODE", "fr_CA"]
+  - ["LANGUAGE_CODE", "fr"]
   - ["PLATFORM_NAME", "EdX Calcul Québec"]
   - ["CONTACT_EMAIL", "noreply@calculquebec.ca"]
   - ["LMS_HOST", "edx.edx.calculquebec.cloud"]
