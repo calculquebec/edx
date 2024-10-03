@@ -16,6 +16,10 @@ variable "pool" {
 variable "TFC_WORKSPACE_NAME" {
   type = string
 }
+variable "edx_admin_password" {
+  type = string
+  default = ""
+}
 data "tfe_workspace" "test" {
   name         = var.TFC_WORKSPACE_NAME
   organization = "CalculQuebec"
@@ -63,6 +67,13 @@ module "openstack" {
 			"profile::slurm::controller::tfe_workspace" = data.tfe_workspace.test.id
 		},
 	))
+
+  hieradata = yamlencode(
+    {
+      "edx_admin_password" = var.edx_admin_password
+    }
+  )
+
   hieradata_dir = "hieradata"
   software_stack = "computecanada"
 

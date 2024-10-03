@@ -12,6 +12,9 @@ profile::reverse_proxy::subdomains:
   jupyter: "https://127.0.0.1:8000"
 profile::reverse_proxy::main2sub_redit: "edx"
 
+tutor::admin_email: "noreply@calculquebec.ca"
+tutor::admin_password: "%{alias('edx_admin_password')}"
+
 tutor::config:
   - ["LANGUAGE_CODE", "fr"]
   - ["PLATFORM_NAME", "EdX Calcul Québec"]
