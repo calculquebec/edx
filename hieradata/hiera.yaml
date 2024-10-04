@@ -6,9 +6,9 @@ magic_castle::site::tags:
 
 profile::reverse_proxy::subdomains:
   edx: "http://edx1.int.%{lookup('terraform.data.domain_name')}"
-  preview: "http://edx1.int.%{lookup('terraform.data.domain_name')}"
-  studio: "http://edx1.int.%{lookup('terraform.data.domain_name')}"
-  apps: "http://edx1.int.%{lookup('terraform.data.domain_name')}"
+  preview.edx: "http://edx1.int.%{lookup('terraform.data.domain_name')}"
+  studio.edx: "http://edx1.int.%{lookup('terraform.data.domain_name')}"
+  apps.edx: "http://edx1.int.%{lookup('terraform.data.domain_name')}"
   jupyter: "https://127.0.0.1:8000"
 profile::reverse_proxy::main2sub_redir: "edx"
 
@@ -20,9 +20,8 @@ tutor::config:
   - ["PLATFORM_NAME", "EdX Calcul Québec"]
   - ["CONTACT_EMAIL", "noreply@calculquebec.ca"]
   - ["LMS_HOST", "edx.%{lookup('terraform.data.domain_name')}"]
-  - ["CMS_HOST", "studio.%{lookup('terraform.data.domain_name')}"]
-  - ["MFE_HOST", "apps.%{lookup('terraform.data.domain_name')}"]
-  - ["PREVIEW_LMS_HOST", "preview.%{lookup('terraform.data.domain_name')}"]
+  - ["CMS_HOST", "studio.edx.%{lookup('terraform.data.domain_name')}"]
+  - ["PREVIEW_LMS_HOST", "preview.edx.%{lookup('terraform.data.domain_name')}"]
   - ["ENABLE_WEB_PROXY", "false"]
   - ["CADDY_HTTP_PORT", "0.0.0.0:80"]
   - ["ENABLE_HTTPS", "true"]
