@@ -39,7 +39,7 @@ module "openstack" {
     mgmt   = { type = "p4-7.5gb", tags = ["puppet", "mgmt", "nfs"], count = 1, disk_size=100}
     login  = { type = "c8-60gb", tags = ["login", "public", "proxy"], count = 1}
     node   = { type = "c8-60gb", tags = ["node" ], count = 1 }
-    edx = { type = "c8-60gb", tags = ["edx", "backup_volume"], count = 1 }
+    edx = { type = "c8-60gb", tags = ["edx"], count = 1 }
   }
 
   # var.pool is managed by Slurm through Terraform REST API.
@@ -54,9 +54,6 @@ module "openstack" {
           project  = { size = 100, type = "volumes-ec"  }
           scratch  = { size = 100, type = "volumes-ec"  }
         }
-	backup_volume = {
-	  backup = { size = 20, type = "volumes-ec", id = "2288e23a-c09c-4616-bdf8-d23d4631de1c", bind_target = "/tutor/.local/share/tutor/env/backup/" }
-	}
   }
 
   generate_ssh_key = true
