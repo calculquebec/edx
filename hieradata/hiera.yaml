@@ -4,6 +4,7 @@ magic_castle::site::tags:
   edx:
     - tutor
     - cron
+    - restic
 
 profile::reverse_proxy::subdomains:
   edx: "http://edx1.int.%{lookup('terraform.data.domain_name')}"
@@ -46,3 +47,19 @@ cron::job:
     weekday: '*'
     user: root
     description: 'Delete backups older than 30 days'
+
+
+restic::repositories:
+  backup_edx_repo:
+    enable_backup: true
+    id: "${alias('s3_id')}"
+    key: "${alias('s3_key')}"
+    password: "${alias('s3_password')}"
+    host: "object-arbutus.cloud.computecanada.ca"
+    bucket: "backup_edx/backup_1"
+    backup_path:
+      - /tutor/.local/share/tutor/env/backup/
+    backup_timer: Mon..Sun 2:00:00
+#    enable_forget: true
+#    forget_timer: Mon..Sun 3:00:00
+
