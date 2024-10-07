@@ -3,6 +3,7 @@ magic_castle::site::tags:
     - haproxy
   edx:
     - tutor
+    - cron
 
 profile::reverse_proxy::subdomains:
   edx: "http://edx1.int.%{lookup('terraform.data.domain_name')}"
@@ -25,3 +26,23 @@ tutor::config:
   - ["ENABLE_WEB_PROXY", "false"]
   - ["CADDY_HTTP_PORT", "0.0.0.0:80"]
   - ["ENABLE_HTTPS", "true"]
+
+cron::job:
+  backup:
+    command: 'tutor local backup'
+    minute: '0'
+    hour: '1'
+    date: '*'
+    month: '*'
+    weekday: '*'
+    user: tutor
+    description: 'Take a backup of EdX'
+  clear_backup:
+    command: 'find /tutor/.local/share/tutor/env/backup/ -type f -mtime +30 -delete'
+    minute: '0'
+    hour: '1'
+    date: '*'
+    month: '*'
+    weekday: '*'
+    user: root
+    description: 'Delete backups older than 30 days'
