@@ -56,7 +56,7 @@ restic::repositories:
     key: "%{alias('s3_key')}"
     password: "%{alias('s3_password')}"
     host: "object-arbutus.cloud.computecanada.ca"
-    bucket: "cq_backup_edx"
+    bucket: "cq-backup-edx"
     backup_path:
       - /tutor/.local/share/tutor/env/backup/
     backup_timer: Mon..Sun 2:00:00
