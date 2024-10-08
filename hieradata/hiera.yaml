@@ -31,8 +31,8 @@ tutor::config:
 cron::job:
   backup:
     command: '/usr/local/bin/tutor local backup'
-    minute: '10'
-    hour: '13'
+    minute: '30'
+    hour: '0'
     date: '*'
     month: '*'
     weekday: '*'
