@@ -32,7 +32,7 @@ tutor::config:
 tutor::env_patches:
   - ["common-env-features", "'ENABLE_THIRD_PARTY_AUTH': true"]
   - ["common-env-features", "'ENABLE_COMBINED_LOGIN_REGISTRATION': true"]
-  - ["openedx-lms-common-settings", "AUTHENTICATION_BACKENDS += ['social_core.backends.open_id_connect.OpenIdConnectAssociation']"]
+  - ["openedx-lms-common-settings", "AUTHENTICATION_BACKENDS += ['social_core.backends.open_id_connect.OpenIdConnectAuth']"]
 
 cron::job:
   backup:
