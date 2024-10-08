@@ -28,6 +28,11 @@ tutor::config:
   - ["CADDY_HTTP_PORT", "0.0.0.0:80"]
   - ["ENABLE_HTTPS", "true"]
 
+
+tutor::env_patches:
+  - ["common-env-features", '"ENABLE_THIRD_PARTY_AUTH": true']
+  - ["common-env-features", '"ENABLE_COMBINED_LOGIN_REGISTRATION": true']
+
 cron::job:
   backup:
     command: '/usr/local/bin/tutor local backup'
