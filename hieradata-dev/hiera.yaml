@@ -19,7 +19,7 @@ restic::repositories:
     forget:
       keep-last: 1
   restore_edx_repo:
-    enable_backup: true
+    enable_backup: false
     id: "%{alias('s3_id')}"
     key: "%{alias('s3_key')}"
     password: "%{alias('s3_password')}"
