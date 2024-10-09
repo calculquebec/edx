@@ -32,6 +32,10 @@ variable "s3_password" {
   type = string
   default = ""
 }
+variable "suffix" {
+  type = string
+  default = ""
+}
 data "tfe_workspace" "test" {
   name         = var.TFC_WORKSPACE_NAME
   organization = "CalculQuebec"
@@ -43,7 +47,7 @@ module "openstack" {
   config_git_url = "https://github.com/ComputeCanada/puppet-magic_castle.git"
   config_version = "main"
 
-  cluster_name = "edu"
+  cluster_name = "edu${var.suffix}"
   domain       = "calculquebec.cloud"
   image        = "AlmaLinux-9"
 
@@ -81,10 +85,12 @@ module "openstack" {
     "s3_id" = var.s3_id
     "s3_key" = var.s3_key
     "s3_password" = var.s3_password
+    "suffix" = var.suffix
   },
+  yamldecode(file("config.yaml")),
   ))
 
-  hieradata_dir = "hieradata"
+  hieradata_dir = "hieradata${var.suffix}"
   software_stack = "computecanada"
 
   puppetfile = file("Puppetfile")
