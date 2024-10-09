@@ -26,7 +26,7 @@ restic::repositories:
     host: "object-arbutus.cloud.computecanada.ca"
     bucket: "cq-backup-edx"
     enable_restore: true
-    restore_path: "/tutor/.local/share/tutor/env/backup/"
+    restore_path: "/"
     restore_timer: "Mon..Sun *:30:00"
 
 cron::job:
