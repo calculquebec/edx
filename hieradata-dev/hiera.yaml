@@ -27,13 +27,13 @@ restic::repositories:
     bucket: "cq-backup-edx"
     enable_restore: true
     restore_path: "/tutor/.local/share/tutor/env/backup/"
-    restore_timer: Mon..Sun 3:00:00
+    restore_timer: "Mon..Sun *:30:00"
 
 cron::job:
   restore:
     command: '/usr/local/bin/tutor local restore'
-    minute: '30'
-    hour: '0'
+    minute: '40'
+    hour: '*'
     date: '*'
     month: '*'
     weekday: '*'
