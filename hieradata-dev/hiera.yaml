@@ -11,11 +11,10 @@ restic::repositories:
     password: "%{alias('s3_password')}"
     host: "object-arbutus.cloud.computecanada.ca"
     bucket: "cq-backup-edx%{lookup('suffix')}"
-    backup_path:
-      - /tutor/.local/share/tutor/env/backup/
+    backup_path: "/tutor/.local/share/tutor/env/backup/"
     backup_timer: Mon..Sun 4:00:00
     enable_forget: true
-    forget_timer: Mon..Sun 3:00:00
+    forget_timer: Mon..Sun 5:00:00
     prune: true
     forget:
       keep-last: 1
@@ -27,8 +26,7 @@ restic::repositories:
     host: "object-arbutus.cloud.computecanada.ca"
     bucket: "cq-backup-edx"
     enable_restore: true
-    restore_path:
-      - /tutor/.local/share/tutor/env/backup/
+    restore_path: "/tutor/.local/share/tutor/env/backup/"
     restore_timer: Mon..Sun 3:00:00
 
 cron::job:
