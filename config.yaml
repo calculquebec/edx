@@ -27,5 +27,5 @@ tutor::config:
   - ["ENABLE_WEB_PROXY", "false"]
   - ["CADDY_HTTP_PORT", "0.0.0.0:80"]
   - ["ENABLE_HTTPS", "true"]
-  - ["MYSQL_ROOT_PASSWORD", "%{alias('mysql_root_password')}]
+  - ["MYSQL_ROOT_PASSWORD", "%{alias('mysql_root_password')}"]
 
