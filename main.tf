@@ -32,6 +32,10 @@ variable "s3_password" {
   type = string
   default = ""
 }
+variable "mysql_root_password" {
+  type = string
+  default = ""
+}
 variable "suffix" {
   type = string
   default = ""
@@ -86,6 +90,7 @@ module "openstack" {
     "s3_key" = var.s3_key
     "s3_password" = var.s3_password
     "suffix" = var.suffix
+    "mysql_root_password" = var.mysql_root_password
   },
   yamldecode(file("config.yaml")),
   ))
