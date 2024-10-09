@@ -3,6 +3,27 @@ tutor::env_patches:
   - ["common-env-features", "'ENABLE_COMBINED_LOGIN_REGISTRATION': true"]
   - ["openedx-lms-common-settings", "AUTHENTICATION_BACKENDS += ['social_core.backends.open_id_connect.OpenIdConnectAuth']"]
 
+cron::job:
+  backup:
+    command: '/usr/local/bin/tutor local backup'
+    minute: '30'
+    hour: '0'
+    date: '*'
+    month: '*'
+    weekday: '*'
+    user: tutor
+    description: 'Take a backup of EdX'
+  clear_backup:
+    command: 'find /tutor/.local/share/tutor/env/backup/ -type f -mtime +30 -delete'
+    minute: '0'
+    hour: '1'
+    date: '*'
+    month: '*'
+    weekday: '*'
+    user: root
+    description: 'Delete backups older than 30 days'
+
+
 restic::repositories:
   backup_edx_repo:
     enable_backup: true

@@ -13,10 +13,32 @@ restic::repositories:
     bucket: "cq-backup-edx%{lookup('suffix')}"
     backup_path:
       - /tutor/.local/share/tutor/env/backup/
-    backup_timer: Mon..Sun 2:00:00
+    backup_timer: Mon..Sun 4:00:00
     enable_forget: true
     forget_timer: Mon..Sun 3:00:00
     prune: true
     forget:
       keep-last: 1
+  restore_edx_repo:
+    enable_backup: true
+    id: "%{alias('s3_id')}"
+    key: "%{alias('s3_key')}"
+    password: "%{alias('s3_password')}"
+    host: "object-arbutus.cloud.computecanada.ca"
+    bucket: "cq-backup-edx"
+    enable_restore: true
+    restore_path:
+      - /tutor/.local/share/tutor/env/backup/
+    restore_timer: Mon..Sun 3:00:00
+
+cron::job:
+  restore:
+    command: '/usr/local/bin/tutor local restore'
+    minute: '30'
+    hour: '0'
+    date: '*'
+    month: '*'
+    weekday: '*'
+    user: tutor
+    description: 'Restore backup of EdX prod'
 
