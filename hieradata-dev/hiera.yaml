@@ -32,7 +32,7 @@ restic::repositories:
 cron::job:
   restore:
     command: '/usr/local/bin/tutor local restore'
-    minute: '40'
+    minute: '30'
     hour: '4'
     date: '*'
     month: '*'
