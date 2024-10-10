@@ -5,7 +5,7 @@ tutor::env_patches:
   - ["openedx-auth", "'SOCIAL_AUTH_OIDC_OIDC_ENDPOINT': 'https://cilogon.org/authorize'"]
   - ["openedx-auth", "'SOCIAL_AUTH_OIDC_KEY': '%{lookup('oidc_client_id')}'"]
   - ["openedx-auth", "'SOCIAL_AUTH_OIDC_SECRET': '%{lookup('oidc_secret')}'"]
-  - ["openedx-auth", "'SOCIAL_AUTH_OAUTH_SECRETS': '{ 'oidc': '%{lookup('oidc_secret')}'}"]
+  - ["openedx-auth", "'SOCIAL_AUTH_OAUTH_SECRETS': '{ 'oidc': '%{lookup('oidc_secret')}'}'"]
 
 restic::repositories:
   backup_edx_repo:
