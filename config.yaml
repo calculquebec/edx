@@ -28,5 +28,5 @@ tutor::config:
   - ["CADDY_HTTP_PORT", "0.0.0.0:80"]
   - ["ENABLE_HTTPS", "true"]
   - ["MYSQL_ROOT_PASSWORD", "%{alias('mysql_root_password')}"]
-  - ["BACKUP_MYSQL_DATABASES", "openedx"]
+  - ["BACKUP_MYSQL_DATABASES", "'openedx'"]
 
