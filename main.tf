@@ -40,6 +40,14 @@ variable "suffix" {
   type = string
   default = ""
 }
+variable "oidc_client_id" {
+  type = string
+  default = ""
+}
+variable "oidc_secret" {
+  type = string
+  default = ""
+}
 data "tfe_workspace" "test" {
   name         = var.TFC_WORKSPACE_NAME
   organization = "CalculQuebec"
@@ -86,6 +94,8 @@ module "openstack" {
   {
     "profile::slurm::controller::tfe_workspace" = data.tfe_workspace.test.id
     "edx_admin_password" = var.edx_admin_password
+    "oidc_client_id" = var.oidc_client_id
+    "oidc_secret" = var.oidc_secret
     "s3_id" = var.s3_id
     "s3_key" = var.s3_key
     "s3_password" = var.s3_password
