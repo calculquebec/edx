@@ -16,6 +16,18 @@ variable "pool" {
 variable "TFC_WORKSPACE_NAME" {
   type = string
 }
+variable "tfe_token" {
+  type = string
+  default = ""
+}
+variable "cloud_name" {
+  type = string
+  default = ""
+}
+variable "prometheus_password" {
+  type = string
+  default = ""
+}
 variable "edx_admin_password" {
   type = string
   default = ""
@@ -93,6 +105,7 @@ module "openstack" {
   hieradata = yamlencode(merge(
   {
     "profile::slurm::controller::tfe_workspace" = data.tfe_workspace.test.id
+    "profile::slurm::controller::tfe_token" =  var.tfe_token
     "edx_admin_password" = var.edx_admin_password
     "oidc_client_id" = var.oidc_client_id
     "oidc_secret" = var.oidc_secret
@@ -101,6 +114,9 @@ module "openstack" {
     "s3_password" = var.s3_password
     "suffix" = var.suffix
     "mysql_root_password" = var.mysql_root_password
+    "cluster_name" = "edu${var.suffix}"
+    "prometheus_password" = var.prometheus_password
+    "cloud_name" = var.cloud_name
   },
   yamldecode(file("config.yaml")),
   ))

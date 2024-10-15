@@ -30,3 +30,18 @@ tutor::config:
   - ["MYSQL_ROOT_PASSWORD", "%{alias('mysql_root_password')}"]
   - ["BACKUP_MYSQL_DATABASES", "['openedx']"]
 
+prometheus::global_config:
+    scrape_interval: '1m'
+    scrape_timeout: '1m'
+    external_labels:
+        cluster: "%{alias('cluster_name')}"
+        cloud: "%{alias('cloud_name')}"
+        team: 'calculquebec'
+        purpose: "formation"
+        replica: '1'
+
+prometheus::remote_write_configs:
+    - url: 'https://thanos-receive.dant.computecanada.ca/api/v1/receive'
+      basic_auth:
+          username: 'cqformation'
+          password: "%{alias('prometheus_password')}"
