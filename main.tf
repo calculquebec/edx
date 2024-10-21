@@ -29,14 +29,6 @@ variable "prometheus_password" {
   type = string
   default = ""
 }
-variable "edx_admin_password" {
-  type = string
-  default = ""
-}
-variable "mysql_root_password" {
-  type = string
-  default = ""
-}
 variable "suffix" {
   type = string
   default = ""
@@ -95,11 +87,9 @@ module "openstack" {
   {
     "profile::slurm::controller::tfe_workspace" = data.tfe_workspace.test.id
     "profile::slurm::controller::tfe_token" =  var.tfe_token
-    "edx_admin_password" = var.edx_admin_password
     "oidc_client_id" = var.oidc_client_id
     "oidc_secret" = var.oidc_secret
     "suffix" = var.suffix
-    "mysql_root_password" = var.mysql_root_password
     "cluster_name" = "edu${var.suffix}"
     "prometheus_password" = var.prometheus_password
     "cloud_name" = var.cloud_name
