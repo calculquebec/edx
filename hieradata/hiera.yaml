@@ -3,7 +3,7 @@ tutor::env_patches:
   - ["common-env-features", "'ENABLE_COMBINED_LOGIN_REGISTRATION': true"]
   - ["openedx-lms-common-settings", "AUTHENTICATION_BACKENDS += ['social_core.backends.open_id_connect.OpenIdConnectAuth']"]
   - ["openedx-auth", "'SOCIAL_AUTH_OIDC_OIDC_ENDPOINT': 'https://cilogon.org/'"]
-  - ["openedx-auth", "'SOCIAL_AUTH_OIDC_KEY': '%{lookup('oidc_client_id')}'"]
+  - ["openedx-auth", "'SOCIAL_AUTH_OIDC_KEY': 'cilogon:/client_id/ea09832208e5bf78b1f6d0e58e547b3'"]
   - ["openedx-auth", "'SOCIAL_AUTH_OIDC_SECRET': '%{lookup('oidc_secret')}'"]
   - ["openedx-auth", "'SOCIAL_AUTH_OAUTH_SECRETS': { 'oidc': '%{lookup('oidc_secret')}'}"]
 

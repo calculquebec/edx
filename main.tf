@@ -33,14 +33,6 @@ variable "suffix" {
   type = string
   default = ""
 }
-variable "oidc_client_id" {
-  type = string
-  default = ""
-}
-variable "oidc_secret" {
-  type = string
-  default = ""
-}
 data "tfe_workspace" "test" {
   name         = var.TFC_WORKSPACE_NAME
   organization = "CalculQuebec"
@@ -87,8 +79,6 @@ module "openstack" {
   {
     "profile::slurm::controller::tfe_workspace" = data.tfe_workspace.test.id
     "profile::slurm::controller::tfe_token" =  var.tfe_token
-    "oidc_client_id" = var.oidc_client_id
-    "oidc_secret" = var.oidc_secret
     "suffix" = var.suffix
     "cluster_name" = "edu${var.suffix}"
     "prometheus_password" = var.prometheus_password
