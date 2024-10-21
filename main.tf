@@ -33,18 +33,6 @@ variable "edx_admin_password" {
   type = string
   default = ""
 }
-variable "s3_id" {
-  type = string
-  default = ""
-}
-variable "s3_key" {
-  type = string
-  default = ""
-}
-variable "s3_password" {
-  type = string
-  default = ""
-}
 variable "mysql_root_password" {
   type = string
   default = ""
@@ -110,9 +98,6 @@ module "openstack" {
     "edx_admin_password" = var.edx_admin_password
     "oidc_client_id" = var.oidc_client_id
     "oidc_secret" = var.oidc_secret
-    "s3_id" = var.s3_id
-    "s3_key" = var.s3_key
-    "s3_password" = var.s3_password
     "suffix" = var.suffix
     "mysql_root_password" = var.mysql_root_password
     "cluster_name" = "edu${var.suffix}"
