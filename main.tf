@@ -24,6 +24,7 @@ variable "cloud_name" {
   type = string
   default = ""
 }
+variable "eyaml_key" { }
 variable "prometheus_password" {
   type = string
   default = ""
@@ -123,6 +124,7 @@ module "openstack" {
 
   hieradata_dir = "hieradata${var.suffix}"
   software_stack = "computecanada"
+  eyaml_key = base64decode(var.eyaml_key)
 
   puppetfile = file("Puppetfile")
 }
