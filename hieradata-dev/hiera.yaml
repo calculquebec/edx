@@ -6,7 +6,8 @@ tutor::env_patches:
   - ["openedx-auth", "'SOCIAL_AUTH_OIDC_KEY': 'cilogon:/client_id/4b76e902d5e4d192d630bcfc3823e88f'"]
   - ["openedx-auth", "'SOCIAL_AUTH_OIDC_SECRET': '%{lookup('oidc_secret')}'"]
   - ["openedx-auth", "'SOCIAL_AUTH_OAUTH_SECRETS': { 'oidc': '%{lookup('oidc_secret')}'}"]
-  - ["common-env-features", "'ALLOW_PUBLIC_ACCOUNT_CREATION': false"]
+  - ["common-env-features", "'ALLOW_PUBLIC_ACCOUNT_CREATION': true"]
+  - ["mfe-lms-production-settings", "MFE_CONFIG['ALLOW_PUBLIC_ACCOUNT_CREATION'] = False"]
 
 restic::repositories:
   backup_edx_repo:
