@@ -1,11 +1,13 @@
 tutor::env_patches:
-  - ["common-env-features", "'ENABLE_THIRD_PARTY_AUTH': true"]
-  - ["common-env-features", "'ENABLE_COMBINED_LOGIN_REGISTRATION': true"]
+  - ["common-env-features", "'ENABLE_THIRD_PARTY_AUTH': True"]
+  - ["common-env-features", "'ENABLE_COMBINED_LOGIN_REGISTRATION': True"]
   - ["openedx-lms-common-settings", "AUTHENTICATION_BACKENDS += ['social_core.backends.open_id_connect.OpenIdConnectAuth']"]
   - ["openedx-auth", "'SOCIAL_AUTH_OIDC_OIDC_ENDPOINT': 'https://cilogon.org/'"]
   - ["openedx-auth", "'SOCIAL_AUTH_OIDC_KEY': 'cilogon:/client_id/4b76e902d5e4d192d630bcfc3823e88f'"]
   - ["openedx-auth", "'SOCIAL_AUTH_OIDC_SECRET': '%{lookup('oidc_secret')}'"]
   - ["openedx-auth", "'SOCIAL_AUTH_OAUTH_SECRETS': { 'oidc': '%{lookup('oidc_secret')}'}"]
+  - ["mfe-lms-production-settings", "MFE_CONFIG['SHOW_REGISTRATION_LINKS'] = False"]
+  - ["common-env-features", "'SHOW_REGISTRATION_LINKS': False"]
 
 cron::job:
   backup:
