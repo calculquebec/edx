@@ -1,3 +1,4 @@
+tutor::version: '18.1.4'
 tutor::env_patches:
   - ["common-env-features", "'ENABLE_THIRD_PARTY_AUTH': True"]
   - ["common-env-features", "'ENABLE_COMBINED_LOGIN_REGISTRATION': True"]
