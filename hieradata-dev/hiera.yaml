@@ -7,7 +7,8 @@ tutor::env_patches:
   - ["openedx-auth", "'SOCIAL_AUTH_OIDC_SECRET': '%{lookup('oidc_secret')}'"]
   - ["openedx-auth", "'SOCIAL_AUTH_OAUTH_SECRETS': { 'oidc': '%{lookup('oidc_secret')}'}"]
   - ["common-env-features", "'ALLOW_PUBLIC_ACCOUNT_CREATION': true"]
-  - ["mfe-lms-production-settings", "MFE_CONFIG['ALLOW_PUBLIC_ACCOUNT_CREATION'] = True"]
+  - ["mfe-lms-production-settings", "MFE_CONFIG['ALLOW_PUBLIC_ACCOUNT_CREATION'] = true"]
+  - ["mfe-lms-production-settings", "MFE_CONFIG['SHOW_REGISTRATION_LINKS'] = false"]
   - ["common-env-features", "'ENABLE_REQUIRE_THIRD_PARTY_AUTH': true"]
   - ["common-env-features", "'SHOW_REGISTRATION_LINKS': false"]
 
