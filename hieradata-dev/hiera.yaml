@@ -9,7 +9,7 @@ tutor::env_patches:
   - ["common-env-features", "'ALLOW_PUBLIC_ACCOUNT_CREATION': true"]
   - ["mfe-lms-production-settings", "MFE_CONFIG['ALLOW_PUBLIC_ACCOUNT_CREATION'] = True"]
   - ["common-env-features", "'ENABLE_REQUIRE_THIRD_PARTY_AUTH': true"]
-  - ["common-env-features", "'SHOW_REGISTRATION_LINKS': False"]
+  - ["common-env-features", "'SHOW_REGISTRATION_LINKS': false"]
 
 restic::repositories:
   backup_edx_repo:
