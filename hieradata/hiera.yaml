@@ -45,4 +45,14 @@ restic::repositories:
     prune: true
     forget:
       keep-last: 1
+  restore_edx_repo:
+    enable_backup: false
+    id: "e3ce310620c4437286e29893ddac1537"
+    key: "%{alias('s3_key')}"
+    password: "%{alias('restic_password')}"
+    host: "object-arbutus.cloud.computecanada.ca"
+    bucket: "cq-backup-edx"
+    enable_restore: true
+    restore_path: "/tutor/backups"
+    restore_timer: "Mon..Sun 3:30:00"
 
