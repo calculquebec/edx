@@ -53,6 +53,6 @@ restic::repositories:
     host: "object-arbutus.cloud.computecanada.ca"
     bucket: "cq-backup-edx"
     enable_restore: true
-    restore_path: "/backups"
+    restore_path: "/backups/prod"
     restore_timer: "Mon..Sun 3:30:00"
 
