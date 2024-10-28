@@ -8,6 +8,9 @@ tutor::env_patches:
   - ["openedx-auth", "'SOCIAL_AUTH_OAUTH_SECRETS': { 'oidc': '%{lookup('oidc_secret')}'}"]
   - ["mfe-lms-production-settings", "MFE_CONFIG['SHOW_REGISTRATION_LINKS'] = False"]
   - ["common-env-features", "'SHOW_REGISTRATION_LINKS': False"]
+tutor::backup_to_restore:
+  date: '2024-10-27'
+  path: '/backups/prod/tutor/.local/share/tutor/env/backup/'
 
 cron::job:
   backup:
