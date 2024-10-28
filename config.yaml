@@ -2,10 +2,13 @@ magic_castle::site::tags:
   haproxy:
     - haproxy
   edx:
-    - tutor
-    - cron
     - restic
     - cqedu
+    - tutor
+    - cron
+
+tutor::version: '18.1.4'
+
 
 profile::reverse_proxy::subdomains:
   edx: "http://edx1.int.%{lookup('terraform.data.domain_name')}"
