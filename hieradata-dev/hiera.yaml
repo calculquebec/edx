@@ -13,8 +13,9 @@ tutor::env_patches:
   - ["common-env-features", "'SHOW_REGISTRATION_LINKS': False"]
 tutor::openedx_extra_pip_requirements: "['jupyter-xblock==17.0.0']"
 tutor::backup_to_restore:
-  date: '2024-10-25'
+  date: '2024-10-29'
   path: '/backups/prod/tutor/.local/share/tutor/env/backup/'
+cqedu::patch_domain_before_restore: true
 
 restic::repositories:
   backup_edx_repo:
