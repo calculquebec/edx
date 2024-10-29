@@ -11,7 +11,6 @@ tutor::env_patches:
   - ["mfe-lms-production-settings", "MFE_CONFIG['SHOW_REGISTRATION_LINKS'] = False"]
   - ["common-env-features", "'ENABLE_REQUIRE_THIRD_PARTY_AUTH': True"]
   - ["common-env-features", "'SHOW_REGISTRATION_LINKS': False"]
-tutor::openedx_extra_pip_requirements: "['jupyter-xblock==17.0.0']"
 tutor::backup_to_restore:
   date: '2024-10-29'
   path: '/backups/prod/tutor/.local/share/tutor/env/backup/'

@@ -33,6 +33,7 @@ tutor::config:
   - ["ENABLE_HTTPS", "true"]
   - ["MYSQL_ROOT_PASSWORD", "%{alias('mysql_root_password')}"]
   - ["BACKUP_MYSQL_DATABASES", "['openedx']"]
+tutor::openedx_extra_pip_requirements: "['jupyter-xblock==17.0.0']"
 
 prometheus::global_config:
     scrape_interval: '1m'
