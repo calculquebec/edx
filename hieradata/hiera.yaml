@@ -11,6 +11,8 @@ tutor::env_patches:
 tutor::backup_to_restore:
   date: '2024-10-27'
   path: '/backups/prod/tutor/.local/share/tutor/env/backup/'
+tutor::registration_email_patterns_allowed:
+  - "(^\\w+\\.\\w+)@\\w+\\.ca$"
 
 cron::job:
   backup:

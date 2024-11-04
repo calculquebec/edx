@@ -18,6 +18,8 @@ tutor::backup_to_restore:
   date: '2024-10-29'
   path: '/backups/prod/tutor/.local/share/tutor/env/backup/'
 cqedu::patch_domain_before_restore: true
+tutor::registration_email_patterns_allowed:
+  - "(^\\w+\\.\\w+)@calculquebec\\.ca$"
 
 restic::repositories:
   backup_edx_repo:
