@@ -18,6 +18,7 @@ tutor::env_patches:
   - ["openedx-common-settings", "BADGR_USERNAME = '%{lookup('badgr_username')}'"]
   - ["openedx-common-settings", "BADGR_PASSWORD = '%{lookup('badgr_password')}'"]
   - ["openedx-common-settings", "BADGR_TOKENS_CACHE_KEY = 'randomstringasofinbs'"] # not a secret
+  - ["openedx-common-settings", "BADGR_ENABLE_NOTIFICATIONS = True"]
 
 tutor::openedx_extra_pip_requirements: "['jupyter-xblock==17.0.0', 'h5p-xblock==0.2.15']"
 tutor::plugins:
