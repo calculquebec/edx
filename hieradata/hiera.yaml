@@ -8,6 +8,7 @@ tutor::env_patches:
   - ["openedx-auth", "'SOCIAL_AUTH_OAUTH_SECRETS': { 'oidc': '%{lookup('oidc_secret')}'}"]
   - ["mfe-lms-production-settings", "MFE_CONFIG['SHOW_REGISTRATION_LINKS'] = False"]
   - ["common-env-features", "'SHOW_REGISTRATION_LINKS': False"]
+  - ["common-env-features", "'CERTIFICATES_HTML_VIEW': True"]
 
 tutor::openedx_extra_pip_requirements: "['jupyter-xblock==17.0.0', 'h5p-xblock==0.2.15']"
 tutor::plugins:
