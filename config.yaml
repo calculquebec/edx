@@ -23,18 +23,18 @@ tutor::admin_email: "noreply@calculquebec.ca"
 tutor::admin_password: "%{alias('edx_admin_password')}"
 
 tutor::config:
-  - ["LANGUAGE_CODE", "fr"]
-  - ["PLATFORM_NAME", "EdX Calcul Québec"]
-  - ["CONTACT_EMAIL", "noreply@calculquebec.ca"]
-  - ["LMS_HOST", "edx.%{lookup('terraform.data.domain_name')}"]
-  - ["CMS_HOST", "studio.edx.%{lookup('terraform.data.domain_name')}"]
-  - ["PREVIEW_LMS_HOST", "preview.edx.%{lookup('terraform.data.domain_name')}"]
-  - ["ENABLE_WEB_PROXY", "false"]
-  - ["CADDY_HTTP_PORT", "0.0.0.0:80"]
-  - ["ENABLE_HTTPS", "true"]
-  - ["MYSQL_ROOT_PASSWORD", "%{alias('mysql_root_password')}"]
-  - ["BACKUP_MYSQL_DATABASES", "['openedx']"]
-  - ["CAIRN_AUTH_ROLES_SYNC_AT_LOGIN", "true"]
+  LANGUAGE_CODE: "fr"
+  PLATFORM_NAME: "EdX Calcul Québec"
+  CONTACT_EMAIL: "noreply@calculquebec.ca"
+  LMS_HOST: "edx.%{lookup('terraform.data.domain_name')}"
+  CMS_HOST: "studio.edx.%{lookup('terraform.data.domain_name')}"
+  PREVIEW_LMS_HOST: "preview.edx.%{lookup('terraform.data.domain_name')}"
+  ENABLE_WEB_PROXY: "false"
+  CADDY_HTTP_PORT: "0.0.0.0:80"
+  ENABLE_HTTPS: "true"
+  MYSQL_ROOT_PASSWORD: "%{alias('mysql_root_password')}"
+  BACKUP_MYSQL_DATABASES: "['openedx']"
+  CAIRN_AUTH_ROLES_SYNC_AT_LOGIN: "true"
 tutor::openedx_extra_pip_requirements: "['jupyter-xblock==17.0.0']"
 
 prometheus::global_config:
