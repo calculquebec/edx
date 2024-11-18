@@ -19,6 +19,10 @@ tutor::openedx_extra_pip_requirements: "['jupyter-xblock==17.0.0', 'h5p-xblock==
 tutor::plugins:
   cairn:
     reboot_on_change: true
+  indigo:
+    source: "git+https://github.com/calculquebec/tutor-indigo@f29becc164efe8dca4c482126f8ff2bdddfe5a75"
+    image: "openedx"
+    rebuild_image_on_content_change: true
 
 tutor::backup_to_restore:
   date: '2024-10-29'
