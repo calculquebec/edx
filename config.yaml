@@ -48,6 +48,23 @@ tutor::config:
   CAIRN_AUTH_ROLES_SYNC_AT_LOGIN: "true"
   INDIGO_WELCOME_MESSAGE: "Votre référence en recherche numérique"
 
+tutor::env_patches:
+  common-env-features:
+    - "'ENABLE_THIRD_PARTY_AUTH': True"
+    - "'ENABLE_COMBINED_LOGIN_REGISTRATION': True"
+    - "'SHOW_REGISTRATION_LINKS': False"
+    - "'CERTIFICATES_HTML_VIEW': True"
+  openedx-lms-common-settings:
+    - "AUTHENTICATION_BACKENDS += ['social_core.backends.open_id_connect.OpenIdConnectAuth']"
+  openedx-auth:
+    - "'SOCIAL_AUTH_OIDC_OIDC_ENDPOINT': 'https://cilogon.org/'"
+    - "'SOCIAL_AUTH_OIDC_KEY': 'cilogon:/client_id/4b76e902d5e4d192d630bcfc3823e88f'"
+    - "'SOCIAL_AUTH_OIDC_SECRET': '%{lookup('oidc_secret')}'"
+    - "'SOCIAL_AUTH_OAUTH_SECRETS': { 'oidc': '%{lookup('oidc_secret')}'}"
+  mfe-lms-production-settings:
+    - "MFE_CONFIG['ALLOW_PUBLIC_ACCOUNT_CREATION'] = True"
+    - "MFE_CONFIG['SHOW_REGISTRATION_LINKS'] = False"
+
 tutor::openedx_extra_pip_requirements:
   - 'jupyter-xblock==17.0.0'
   - 'h5p-xblock==0.2.15'
