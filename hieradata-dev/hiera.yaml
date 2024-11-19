@@ -23,7 +23,7 @@ tutor::plugins:
   cairn:
     reboot_on_change: true
   indigo:
-    source: "git+https://github.com/calculquebec/tutor-indigo@5b133c2d0216e16afccfabb50404e4ecb962c0bd"
+    source: "git+https://github.com/calculquebec/tutor-indigo@4040c0e38fb62df3ddba87ffd3907534512114e6"
     image: "openedx"
     rebuild_image_on_content_change: true
 
