@@ -15,7 +15,6 @@ tutor::env_patches:
     - "MFE_CONFIG['ALLOW_PUBLIC_ACCOUNT_CREATION'] = True"
     - "MFE_CONFIG['SHOW_REGISTRATION_LINKS'] = False"
 
-tutor::openedx_extra_pip_requirements: "['jupyter-xblock==17.0.0', 'h5p-xblock==0.2.15']"
 tutor::plugins:
   cairn:
     reboot_on_change: true
