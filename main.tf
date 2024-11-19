@@ -97,10 +97,7 @@ module "dns" {
    source           = "git::https://github.com/ComputeCanada/magic_castle.git//dns/cloudflare?ref=14.1.2"
    name             = module.openstack.cluster_name
    domain           = module.openstack.domain
-   bastions         = module.openstack.bastions
    public_instances = module.openstack.public_instances
-   ssh_private_key  = module.openstack.ssh_private_key
-   sudoer_username  = module.openstack.accounts.sudoer.username
    vhosts           = ["*.edx", "edx", "ipa", "jupyter", "mokey", "explore"]
 }
 
