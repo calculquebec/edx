@@ -15,7 +15,7 @@ lookup_options:
   tutor::registration_email_patterns_allowed:
     merge: deep
   tutor::plugins:
-    merge: hash
+    merge: deep
   tutor::env_patches:
     merge: deep
 
@@ -55,6 +55,10 @@ tutor::openedx_extra_pip_requirements:
 tutor::plugins:
   cairn:
     reboot_on_change: true
+  indigo:
+    source: "git+https://github.com/calculquebec/tutor-indigo@%{lookup('theme_hash')}"
+    image: "openedx"
+    rebuild_image_on_content_change: true
 
 tutor::registration_email_patterns_allowed:
   - "(^\\w+)@.*acadiau.ca$"

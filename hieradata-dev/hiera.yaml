@@ -17,10 +17,6 @@ tutor::env_patches:
 
 theme_hash: "eb3489569df504404c9502f869bb7db3c289adaa"
 tutor::plugins:
-  indigo:
-    source: "git+https://github.com/calculquebec/tutor-indigo@%{lookup('theme_hash')}"
-    image: "openedx"
-    rebuild_image_on_content_change: true
 
 tutor::backup_to_restore:
   date: '2024-10-29'

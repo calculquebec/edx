@@ -14,6 +14,7 @@ tutor::env_patches:
   mfe-lms-production-settings:
     - "MFE_CONFIG['ALLOW_PUBLIC_ACCOUNT_CREATION'] = True"
     - "MFE_CONFIG['SHOW_REGISTRATION_LINKS'] = False"
+theme_hash: "eb3489569df504404c9502f869bb7db3c289adaa"
 
 tutor::backup_to_restore:
   date: '2024-10-27'
