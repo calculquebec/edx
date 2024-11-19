@@ -5,8 +5,8 @@ theme_hash: "eb3489569df504404c9502f869bb7db3c289adaa"
 tutor::plugins:
 
 tutor::backup_to_restore:
-  date: '2024-10-29'
-  path: '/backups/prod/tutor/.local/share/tutor/env/backup/'
+  date: '2024-11-18'
+  path: '/backups/dev/tutor/.local/share/tutor/env/backup/'
 cqedu::patch_domain_before_restore: true
 
 restic::repositories:
@@ -33,6 +33,16 @@ restic::repositories:
     bucket: "cq-backup-edx"
     enable_restore: true
     restore_path: "/backups/prod"
+    restore_timer: "Mon..Sun 3:30:00"
+  restore_edx_dev_repo:
+    enable_backup: false
+    id: "e3ce310620c4437286e29893ddac1537"
+    key: "%{alias('s3_key')}"
+    password: "%{alias('restic_password')}"
+    host: "object-arbutus.cloud.computecanada.ca"
+    bucket: "cq-backup-edx%{lookup('suffix')}"
+    enable_restore: true
+    restore_path: "/backups/dev"
     restore_timer: "Mon..Sun 3:30:00"
 
 cron::job:
