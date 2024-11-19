@@ -19,7 +19,7 @@ tutor::openedx_extra_pip_requirements:
   - 'jupyter-xblock==17.0.0'
   - 'h5p-xblock==0.2.15'
 
-theme_hash: "63529f105760e8c3cdb82a2ff80b9fcc88d30d8c"
+theme_hash: "eb3489569df504404c9502f869bb7db3c289adaa"
 tutor::plugins:
   cairn:
     reboot_on_change: true
