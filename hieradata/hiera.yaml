@@ -15,10 +15,6 @@ tutor::env_patches:
     - "MFE_CONFIG['ALLOW_PUBLIC_ACCOUNT_CREATION'] = True"
     - "MFE_CONFIG['SHOW_REGISTRATION_LINKS'] = False"
 
-tutor::plugins:
-  cairn:
-    reboot_on_change: true
-
 tutor::backup_to_restore:
   date: '2024-10-27'
   path: '/backups/prod/tutor/.local/share/tutor/env/backup/'

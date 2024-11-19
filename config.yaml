@@ -52,6 +52,10 @@ tutor::openedx_extra_pip_requirements:
   - 'jupyter-xblock==17.0.0'
   - 'h5p-xblock==0.2.15'
 
+tutor::plugins:
+  cairn:
+    reboot_on_change: true
+
 tutor::registration_email_patterns_allowed:
   - "(^\\w+)@.*acadiau.ca$"
   - "(^\\w+)@.*alliancecan.ca$"
