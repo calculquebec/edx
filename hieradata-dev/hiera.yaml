@@ -19,11 +19,12 @@ tutor::openedx_extra_pip_requirements:
   - 'jupyter-xblock==17.0.0'
   - 'h5p-xblock==0.2.15'
 
+theme_hash: "63529f105760e8c3cdb82a2ff80b9fcc88d30d8c"
 tutor::plugins:
   cairn:
     reboot_on_change: true
   indigo:
-    source: "git+https://github.com/calculquebec/tutor-indigo@4040c0e38fb62df3ddba87ffd3907534512114e6"
+    source: "git+https://github.com/calculquebec/tutor-indigo@%{lookup('theme_hash')}"
     image: "openedx"
     rebuild_image_on_content_change: true
 
