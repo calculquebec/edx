@@ -59,7 +59,6 @@ module "openstack" {
         }
   }
 
-  generate_ssh_key = true
   public_keys = compact(concat(split("\n", file("sshkeys.pub")), ))
 
   nb_users = 1
