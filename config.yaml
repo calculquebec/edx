@@ -18,6 +18,8 @@ lookup_options:
     merge: deep
   tutor::env_patches:
     merge: deep
+  cron::job:
+    merge: hash
 
 tutor::version: '18.1.4'
 
@@ -204,6 +206,26 @@ tutor::registration_email_patterns_allowed:
   - "(^\\w+)@.*viu.ca$"
   - "(^\\w+)@.*yorku.ca$"
   - "(^\\w+)@.*yukoncollege.yk.ca$"
+
+cron::job:
+  backup:
+    command: '/usr/local/bin/tutor local backup'
+    minute: '30'
+    hour: '0'
+    date: '*'
+    month: '*'
+    weekday: '*'
+    user: tutor
+    description: 'Take a backup of EdX'
+  clear_backup:
+    command: 'find /tutor/.local/share/tutor/env/backup/ -type f -mtime +30 -delete'
+    minute: '0'
+    hour: '1'
+    date: '*'
+    month: '*'
+    weekday: '*'
+    user: root
+    description: 'Delete backups older than 30 days'
 
 
 prometheus::global_config:
