@@ -7,6 +7,9 @@ tutor::env_patches:
     - "LTI_DEFAULT_JUPYTER_PASSPORT_ID = 'jupyterhub'"
   common-env-features:
 
+profile::accounts::manage_scratch: false
+profile::accounts::manage_project: false
+
 theme_hash: "eb3489569df504404c9502f869bb7db3c289adaa"
 tutor::plugins:
 
