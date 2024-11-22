@@ -23,18 +23,28 @@ jupyterhub::jupyterhub_config_hash:
     username_key: 'lis_person_sourcedid'
   LocalAuthenticator:
     create_system_users: true
-#  ServerApp:
-#    nbserver_extensions: { "nbgitpuller": True }
   SlurmSpawner:
     req_srun: ''
     req_account: "def-sponsor00"
-    req_memory: "4096"
+    req_memory: "2048"
     req_nprocs: "1"
     req_runtime: "08:00:00"
     req_options: "--oversubscribe"
-      #    default_url: "/tree"
   JupyterHub:
     shutdown_on_logout: true
+    tornado_settings:
+      headers:
+        "Content-Security-Policy": "frame-ancestors 'self' https://*.edx.%{lookup('terraform.data.domain_name')};"
+      cookie_options:
+        "SameSite": "None"
+        "Secure": true
+
+jupyterhub::jupyter_notebook_config_hash:
+  NotebookApp:
+    disable_check_xsrf: true
+    tornado_settings:
+      headers:
+        "Content-Security-Policy": "frame-ancestors 'self' https://*.edx.%{lookup('terraform.data.domain_name')};"
 
 theme_hash: "eb3489569df504404c9502f869bb7db3c289adaa"
 tutor::plugins:
