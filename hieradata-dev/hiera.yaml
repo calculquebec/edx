@@ -13,6 +13,8 @@ profile::accounts::manage_project: false
 theme_hash: "eb3489569df504404c9502f869bb7db3c289adaa"
 tutor::plugins:
 
+tutor::openedx_extra_pip_requirements:
+  - 'jupytermc-xblock @ git+https://github.com/calculquebec/jupytermc-xblock.git@269e99fcb7e8a350a7e9f057d72ba773bcb96fa2'
 
 jupyterhub::authenticator_class: "ipa-lti11"
 jupyterhub::spawner_class: "batchspawner.SlurmSpawner"
