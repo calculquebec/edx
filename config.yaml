@@ -122,6 +122,7 @@ tutor::registration_email_patterns_allowed:
   - "(^\\w+)@.*georgebrown.ca$"
   - "(^\\w+)@.*hec.ca$"
   - "(^\\w+)@.*imar.ca$"
+  - "(^\\w+)@.*inrs.ca$"
   - "(^\\w+)@.*kpu.ca$"
   - "(^\\w+)@.*lakeheadu.ca$"
   - "(^\\w+)@.*langara.ca$"
