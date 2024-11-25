@@ -14,7 +14,7 @@ theme_hash: "eb3489569df504404c9502f869bb7db3c289adaa"
 tutor::plugins:
 
 tutor::openedx_extra_pip_requirements:
-  - 'jupytermc-xblock @ git+https://github.com/calculquebec/jupytermc-xblock.git@0cef6f5b5d719a71af1a7550ebf58d066e588ba5'
+  - 'jupytermc-xblock @ git+https://github.com/calculquebec/jupytermc-xblock.git@1f55ed9541a9728ce413acbaa43b6e022dcd80ad'
 
 jupyterhub::authenticator_class: "ipa-lti11"
 jupyterhub::spawner_class: "batchspawner.SlurmSpawner"
