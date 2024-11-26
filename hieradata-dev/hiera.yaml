@@ -36,7 +36,7 @@ jupyterhub::jupyterhub_config_hash:
     shutdown_on_logout: true
     tornado_settings:
       headers:
-        "Content-Security-Policy": "frame-ancestors 'self' https://*.edx.%{lookup('terraform.data.domain_name')};"
+        "Content-Security-Policy": "frame-ancestors 'self' https://*.%{lookup('terraform.data.domain_name')};"
       cookie_options:
         "SameSite": "None"
         "Secure": true
@@ -48,7 +48,7 @@ jupyterhub::jupyter_notebook_config_hash:
     disable_check_xsrf: true
     tornado_settings:
       headers:
-        "Content-Security-Policy": "frame-ancestors 'self' https://*.edx.%{lookup('terraform.data.domain_name')};"
+        "Content-Security-Policy": "frame-ancestors 'self' https://*.%{lookup('terraform.data.domain_name')};"
   ServerProxy:
     servers:
       rstudio:
