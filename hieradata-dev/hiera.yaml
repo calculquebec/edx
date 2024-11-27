@@ -15,7 +15,6 @@ tutor::plugins:
 
 tutor::openedx_extra_pip_requirements:
   - 'jupytermc-xblock @ git+https://github.com/calculquebec/jupytermc-xblock.git@de02a88db319428e464caeef08660dd165d88caf'
-  - 'jupyter-xblock==17.0.0'
 
 jupyterhub::authenticator_class: "ipa-lti11"
 jupyterhub::spawner_class: "batchspawner.SlurmSpawner"
