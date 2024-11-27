@@ -30,4 +30,14 @@ restic::repositories:
     enable_restore: true
     restore_path: "/backups/prod"
     restore_timer: "Mon..Sun 3:30:00"
+  restore_edx_dev_repo:
+    enable_backup: false
+    id: "e3ce310620c4437286e29893ddac1537"
+    key: "%{alias('s3_key')}"
+    password: "%{alias('restic_password')}"
+    host: "object-arbutus.cloud.computecanada.ca"
+    bucket: "cq-backup-edx%{lookup('suffix')}"
+    enable_restore: true
+    restore_path: "/backups/dev"
+    restore_timer: "Mon..Sun 3:30:00"
 
