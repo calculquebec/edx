@@ -19,6 +19,7 @@ tutor::openedx_extra_pip_requirements:
 
 jupyterhub::authenticator_class: "ipa-lti11"
 jupyterhub::spawner_class: "batchspawner.SlurmSpawner"
+jupyterhub::idle_timeout: 30
 
 jupyterhub::jupyterhub_config_hash:
   LTI11Authenticator:
