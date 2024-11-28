@@ -1,0 +1,65 @@
+jupyterhub::authenticator_class: "ipa-lti11"
+jupyterhub::spawner_class: "batchspawner.SlurmSpawner"
+jupyterhub::idle_timeout: 1800
+
+jupyterhub::jupyterhub_config_hash:
+  LTI11Authenticator:
+    consumers: { 'openedx': "%{lookup('lti_consumer_key')}" }
+    username_key: 'lis_person_sourcedid'
+  LocalAuthenticator:
+    create_system_users: true
+  SlurmSpawner:
+    req_srun: ''
+    req_account: "def-sponsor00"
+    req_memory: "2048"
+    req_nprocs: "1"
+    req_runtime: "08:00:00"
+    req_options: "--oversubscribe"
+  JupyterHub:
+    shutdown_on_logout: true
+    tornado_settings:
+      headers:
+        "Content-Security-Policy": "frame-ancestors 'self' https://*.%{lookup('terraform.data.domain_name')};"
+      cookie_options:
+        "SameSite": "None"
+        "Secure": true
+  ServerApp:
+    nbserver_extensions: { "nbgitpuller": True }
+
+jupyterhub::jupyter_notebook_config_hash:
+  NotebookApp:
+    disable_check_xsrf: true
+    tornado_settings:
+      headers:
+        "Content-Security-Policy": "frame-ancestors 'self' https://*.%{lookup('terraform.data.domain_name')};"
+  ServerProxy:
+    servers:
+      rstudio:
+        command: ["rserver", "--www-port={port}", "--www-frame=same", "--www-address=127.0.0.1"]
+        timeout: 30
+        launcher_entry:
+          title: RStudio
+      code-server:
+        command: ["code-server", "--auth=none", "--disable-telemetry",  "--host=127.0.0.1", "--port={port}"]
+        timeout: 30
+        launcher_entry:
+          title: VS Code
+          enabled: true
+      openrefine:
+        command: ["refine", "-i", "127.0.0.1", "-p", "{port}", "-x", "refine.headless=true"]
+        timeout: 60
+        launcher_entry:
+          title: OpenRefine
+          enabled: true
+
+profile::software_stack::lmod_default_modules: [ 'StdEnv/2023', 'rstudio-server/4.4', 'code-server/4.92.2' ]
+jupyterhub::kernel::venv::python: /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Compiler/gcccore/python/3.11.5/bin/python3
+jupyterhub::kernel::venv::prefix: /opt/ipython-kernel-3.11
+lookup_options:
+    jupyterhub::kernel::venv::pip_environment:
+        merge: deep
+jupyterhub::kernel::venv::pip_environment:
+    PIP_NO_INDEX: 1
+    PIP_CONFIG_FILE: /cvmfs/soft.computecanada.ca/config/python/pip-x86-64-v3-gentoo2023.conf
+
+
