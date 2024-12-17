@@ -45,9 +45,20 @@ tutor::openedx_extra_pip_requirements:
 
 tutor::plugins:
   cairn:
+    pip_dep:
+      name: 'tutor-cairn'
+      ensure: '18.0.0'
+    reboot_on_change: true
+  mfe:
+    pip_dep:
+      name: 'tutor-mfe'
+      ensure: '18.1.0'
     reboot_on_change: true
   indigo:
-    source: "git+https://github.com/calculquebec/tutor-indigo@%{lookup('theme_hash')}"
+    pip_dep:
+      name: 'tutor-indigo'
+      source: "git+https://github.com/calculquebec/tutor-indigo"
+      ensure: "%{lookup('theme_hash')}"
     image: "openedx"
     rebuild_image_on_content_change: true
 
