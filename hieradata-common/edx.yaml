@@ -49,11 +49,13 @@ tutor::plugins:
       name: 'tutor-cairn'
       ensure: '18.0.0'
     reboot_on_change: true
+    rebuild_image_on_content_change: true
   mfe:
     pip_dep:
       name: 'tutor-mfe'
       ensure: '18.1.0'
     reboot_on_change: true
+    rebuild_image_on_content_change: true
   indigo:
     pip_dep:
       name: 'tutor-indigo'
