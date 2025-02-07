@@ -1,6 +1,8 @@
-tutor::version: '18.1.4'
+tutor::version: '19.0.1'
+tutor::tutor_contrib_backup_version: '4.1.0'
 tutor::admin_email: "noreply@calculquebec.ca"
 tutor::admin_password: "%{alias('edx_admin_password')}"
+tutor::upgrade_from: 'redwood'
 
 tutor::config:
   LANGUAGE_CODE: "fr"
@@ -47,13 +49,13 @@ tutor::plugins:
   cairn:
     pip_dep:
       name: 'tutor-cairn'
-      ensure: '18.0.0'
+      ensure: '19.0.0'
     reboot_on_change: true
     rebuild_image_on_content_change: true
   mfe:
     pip_dep:
       name: 'tutor-mfe'
-      ensure: '18.1.0'
+      ensure: '19.0.0'
     reboot_on_change: true
     rebuild_image_on_content_change: true
   indigo:
