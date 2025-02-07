@@ -11,7 +11,7 @@ theme_hash: "eb3489569df504404c9502f869bb7db3c289adaa"
 tutor::plugins:
 
 tutor::backup_to_restore:
-  date: '2024-12-17'
+  date: '2025-02-06'
   path: '/backups/dev/tutor/.local/share/tutor/env/backup/'
 cqedu::patch_domain_before_restore: true
 
