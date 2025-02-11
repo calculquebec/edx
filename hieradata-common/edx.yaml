@@ -25,6 +25,7 @@ tutor::env_patches:
     - "'ENABLE_COMBINED_LOGIN_REGISTRATION': True"
     - "'SHOW_REGISTRATION_LINKS': False"
     - "'CERTIFICATES_HTML_VIEW': True"
+    - "'ENABLE_COURSE_DISCOVERY': False"
   openedx-lms-common-settings:
     - "AUTHENTICATION_BACKENDS += ['social_core.backends.open_id_connect.OpenIdConnectAuth']"
     - "LTI_DEFAULT_JUPYTER_HUB_URL = 'https://jupyter.%{lookup('terraform.data.domain_name')}'"
