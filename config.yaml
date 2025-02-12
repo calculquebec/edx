@@ -27,6 +27,7 @@ profile::reverse_proxy::subdomains:
   studio.edx: "http://edx1.int.%{lookup('terraform.data.domain_name')}"
   apps.edx: "http://edx1.int.%{lookup('terraform.data.domain_name')}"
   data.edx: "http://edx1.int.%{lookup('terraform.data.domain_name')}"
+  superset.edx: "http://edx1.int.%{lookup('terraform.data.domain_name')}"
   jupyter: "https://127.0.0.1:8000"
 profile::reverse_proxy::main2sub_redir: "edx"
 
