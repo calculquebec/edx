@@ -2,13 +2,10 @@ tutor::env_patches:
   openedx-lms-common-settings:
   common-env-features:
 
-theme_hash: "47bb32e1eb053836c1609b18b97cca417f0948c7"
+theme_hash: "a1ae597d8ff9598f1e4f874da20f9baa2302fcc8"
 tutor::plugins:
 
 tutor::openedx_extra_pip_requirements:
-
-theme_hash: "eb3489569df504404c9502f869bb7db3c289adaa"
-tutor::plugins:
 
 tutor::backup_to_restore:
   date: '2025-02-06'
