@@ -18,6 +18,7 @@ tutor::config:
   BACKUP_MYSQL_DATABASES: "['openedx']"
   CAIRN_AUTH_ROLES_SYNC_AT_LOGIN: "true"
   INDIGO_WELCOME_MESSAGE: "Votre référence en recherche numérique"
+  RUN_SMTP: "false"
   SMTP_HOST: "smtp.gmail.com"
   SMTP_PORT: "587"
   SMTP_USE_SSL: "false"
