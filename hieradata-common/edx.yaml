@@ -215,5 +215,6 @@ tutor::registration_email_patterns_allowed:
   - "^([\\w.-]+)@.*viu.ca$"
   - "^([\\w.-]+)@.*yorku.ca$"
   - "^([\\w.-]+)@.*yukoncollege.yk.ca$"
+  - "^([\\w.-]+)@devsights.com$"
 
 
