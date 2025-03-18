@@ -6,6 +6,8 @@ magic_castle::site::tags:
     - cqedu
     - tutor
     - cron
+  loginedx:
+    - profile::ssh::hostbased_auth::server
 
 lookup_options:
   tutor::config:
