@@ -40,9 +40,9 @@ data "tfe_workspace" "test" {
 
 
 module "openstack" {
-  source         = "git::https://github.com/ComputeCanada/magic_castle.git//openstack?ref=14.1.2"
+  source         = "git::https://github.com/ComputeCanada/magic_castle.git//openstack?ref=14.2.1"
   config_git_url = "https://github.com/ComputeCanada/puppet-magic_castle.git"
-  config_version = "14.1.2"
+  config_version = "61179b9"
 
   cluster_name = "edu${var.suffix}"
   domain       = "calculquebec.cloud"
