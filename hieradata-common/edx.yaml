@@ -86,6 +86,12 @@ tutor::plugins:
       ensure: '19.0.0'
     reinit_on_change: true
     reboot_on_change: true
+  plugin_slots:
+    dep:
+      url: 'https://raw.githubusercontent.com/calculquebec/tutor-plugins/refs/heads/main/plugin_slots.py'
+    images: ['mfe']
+    reboot_on_change: true
+
 
 tutor::registration_email_patterns_allowed:
   - "^([\\w.-]+)@.*acadiau.ca$"
