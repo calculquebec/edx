@@ -17,4 +17,13 @@ cron::job:
     weekday: '*'
     user: root
     description: 'Delete backups older than 30 days'
-
+  update_theme:
+    command: 'cd /tutor/tutor-plugins; git pull'
+    minute: '*/5'
+    hour: '*'
+    date: '*'
+    month: '*'
+    weekday: '*'
+    user: tutor
+    description: 'Pull theme directory'
+  
