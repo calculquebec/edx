@@ -8,7 +8,7 @@ tutor::plugins:
 tutor::openedx_extra_pip_requirements:
 
 tutor::backup_to_restore:
-  date: '2025-02-06'
+  date: '2025-04-30'
   path: '/backups/dev/tutor/.local/share/tutor/env/backup/'
 cqedu::patch_domain_before_restore: true
 
