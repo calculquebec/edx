@@ -120,6 +120,7 @@ tutor::registration_email_patterns_allowed:
   - "^([\\w.-]+)@.*cmaisonneuve.qc.ca$"
   - "^([\\w.-]+)@.*cmrsj-rmcsj.ca$"
   - "^([\\w.-]+)@.*cna.nl.ca$"
+  - "^([\\w.-]+)@.*computeontario.ca$"
   - "^([\\w.-]+)@.*concordia.ab.ca$"
   - "^([\\w.-]+)@.*concordia.ca$"
   - "^([\\w.-]+)@.*conestogac.on.ca$"
