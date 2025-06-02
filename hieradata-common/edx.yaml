@@ -68,12 +68,6 @@ tutor::plugins:
       ensure: '19.0.0'
     reboot_on_change: true
     images: ['mfe']
-  indigo:
-    dep:
-      name: 'tutor-indigo'
-      source: "git+https://github.com/calculquebec/tutor-indigo"
-      ensure: "%{lookup('theme_hash')}"
-    images: ["openedx"]
   aspects:
     dep:
       name: 'tutor-contrib-aspects'
@@ -93,6 +87,12 @@ tutor::plugins:
     images: ['mfe']
     reboot_on_change: true
 
+tutor::themes:
+  indigocq:
+    enabled: true
+    source_url: 'https://github.com/calculquebec/tutor-indigo/archive/refs/tags/'
+    archive_name: '19.0.1.1.tar.gz'
+    extract_options: '--strip-components=4 tutor-indigo-19.0.1.1/tutorindigo/templates/indigo'
 
 tutor::registration_email_patterns_allowed:
   - "^([\\w.-]+)@.*acadiau.ca$"
