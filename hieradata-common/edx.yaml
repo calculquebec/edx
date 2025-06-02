@@ -70,6 +70,19 @@ tutor::plugins:
       ensure: '1.3.0'
     images: ["openedx", "aspects", "aspects-superset"]
     reinit_on_change: true
+  forum:
+    dep:
+      name: 'tutor-forum'
+      ensure: '19.0.0'
+    reinit_on_change: true
+    reboot_on_change: true
+  plugin_slots:
+    dep:
+      source: 'https://github.com/calculquebec/tutor-plugins/archive/refs/tags/v1.0.tar.gz'
+      filename: 'tutor-plugins.tar.gz'
+    images: ['mfe']
+    reboot_on_change: true
+
 
 tutor::registration_email_patterns_allowed:
   - "^([\\w.-]+)@.*acadiau.ca$"
