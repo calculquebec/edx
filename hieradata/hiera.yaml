@@ -1,5 +1,3 @@
-theme_hash: "bb141d3db5a73a261687debe73994403688ec110"
-
 tutor::backup_to_restore:
   date: '2025-04-08'
   path: '/backups/dev/tutor/.local/share/tutor/env/backup/'
