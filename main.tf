@@ -5,6 +5,10 @@ terraform {
       source  = "cloudflare/cloudflare"
       version = "~> 4.51.0"
     }
+    openstack = {
+      source = "terraform-provider-openstack/openstack"
+      version = "< 3.1"
+    }
   }
 }
 
