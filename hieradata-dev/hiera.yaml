@@ -2,7 +2,6 @@ tutor::env_patches:
   openedx-lms-common-settings:
   common-env-features:
 
-theme_hash: "a1ae597d8ff9598f1e4f874da20f9baa2302fcc8"
 tutor::plugins:
 
 tutor::openedx_extra_pip_requirements:

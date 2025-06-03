@@ -17,4 +17,3 @@ cron::job:
     weekday: '*'
     user: root
     description: 'Delete backups older than 30 days'
-
