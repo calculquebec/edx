@@ -1,15 +1,5 @@
 terraform {
   required_version = ">= 1.4.0"
-  required_providers {
-    cloudflare = {
-      source  = "cloudflare/cloudflare"
-      version = "~> 4.51.0"
-    }
-    openstack = {
-      source = "terraform-provider-openstack/openstack"
-      version = "< 3.1"
-    }
-  }
 }
 
 variable "pool" {
