@@ -51,7 +51,7 @@ tutor::plugins:
       name: 'tutor-cairn'
       ensure: '19.0.0'
     reboot_on_change: true
-    images: ['cairn']
+    images: []
   mfe:
     dep:
       name: 'tutor-mfe'
