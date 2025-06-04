@@ -68,6 +68,12 @@ tutor::plugins:
       ensure: '19.0.0'
     reboot_on_change: true
     images: ['mfe']
+  indigo:
+    dep:
+      name: 'tutor-indigo'
+      ensure: '19.0.1'
+    reboot_on_change: true
+    images: ['openedx']
   aspects:
     dep:
       name: 'tutor-contrib-aspects'
