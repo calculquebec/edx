@@ -34,7 +34,7 @@ data "tfe_workspace" "test" {
 
 
 module "openstack" {
-  source         = "git::https://github.com/ComputeCanada/magic_castle.git//openstack?ref=14.3.0"
+  source         = "git::https://github.com/calculquebec/magic_castle_edx.git//openstack?ref=edx"
   config_git_url = "https://github.com/ComputeCanada/puppet-magic_castle.git"
   config_version = "14.3.0"
 
