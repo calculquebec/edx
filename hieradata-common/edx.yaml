@@ -1,4 +1,4 @@
-tutor::version: '19.0.2'
+tutor::version: '19.0.4'
 tutor::tutor_contrib_backup_version: '4.3.0'
 tutor::admin_email: "noreply@calculquebec.ca"
 tutor::admin_password: "%{alias('edx_admin_password')}"
@@ -71,13 +71,13 @@ tutor::plugins:
   indigo:
     dep:
       name: 'tutor-indigo'
-      ensure: '19.0.1'
+      ensure: '19.0.3'
     reboot_on_change: true
     images: ['openedx']
   aspects:
     dep:
       name: 'tutor-contrib-aspects'
-      ensure: '1.3.0'
+      ensure: '2.3.1'
     images: ["openedx", "aspects", "aspects-superset"]
     reinit_on_change: true
   forum:
