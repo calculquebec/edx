@@ -56,12 +56,12 @@ tutor::openedx_extra_pip_requirements:
   - 'flow-control-xblock @ git+https://github.com/eduNEXT/flow-control-xblock.git@v2.0.1'
 
 tutor::plugins:
-  cairn:
-    dep:
-      name: 'tutor-cairn'
-      ensure: '19.0.0'
-    reboot_on_change: true
-    images: []
+  #  cairn:
+  #  dep:
+  #    name: 'tutor-cairn'
+  #    ensure: '19.0.0'
+  #  reboot_on_change: true
+  #  images: []
   mfe:
     dep:
       name: 'tutor-mfe'
