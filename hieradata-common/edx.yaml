@@ -80,7 +80,7 @@ tutor::plugins:
     dep:
       name: 'tutor-contrib-aspects'
       ensure: '2.3.1'
-    images: ["openedx", "aspects", "aspects-superset"]
+    images: ["aspects", "aspects-superset"]
     reinit_on_change: true
   forum:
     dep:
