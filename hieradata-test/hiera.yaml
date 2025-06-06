@@ -1,0 +1,70 @@
+tutor::env_patches:
+  openedx-lms-common-settings:
+  common-env-features:
+
+tutor::plugins:
+
+tutor::openedx_extra_pip_requirements:
+
+tutor::backup_to_restore:
+  date: '2025-06-03'
+  path: '/backups/dev/tutor/.local/share/tutor/env/backup/'
+cqedu::patch_domain_before_restore: true
+
+restic::repositories:
+  backup_edx_repo:
+    enable_backup: true
+    id: "e3ce310620c4437286e29893ddac1537"
+    key: "%{alias('s3_key')}"
+    password: "%{alias('restic_password')}"
+    host: "object-arbutus.cloud.computecanada.ca"
+    bucket: "cq-backup-edx%{lookup('suffix')}"
+    backup_path: "/tutor/.local/share/tutor/env/backup/"
+    backup_timer: Mon..Sun 4:00:00
+    enable_forget: true
+    forget_timer: Mon..Sun 5:00:00
+    prune: true
+    forget:
+      keep-last: 1
+  restore_edx_repo:
+    enable_backup: false
+    id: "e3ce310620c4437286e29893ddac1537"
+    key: "%{alias('s3_key')}"
+    password: "%{alias('restic_password')}"
+    host: "object-arbutus.cloud.computecanada.ca"
+    bucket: "cq-backup-edx"
+    enable_restore: true
+    restore_path: "/backups/prod"
+    restore_timer: "Mon..Sun 3:30:00"
+  restore_edx_dev_repo:
+    enable_backup: false
+    id: "e3ce310620c4437286e29893ddac1537"
+    key: "%{alias('s3_key')}"
+    password: "%{alias('restic_password')}"
+    host: "object-arbutus.cloud.computecanada.ca"
+    bucket: "cq-backup-edx-dev"
+    enable_restore: true
+    restore_path: "/backups/dev"
+    restore_timer: "Mon..Sun 3:30:00"
+  restore_edx_test_repo:
+    enable_backup: false
+    id: "e3ce310620c4437286e29893ddac1537"
+    key: "%{alias('s3_key')}"
+    password: "%{alias('restic_password')}"
+    host: "object-arbutus.cloud.computecanada.ca"
+    bucket: "cq-backup-edx%{lookup('suffix')}"
+    enable_restore: true
+    restore_path: "/backups/edx-%{lookup('suffix')}"
+    restore_timer: "Mon..Sun 3:30:00"
+
+cron::job:
+  restore:
+    command: '#/usr/local/bin/tutor local restore'
+    minute: '30'
+    hour: '4'
+    date: '*'
+    month: '*'
+    weekday: '*'
+    user: tutor
+    description: 'Restore backup of EdX prod'
+
