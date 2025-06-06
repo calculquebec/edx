@@ -10,6 +10,8 @@ tutor::backup_to_restore:
   date: '2025-06-03'
   path: '/backups/dev/tutor/.local/share/tutor/env/backup/'
 cqedu::patch_domain_before_restore: true
+cqedu::source_domain: 'edu-dev.calculquebec.cloud'
+cqedu::target_domain: 'edu-test.calculquebec.cloud'
 
 restic::repositories:
   backup_edx_repo:
