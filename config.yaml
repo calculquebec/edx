@@ -6,6 +6,7 @@ magic_castle::site::tags:
     - cqedu
     - tutor
     - cron
+    - profile::mail
   loginedx:
     - profile::ssh::hostbased_auth::server
 
@@ -48,3 +49,5 @@ prometheus::remote_write_configs:
       basic_auth:
           username: 'cqformation'
           password: "%{alias('prometheus_password')}"
+
+profile::mail::dkim::private_key: "%{alias('dkim_key')}"
