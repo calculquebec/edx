@@ -7,7 +7,7 @@ tutor::upgrade_from: 'redwood'
 tutor::config:
   LANGUAGE_CODE: "fr"
   PLATFORM_NAME: "EdX Calcul Québec"
-  CONTACT_EMAIL: "noreply@calculquebec.ca"
+  CONTACT_EMAIL: "noreply@%{lookup('terraform.data.domain_name')}"
   LMS_HOST: "edx.%{lookup('terraform.data.domain_name')}"
   CMS_HOST: "studio.edx.%{lookup('terraform.data.domain_name')}"
   PREVIEW_LMS_HOST: "preview.edx.%{lookup('terraform.data.domain_name')}"
@@ -18,6 +18,13 @@ tutor::config:
   BACKUP_MYSQL_DATABASES: "['openedx']"
   CAIRN_AUTH_ROLES_SYNC_AT_LOGIN: "true"
   INDIGO_WELCOME_MESSAGE: "Votre référence en recherche numérique"
+  RUN_SMTP: "false"
+  SMTP_HOST: "%{alias('terraform.instances.login1.local_ip')}"
+  SMTP_PORT: "25"
+  SMTP_USE_SSL: "false"
+  SMTP_USE_TLS: "false"
+  SMTP_USERNAME: ""
+  SMTP_PASSWORD: ""
 
 tutor::env_patches:
   common-env-features:
