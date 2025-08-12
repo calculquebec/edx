@@ -34,7 +34,7 @@ data "tfe_workspace" "test" {
 
 
 module "openstack" {
-  source         = "git::https://github.com/calculquebec/magic_castle_edx.git//openstack?ref=edx"
+  source         = "git::https://github.com/calculquebec/magic_castle_formation.git//openstack?ref=edx"
   config_git_url = "https://github.com/calculquebec/puppet-magic_castle_formation.git"
   config_version = "66b1df8"
 
@@ -98,7 +98,7 @@ output "public_ip" {
 
 ## Uncomment to register your domain name with CloudFlare
 module "dns" {
-   source           = "git::https://github.com/calculquebec/magic_castle_edx.git//dns/cloudflare?ref=edx"
+   source           = "git::https://github.com/calculquebec/magic_castle_formation.git//dns/cloudflare?ref=edx"
    name             = module.openstack.cluster_name
    domain           = module.openstack.domain
    public_instances = module.openstack.public_instances
