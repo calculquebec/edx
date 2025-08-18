@@ -85,6 +85,9 @@ module "openstack" {
   software_stack = "computecanada"
   eyaml_key = base64decode(var.eyaml_key)
 
+  subnet_id = "f7412a24-e802-4a72-8e1f-f74bac4a0b5a"
+  os_ext_network = "Public-Network"
+
   puppetfile = file("Puppetfile")
 }
 
