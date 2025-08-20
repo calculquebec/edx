@@ -8,6 +8,7 @@ jupyterhub::jupyterhub_config_hash:
     username_key: 'lis_person_sourcedid'
   LocalAuthenticator:
     create_system_users: true
+    default_group: ''
   SlurmSpawner:
     req_srun: ''
     req_account: "def-sponsor00"
@@ -43,14 +44,3 @@ jupyterhub::kernel::venv::packages:
   - altair==5.4.1
   - vega_datasets
   - vl_convert_python
-  - dask[array,distributed,diagnostics]==2025.2.0
-  - graphviz
-  - sparse
-  - scipy==1.15.1
-  - numba==0.61.2
-  - torch==2.6.0
-  - scikit-learn
-  - pillow
-  - pycuda==2025.1
-  - torchvision
-
