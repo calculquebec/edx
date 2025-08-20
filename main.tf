@@ -64,7 +64,7 @@ module "openstack" {
         }
   }
 
-  public_keys = compact(concat(split("\n", file("sshkeys.pub")), ))
+  public_keys = compact(concat(split("\n", file("keys/sshkeys.pub")), ))
 
   nb_users = 1
   # Shared password, randomly chosen if blank
@@ -106,7 +106,7 @@ module "dns" {
    domain           = module.openstack.domain
    public_instances = module.openstack.public_instances
    vhosts           = ["*.edx", "edx", "ipa", "jupyter", "mokey", "explore"]
-   dkim_public_key  = file("dkim_public.pem")
+   dkim_public_key  = file("keys/dkim_public.pem")
 }
 
 ## Uncomment to register your domain name with Google Cloud
