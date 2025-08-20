@@ -36,7 +36,7 @@ data "tfe_workspace" "test" {
 module "openstack" {
   source         = "git::https://github.com/calculquebec/magic_castle_formation.git//openstack?ref=edx"
   config_git_url = "https://github.com/calculquebec/puppet-magic_castle_formation.git"
-  config_version = "3ae06ac"
+  config_version = "85ac5d7"
 
   cluster_name = "edu${var.suffix}"
   domain       = "calculquebec.cloud"
