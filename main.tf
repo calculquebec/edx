@@ -46,7 +46,7 @@ module "openstack" {
     mgmt   = { type = "p4-7.5gb", tags = ["puppet", "mgmt", "nfs"], count = 1, disk_size=100}
     login  = { type = "p4-7.5gb", tags = ["login", "public", "proxy", "loginedx"], count = 1}
     node   = { type = "c2-7.5gb", tags = ["node"], count = 0 }
-    nodepool   = { type = "c2-7.5gb", tags = ["node", "pool"], count = 1 }
+    nodepool   = { type = "c2-7.5gb", tags = ["node", "pool"], count = 1, image = "snapshot-cpunode-2025.3-A9.6" }
     edx = { type = "c8-60gb", tags = ["edx"], count = 1, disk_size = 500 }
   }
 
