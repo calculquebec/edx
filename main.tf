@@ -82,7 +82,7 @@ module "openstack" {
   ))
 
   hieradata_dir = "hieradata${var.suffix}"
-  software_stack = "computecanada"
+  software_stack = "alliance"
   eyaml_key = base64decode(var.eyaml_key)
 
   subnet_id = "a7f9fef1-a43e-4502-83a9-e47c936b635d"
