@@ -28,7 +28,7 @@ jupyterhub::jupyterhub_config_hash:
     nbserver_extensions: { "nbgitpuller": True }
 
 jupyterhub::jupyter_notebook_config_hash:
-  NotebookApp:
+  ServerApp:
     disable_check_xsrf: true
     tornado_settings:
       headers:
