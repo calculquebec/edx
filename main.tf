@@ -85,7 +85,7 @@ module "openstack" {
   software_stack = "alliance"
   eyaml_key = base64decode(var.eyaml_key)
 
-  subnet_id = "a7f9fef1-a43e-4502-83a9-e47c936b635d"
+  subnet_id = "9f05e9f1-2ced-4e90-bcce-fdb107ed314e"
   os_ext_network = "Public-Network"
 
   puppetfile = file("Puppetfile")
