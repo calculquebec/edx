@@ -36,7 +36,7 @@ data "tfe_workspace" "test" {
 module "openstack" {
   source         = "git::https://github.com/calculquebec/magic_castle_formation.git//openstack?ref=edx"
   config_git_url = "https://github.com/calculquebec/puppet-magic_castle_formation.git"
-  config_version = "66b1df8"
+  config_version = "ca1ebf9"
 
   cluster_name = "edu${var.suffix}"
   domain       = "calculquebec.cloud"
@@ -46,7 +46,7 @@ module "openstack" {
     mgmt   = { type = "p4-7.5gb", tags = ["puppet", "mgmt", "nfs"], count = 1, disk_size=100}
     login  = { type = "p4-7.5gb", tags = ["login", "public", "proxy", "loginedx"], count = 1}
     node   = { type = "c2-7.5gb", tags = ["node"], count = 0 }
-    nodepool   = { type = "c2-7.5gb", tags = ["node", "pool"], count = 1 }
+    nodepool   = { type = "c2-7.5gb", tags = ["node", "pool"], count = 1 } #, image = "snapshot-cpunode-2025.3-A9.6" }
     edx = { type = "c8-60gb", tags = ["edx"], count = 1, disk_size = 500 }
   }
 
@@ -64,7 +64,7 @@ module "openstack" {
         }
   }
 
-  public_keys = compact(concat(split("\n", file("sshkeys.pub")), ))
+  public_keys = compact(concat(split("\n", file("keys/sshkeys.pub")), ))
 
   nb_users = 1
   # Shared password, randomly chosen if blank
@@ -82,10 +82,10 @@ module "openstack" {
   ))
 
   hieradata_dir = "hieradata${var.suffix}"
-  software_stack = "computecanada"
+  software_stack = "alliance"
   eyaml_key = base64decode(var.eyaml_key)
 
-  subnet_id = "f7412a24-e802-4a72-8e1f-f74bac4a0b5a"
+  subnet_id = "9f05e9f1-2ced-4e90-bcce-fdb107ed314e"
   os_ext_network = "Public-Network"
 
   puppetfile = file("Puppetfile")
@@ -106,7 +106,7 @@ module "dns" {
    domain           = module.openstack.domain
    public_instances = module.openstack.public_instances
    vhosts           = ["*.edx", "edx", "ipa", "jupyter", "mokey", "explore"]
-   dkim_public_key  = file("dkim_public.pem")
+   dkim_public_key  = file("keys/dkim_public.pem")
 }
 
 ## Uncomment to register your domain name with Google Cloud
