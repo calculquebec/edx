@@ -7,8 +7,13 @@ magic_castle::site::tags:
     - tutor
     - cron
     - profile::mail
-  loginedx:
+  internal_login:
+    - motd
+    - profile::slurm::submitter
+    - profile::ssh::hostbased_auth::client
     - profile::ssh::hostbased_auth::server
+    - profile::nfs
+    - profile::software_stack
 
 lookup_options:
   tutor::config:
