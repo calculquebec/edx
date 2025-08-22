@@ -7,8 +7,13 @@ magic_castle::site::tags:
     - tutor
     - cron
     - profile::mail
-  loginedx:
+  internal_login:
+    - motd
+    - profile::slurm::submitter
+    - profile::ssh::hostbased_auth::client
     - profile::ssh::hostbased_auth::server
+    - profile::nfs
+    - profile::software_stack
 
 lookup_options:
   tutor::config:
@@ -23,6 +28,15 @@ lookup_options:
     merge: deep
   cron::job:
     merge: hash
+
+lookup_options:
+  profile::users::ldap::groups:
+    merge: first
+profile::users::ldap::groups:
+  'def-sponsor00':
+    automember: true
+    hbac_rules: ["internal_login:sshd", 'node:sshd', 'proxy:jupyterhub-login']
+
 
 profile::reverse_proxy::subdomains:
   edx: "http://edx1.int.%{lookup('terraform.data.domain_name')}"
