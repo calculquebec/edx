@@ -29,11 +29,14 @@ lookup_options:
   cron::job:
     merge: hash
 
+lookup_options:
+  profile::users::ldap::groups:
+    merge: first
 profile::users::ldap::groups:
-  internal_login:
-    posix: false
+  'def-sponsor00':
     automember: true
-    hbac_rules: ["tag:internal_login"]
+    hbac_rules: ["internal_login:sshd", 'node:sshd', 'proxy:jupyterhub-login']
+
 
 profile::reverse_proxy::subdomains:
   edx: "http://edx1.int.%{lookup('terraform.data.domain_name')}"
