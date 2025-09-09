@@ -7,7 +7,7 @@ tutor::plugins:
 tutor::openedx_extra_pip_requirements:
 
 tutor::backup_to_restore:
-  date: '2025-02-06'
+  date: '2025-08-19'
   path: '/backups/dev/tutor/.local/share/tutor/env/backup/'
 cqedu::patch_domain_before_restore: true
 
@@ -45,6 +45,16 @@ restic::repositories:
     bucket: "cq-backup-edx%{lookup('suffix')}"
     enable_restore: true
     restore_path: "/backups/dev"
+    restore_timer: "Mon..Sun 3:30:00"
+  restore_edx_test_repo:
+    enable_backup: false
+    id: "e3ce310620c4437286e29893ddac1537"
+    key: "%{alias('s3_key')}"
+    password: "%{alias('restic_password')}"
+    host: "object-arbutus.cloud.computecanada.ca"
+    bucket: "cq-backup-edx%{lookup('suffix')}"
+    enable_restore: true
+    restore_path: "/backups/test"
     restore_timer: "Mon..Sun 3:30:00"
 
 cron::job:
