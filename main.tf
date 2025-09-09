@@ -43,11 +43,11 @@ module "openstack" {
   image        = "AlmaLinux-9"
 
   instances = {
-    mgmt   = { type = "p4-7.5gb", tags = ["puppet", "mgmt", "nfs"], count = 1, disk_size=100}
-    login  = { type = "p4-7.5gb", tags = ["login", "public", "proxy"], count = 1}
-    node   = { type = "c2-7.5gb", tags = ["node"], count = 0 }
+    mgmt   = { type = "p4-7.5gb", tags = ["puppet", "mgmt", "nfs"], count = 1, disk_size=100, disk_type="volumes-ec"}
+    login  = { type = "p4-7.5gb", tags = ["login", "public", "proxy"], count = 1, disk_type="volumes-ec"}
+    node   = { type = "c2-7.5gb", tags = ["node"], count = 1 }
     nodepool   = { type = "c2-7.5gb", tags = ["node", "pool"], count = 1, image = "snapshot-cpunode-2025.3-A9.6" }
-    evolo = { type = "p2-3.75gb", tags = ["internal_login"], count = 1}
+    evolo = { type = "p2-3.75gb", tags = ["internal_login"], count = 1, disk_type="volumes-ec"}
     edx = { type = "c8-60gb", tags = ["edx"], count = 1, disk_size = 500 }
   }
 
@@ -59,7 +59,7 @@ module "openstack" {
 
   volumes = {
         nfs = {
-          home     = { size = 100, type = "volumes-ssd"  }
+          home     = { size = 100, type = "volumes-ec"  }
           project  = { size = 100, type = "volumes-ec"  }
           scratch  = { size = 100, type = "volumes-ec"  }
         }
