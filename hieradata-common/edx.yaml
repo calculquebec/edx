@@ -90,12 +90,12 @@ tutor::plugins:
     reboot_on_change: true
   plugin_slots:
     dep:
-      source: 'https://github.com/calculquebec/tutor-plugins/archive/refs/tags/v1.0.2-dev3.tar.gz'
-      filename: 'tutor-plugins-v1.0.2-dev3.tar.gz'
+      source: 'https://github.com/calculquebec/tutor-plugins/archive/refs/tags/v1.0.2-dev5.tar.gz'
+      filename: 'tutor-plugins-v1.0.2-dev5.tar.gz'
     images: ['mfe']
     reboot_on_change: true
 
-theme_version: '19.0.1.4'
+theme_version: '19.0.1.5'
 tutor::themes:
   indigocq:
     enabled: true
