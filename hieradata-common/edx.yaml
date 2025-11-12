@@ -48,7 +48,7 @@ tutor::env_patches:
   mfe-lms-production-settings:
     - "MFE_CONFIG['ALLOW_PUBLIC_ACCOUNT_CREATION'] = True"
     - "MFE_CONFIG['SHOW_REGISTRATION_LINKS'] = False"
-    - "MFE_CONFIG['MARKETING_EMAILS_OPT_IN'] = True"
+      #    - "MFE_CONFIG['MARKETING_EMAILS_OPT_IN'] = True"
 
 tutor::openedx_extra_pip_requirements:
   - 'h5p-xblock==0.2.15'
