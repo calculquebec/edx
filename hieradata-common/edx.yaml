@@ -6,7 +6,7 @@ tutor::admin_password: "%{alias('edx_admin_password')}"
 
 tutor::config:
   LANGUAGE_CODE: "fr"
-  PLATFORM_NAME: "EdX Calcul Québec"
+  PLATFORM_NAME: "evolo"
   CONTACT_EMAIL: "noreply@%{lookup('terraform.data.domain_name')}"
   LMS_HOST: "edx.%{lookup('terraform.data.domain_name')}"
   CMS_HOST: "studio.edx.%{lookup('terraform.data.domain_name')}"
@@ -17,7 +17,7 @@ tutor::config:
   MYSQL_ROOT_PASSWORD: "%{alias('mysql_root_password')}"
   BACKUP_MYSQL_DATABASES: "['openedx']"
   CAIRN_AUTH_ROLES_SYNC_AT_LOGIN: "true"
-  INDIGO_WELCOME_MESSAGE: "Votre référence en recherche numérique"
+  INDIGO_WELCOME_MESSAGE: "La plateforme de formation de Calcul Québec"
   RUN_SMTP: "false"
   SMTP_HOST: "%{alias('terraform.instances.login1.local_ip')}"
   SMTP_PORT: "25"
@@ -97,7 +97,7 @@ tutor::plugins:
     images: ['mfe']
     reboot_on_change: true
 
-theme_version: '19.0.1.7'
+theme_version: '19.0.1.8'
 tutor::themes:
   indigocq:
     enabled: true
