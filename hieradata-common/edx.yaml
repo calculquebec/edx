@@ -97,7 +97,7 @@ tutor::plugins:
     images: ['mfe']
     reboot_on_change: true
 
-theme_version: '19.0.1.6'
+theme_version: '19.0.1.7'
 tutor::themes:
   indigocq:
     enabled: true
