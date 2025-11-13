@@ -43,11 +43,11 @@ module "openstack" {
   image        = "AlmaLinux-9"
 
   instances = {
-    mgmt   = { type = "p4-7.5gb", tags = ["puppet", "mgmt", "nfs"], count = 1, disk_size=100}
+    mgmt   = { type = "p4-7.5gb", tags = ["puppet", "mgmt", "nfs"], count = 1, disk_size=100 }
     login  = { type = "p4-7.5gb", tags = ["login", "public", "proxy"], count = 1}
-    node   = { type = "c2-7.5gb", tags = ["node"], count = 0 }
+    node   = { type = "c2-7.5gb", tags = ["node"], count = 1 }
     nodepool   = { type = "c2-7.5gb", tags = ["node", "pool"], count = 1, image = "snapshot-cpunode-2025.3-A9.6" }
-    evolo = { type = "p2-3.75gb", tags = ["internal_login"], count = 1}
+    evolo = { type = "p2-3.75gb", tags = ["internal_login"], count = 1, disk_type="volumes-ec"}
     edx = { type = "c8-60gb", tags = ["edx"], count = 1, disk_size = 500 }
   }
 
@@ -59,7 +59,7 @@ module "openstack" {
 
   volumes = {
         nfs = {
-          home     = { size = 100, type = "volumes-ssd"  }
+          home     = { size = 100, type = "volumes-ec"  }
           project  = { size = 100, type = "volumes-ec"  }
           scratch  = { size = 100, type = "volumes-ec"  }
         }
@@ -86,7 +86,7 @@ module "openstack" {
   software_stack = "alliance"
   eyaml_key = base64decode(var.eyaml_key)
 
-  subnet_id = "a7f9fef1-a43e-4502-83a9-e47c936b635d"
+  subnet_id = "9f05e9f1-2ced-4e90-bcce-fdb107ed314e"
   os_ext_network = "Public-Network"
 
   puppetfile = file("Puppetfile")
