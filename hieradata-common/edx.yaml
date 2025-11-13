@@ -5,7 +5,7 @@ tutor::admin_password: "%{alias('edx_admin_password')}"
 #tutor::upgrade_from: 'redwood'
 
 tutor::config:
-  LANGUAGE_CODE: "fr"
+  LANGUAGE_CODE: "fr_CA"
   PLATFORM_NAME: "evolo"
   CONTACT_EMAIL: "noreply@%{lookup('terraform.data.domain_name')}"
   LMS_HOST: "edx.%{lookup('terraform.data.domain_name')}"
