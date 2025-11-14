@@ -46,16 +46,16 @@ module "openstack" {
   config_git_url = "https://github.com/calculquebec/puppet-magic_castle_formation.git"
   config_version = "ca1ebf9"
 
-  cluster_name = "edu${var.suffix}"
+  cluster_name = "evolo${var.suffix}"
   domain       = "calculquebec.cloud"
   image        = "AlmaLinux-9"
 
   instances = {
-    mgmt   = { type = "p4-7.5gb", tags = ["puppet", "mgmt", "nfs"], count = 1, disk_size=100}
+    mgmt   = { type = "p4-7.5gb", tags = ["puppet", "mgmt", "nfs"], count = 1, disk_size=100 }
     login  = { type = "p4-7.5gb", tags = ["login", "public", "proxy"], count = 1}
     node   = { type = "c2-7.5gb", tags = ["node"], count = 1 }
     nodepool   = { type = "c2-7.5gb", tags = ["node", "pool"], count = 1, image = "snapshot-cpunode-2025.3-A9.6" }
-    evolo = { type = "p2-3.75gb", tags = ["internal_login"], count = 1}
+    evolo = { type = "p2-3.75gb", tags = ["internal_login"], count = 1, disk_type="volumes-ec"}
     edx = { type = "c8-60gb", tags = ["edx"], count = 1, disk_size = 500 }
   }
 
@@ -67,7 +67,7 @@ module "openstack" {
 
   volumes = {
         nfs = {
-          home     = { size = 100, type = "volumes-ssd"  }
+          home     = { size = 100, type = "volumes-ec"  }
           project  = { size = 100, type = "volumes-ec"  }
           scratch  = { size = 100, type = "volumes-ec"  }
         }
@@ -83,7 +83,7 @@ module "openstack" {
     "profile::slurm::controller::tfe_workspace" = data.tfe_workspace.test.id
     "profile::slurm::controller::tfe_token" =  var.tfe_token
     "suffix" = var.suffix
-    "cluster_name" = "edu${var.suffix}"
+    "cluster_name" = "evolo${var.suffix}"
     "prometheus_password" = var.prometheus_password
     "cloud_name" = var.cloud_name
   },
