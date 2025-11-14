@@ -58,26 +58,16 @@ tutor::openedx_extra_pip_requirements:
   - 'flow-control-xblock @ git+https://github.com/eduNEXT/flow-control-xblock.git@v2.0.1'
 
 tutor::plugins:
-  #  cairn:
-  #  dep:
-  #    name: 'tutor-cairn'
-  #    ensure: '19.0.0'
-  #  reboot_on_change: true
-  #  images: []
   mfe:
     dep:
       name: 'tutor-mfe'
       ensure: '19.0.0'
     reboot_on_change: true
-# no need to rebuild mfe every time, this is done via the plugin_slots
-#    images: ['mfe']
   indigo:
     dep:
       name: 'tutor-indigo'
       ensure: '19.0.3'
     reboot_on_change: true
-# no need to rebuild openedx each time, this is done via the themes
-#    images: ['openedx']
   aspects:
     dep:
       name: 'tutor-contrib-aspects'
