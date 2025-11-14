@@ -1,6 +1,6 @@
 tutor::backup_to_restore:
   date: '2025-06-03'
-  path: '/backups/dev/tutor/.local/share/tutor/env/backup/'
+  path: '/backups/prod/tutor/.local/share/tutor/env/backup/'
 
 
 restic::repositories:

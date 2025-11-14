@@ -2,7 +2,6 @@ tutor::version: '19.0.4'
 tutor::tutor_contrib_backup_version: '4.3.0'
 tutor::admin_email: "noreply@calculquebec.ca"
 tutor::admin_password: "%{alias('edx_admin_password')}"
-#tutor::upgrade_from: 'redwood'
 
 tutor::config:
   LANGUAGE_CODE: "fr_CA"
