@@ -18,6 +18,14 @@ variable "cloud_name" {
   type = string
   default = ""
 }
+variable "subnet_id" {
+  type = string
+  default = ""
+}
+variable "os_ext_network" {
+  type = string
+  default = ""
+}
 variable "eyaml_key" { }
 variable "prometheus_password" {
   type = string
@@ -86,8 +94,8 @@ module "openstack" {
   software_stack = "alliance"
   eyaml_key = base64decode(var.eyaml_key)
 
-  subnet_id = "9f05e9f1-2ced-4e90-bcce-fdb107ed314e"
-  os_ext_network = "Public-Network"
+  subnet_id = "${var.subnet_id}"
+  os_ext_network = "${var.os_ext_network}"
 
   puppetfile = file("Puppetfile")
 }
