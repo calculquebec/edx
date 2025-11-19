@@ -4,7 +4,7 @@ tutor::admin_email: "noreply@calculquebec.ca"
 tutor::admin_password: "%{alias('edx_admin_password')}"
 
 tutor::config:
-  LANGUAGE_CODE: "fr_CA"
+  LANGUAGE_CODE: "fr"
   PLATFORM_NAME: "evolo"
   CONTACT_EMAIL: "noreply@%{lookup('terraform.data.domain_name')}"
   LMS_HOST: "edx.%{lookup('terraform.data.domain_name')}"
