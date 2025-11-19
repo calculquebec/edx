@@ -24,6 +24,7 @@ tutor::config:
   SMTP_USE_TLS: "false"
   SMTP_USERNAME: ""
   SMTP_PASSWORD: ""
+  ATLAS_REVISION: "open-release/sumac.master"
 
 
 tutor::env_patches:
