@@ -83,8 +83,8 @@ tutor::plugins:
     reboot_on_change: true
   plugin_slots:
     dep:
-      source: 'https://github.com/calculquebec/tutor-plugins/archive/refs/tags/v1.0.2-dev5.tar.gz'
-      filename: 'tutor-plugins-v1.0.2-dev5.tar.gz'
+      source: 'https://github.com/calculquebec/tutor-plugins/archive/refs/tags/v1.0.2-dev7.tar.gz'
+      filename: 'tutor-plugins-v1.0.2-dev7.tar.gz'
     images: ['mfe']
     reboot_on_change: true
 
