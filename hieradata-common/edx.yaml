@@ -34,10 +34,6 @@ tutor::env_patches:
     - "'SHOW_REGISTRATION_LINKS': False"
     - "'CERTIFICATES_HTML_VIEW': True"
     - "'ENABLE_COOKIE_CONSENT': True"
-    - "'ALLOW_EMAIL_ADDRESS_CHANGE': False"
-    - "'ENABLE_ACCOUNT_DELETION': False"
-    - "'SHOW_HEADER_LANGUAGE_SELECTOR': True"
-    - "'ENABLE_MKTG_EMAIL_OPT_IN': True"
   openedx-lms-common-settings:
     - "AUTHENTICATION_BACKENDS += ['social_core.backends.open_id_connect.OpenIdConnectAuth']"
     - "LTI_DEFAULT_JUPYTER_HUB_URL = 'https://jupyter.%{lookup('terraform.data.domain_name')}'"
