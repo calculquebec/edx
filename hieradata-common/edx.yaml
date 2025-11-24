@@ -33,6 +33,7 @@ tutor::env_patches:
     - "'ENABLE_COMBINED_LOGIN_REGISTRATION': True"
     - "'SHOW_REGISTRATION_LINKS': False"
     - "'CERTIFICATES_HTML_VIEW': True"
+    - "'ENABLE_COOKIE_CONSENT': True"
   openedx-lms-common-settings:
     - "AUTHENTICATION_BACKENDS += ['social_core.backends.open_id_connect.OpenIdConnectAuth']"
     - "LTI_DEFAULT_JUPYTER_HUB_URL = 'https://jupyter.%{lookup('terraform.data.domain_name')}'"
@@ -82,8 +83,8 @@ tutor::plugins:
     reboot_on_change: true
   plugin_slots:
     dep:
-      source: 'https://github.com/calculquebec/tutor-plugins/archive/refs/tags/v1.0.2-dev5.tar.gz'
-      filename: 'tutor-plugins-v1.0.2-dev5.tar.gz'
+      source: 'https://github.com/calculquebec/tutor-plugins/archive/refs/tags/v1.0.2-dev11.tar.gz'
+      filename: 'tutor-plugins-v1.0.2-dev11.tar.gz'
     images: ['mfe']
     reboot_on_change: true
 
