@@ -2,7 +2,7 @@ tutor::env_patches:
   openedx-lms-common-settings:
   common-env-features:
 
-tutor::upgrade_from: 'sumc'
+tutor::upgrade_from: 'sumac'
 tutor::plugins:
 
 tutor::openedx_extra_pip_requirements:
