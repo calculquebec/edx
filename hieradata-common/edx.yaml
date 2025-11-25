@@ -90,7 +90,7 @@ tutor::plugins:
 
 theme_version: 'cq-v20.0.1.6'
 tutor::themes:
-  indigocq:
+  indigo:
     enabled: true
     source_url: 'https://github.com/calculquebec/tutor-indigo/archive/refs/tags/'
     archive_name: '%{lookup("theme_version")}.tar.gz'
