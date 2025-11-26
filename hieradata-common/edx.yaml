@@ -1,5 +1,5 @@
-tutor::version: '19.0.4'
-tutor::tutor_contrib_backup_version: '4.3.0'
+tutor::version: '20.0.2'
+tutor::tutor_contrib_backup_version: '4.4.0'
 tutor::admin_email: "noreply@calculquebec.ca"
 tutor::admin_password: "%{alias('edx_admin_password')}"
 
@@ -24,7 +24,7 @@ tutor::config:
   SMTP_USE_TLS: "false"
   SMTP_USERNAME: ""
   SMTP_PASSWORD: ""
-  ATLAS_REVISION: "open-release/sumac.master"
+  ATLAS_REVISION: "release/teak"
 
 tutor::env_patches:
   common-env-features:
@@ -32,6 +32,7 @@ tutor::env_patches:
     - "'ENABLE_COMBINED_LOGIN_REGISTRATION': True"
     - "'SHOW_REGISTRATION_LINKS': False"
     - "'CERTIFICATES_HTML_VIEW': True"
+    - "'ENABLE_COOKIE_CONSENT': False"
   openedx-lms-common-settings:
     - "AUTHENTICATION_BACKENDS += ['social_core.backends.open_id_connect.OpenIdConnectAuth']"
     - "LTI_DEFAULT_JUPYTER_HUB_URL = 'https://jupyter.%{lookup('terraform.data.domain_name')}'"
@@ -55,42 +56,42 @@ tutor::env_patches:
     - "MFE_CONFIG['GOOGLE_ANALYTICS_4_ID'] = 'G-TWV0D2MS0D'"
 
 tutor::openedx_extra_pip_requirements:
-  - 'h5p-xblock==0.2.15'
+  - 'h5p-xblock==0.2.17'
   - 'jupytermc-xblock @ git+https://github.com/calculquebec/jupytermc-xblock.git@de02a88db319428e464caeef08660dd165d88caf'
-  - 'feedback-xblock==2.0.0'
-  - 'flow-control-xblock @ git+https://github.com/eduNEXT/flow-control-xblock.git@v2.0.1'
+  - 'feedback-xblock==2.1.0'
+  - 'flow-control-xblock @ git+https://github.com/eduNEXT/flow-control-xblock.git@v2.2.0'
 
 tutor::plugins:
   mfe:
     dep:
       name: 'tutor-mfe'
-      ensure: '19.0.0'
+      ensure: '20.1.0'
     reboot_on_change: true
   indigo:
     dep:
       name: 'tutor-indigo'
-      ensure: '19.0.3'
+      ensure: '20.0.1'
     reboot_on_change: true
   aspects:
     dep:
       name: 'tutor-contrib-aspects'
-      ensure: '2.3.1'
+      ensure: '2.5.0'
     images: ["aspects", "aspects-superset"]
     reinit_on_change: true
   forum:
     dep:
       name: 'tutor-forum'
-      ensure: '19.0.0'
+      ensure: '20.0.0'
     reinit_on_change: true
     reboot_on_change: true
   plugin_slots:
     dep:
-      source: 'https://github.com/calculquebec/tutor-plugins/archive/refs/tags/v1.0.2.tar.gz'
-      filename: 'tutor-plugins-v1.0.2.tar.gz'
+      source: 'https://github.com/calculquebec/tutor-plugins/archive/refs/tags/v20.0.0-dev1.tar.gz'
+      filename: 'tutor-plugins-v20.0.0-dev1.tar.gz'
     images: ['mfe']
     reboot_on_change: true
 
-theme_version: '19.0.1.10'
+theme_version: 'cq-v20.0.1.9'
 tutor::themes:
   indigocq:
     enabled: true
