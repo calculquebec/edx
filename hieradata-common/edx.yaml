@@ -72,7 +72,7 @@ tutor::plugins:
   aspects:
     dep:
       name: 'tutor-contrib-aspects'
-      ensure: '2.3.1'
+      ensure: '2.5.0'
     images: ["aspects", "aspects-superset"]
     reinit_on_change: true
   forum:
