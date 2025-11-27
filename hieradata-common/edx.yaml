@@ -24,7 +24,7 @@ tutor::config:
   SMTP_USE_TLS: "false"
   SMTP_USERNAME: ""
   SMTP_PASSWORD: ""
-  ATLAS_REVISION: "release/teak"
+  ATLAS_REVISION: "main"
 
 tutor::env_patches:
   common-env-features:
