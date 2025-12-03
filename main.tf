@@ -56,6 +56,7 @@ module "openstack" {
     login  = { type = "p2-3.75gb", tags = ["login", "public"], count = 1}
     caddy = { type = "p2-3.75gb", tags = ["public", "proxy"], count = 1}
     jupyter = { type = "p2-3.75gb", tags = ["jupyterhub"], count = 1}
+    cip101- = { type = "c2-7.5gb", tags = ["node", "pool"], feature = ["cip101"], image = "snapshot-cpunode-2025.3-A9.6", count = 10 }
     node   = { type = "c2-7.5gb", tags = ["node"], count = 1 }
     nodepool   = { type = "c2-7.5gb", tags = ["node", "pool"], count = 1, image = "snapshot-cpunode-2025.3-A9.6" }
     evolo = { type = "p2-3.75gb", tags = ["internal_login"], count = 1, disk_type="volumes-ec"}
