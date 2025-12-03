@@ -17,7 +17,7 @@ jupyterhub::jupyterhub_config_hash:
         modules: ['jupyterlab-apps']
     profile_args:
       CIP101:
-        name: 'CIP101 - Premmiers pas sur les superordinateurs'
+        name: 'CIP101 - Premiers pas sur les superordinateurs'
         params: 
           nprocs: 1
           runtime: 3
@@ -48,6 +48,11 @@ jupyterhub::jupyterhub_config_hash:
       lock: true
     ui:
       def: 'lab'
+      lock: true
+    gpus:
+      lock: true
+    reservation:
+      lock: true
     profile:
       def: 'CIP101'
       choices: ['CIP101']
