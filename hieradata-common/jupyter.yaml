@@ -1,5 +1,5 @@
 jupyterhub::authenticator_class: "ipa-lti11"
-jupyterhub::spawner_class: "batchspawner.SlurmFormSpawner"
+jupyterhub::spawner_class: "slurmformspawner.SlurmFormSpawner"
 jupyterhub::idle_timeout: 1800
 
 jupyterhub::jupyterhub_config_hash:
