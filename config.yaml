@@ -1,6 +1,8 @@
 magic_castle::site::tags:
   haproxy:
     - haproxy
+  mgmt_extra:
+    - cqedu::mgmt
   edx:
     - restic
     - cqedu

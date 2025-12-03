@@ -86,7 +86,7 @@ module "openstack" {
   image        = "AlmaLinux-9"
 
   instances = {
-    mgmt   = { type = "p4-7.5gb", tags = ["puppet", "mgmt", "nfs"], count = 1, disk_size=100 }
+    mgmt   = { type = "p4-7.5gb", tags = ["puppet", "mgmt", "nfs", "mgmt_extra"], count = 1, disk_size=100 }
     login  = { type = "p4-7.5gb", tags = ["login", "public", "proxy"], count = 1}
     cip101- = { type = "c2-7.5gb", tags = ["node", "pool"], feature = ["cip101"], image = "snapshot-cpunode-2025.3-A9.6", count = 10 }
     node   = { type = "c2-7.5gb", tags = ["node"], count = 1 }
