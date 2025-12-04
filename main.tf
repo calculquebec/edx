@@ -88,7 +88,7 @@ module "openstack" {
   instances = {
     mgmt   = { type = "p4-7.5gb", tags = ["mgmt", "nfs", "mgmt_extra"], count = 1, disk_size=100 }
     puppet = { type = "p4-7.5gb", tags = ["puppet"], count = 1 }
-    login  = { type = "p4-7.5gb", tags = ["login", "public"], count = 1}
+    login  = { type = "p2-3.75gb", tags = ["login", "public"], count = 1}
     caddy = { type = "p2-3.75gb", tags = ["public", "proxy"], count = 1}
     jupyter = { type = "p2-3.75gb", tags = ["jupyterhub"], count = 1}
     cip101- = { type = "c2-7.5gb", tags = ["node", "pool"], feature = ["cip101"], image = "snapshot-cpunode-2025.3-A9.6", count = 10 }
