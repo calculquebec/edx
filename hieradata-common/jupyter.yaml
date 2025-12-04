@@ -24,7 +24,7 @@ jupyterhub::jupyterhub_config_hash:
           memory: '512'
           oversubscribe: true
           ui: 'terminal'
-          partition: 'cip101-'
+          partition: 'node'
   SbatchForm:
     account:
       def: 'def-sponsor00'
@@ -57,6 +57,8 @@ jupyterhub::jupyterhub_config_hash:
     profile:
       def: 'CIP101'
       choices: ['CIP101']
+    partition:
+      lock: false
   JupyterHub:
     shutdown_on_logout: true
     tornado_settings:
