@@ -40,6 +40,41 @@ data "tfe_workspace" "test" {
   organization = "CalculQuebec"
 }
 
+locals {
+  default_pod = {
+    user_quotas_sizes = {
+      home = "4g"
+      project = "1g"
+      scratch = "1g"
+    }
+    user_quotas_inodes = {
+      home = 100000
+      project = 100000
+      scratch = 100000
+    }
+  }
+
+  user_quotas = {
+    home = {
+      bsoft = local.default_pod.user_quotas_sizes.home
+      bhard = local.default_pod.user_quotas_sizes.home
+      isoft = local.default_pod.user_quotas_inodes.home
+      ihard = local.default_pod.user_quotas_inodes.home
+    }
+    project = {
+      bsoft = local.default_pod.user_quotas_sizes.project
+      bhard = local.default_pod.user_quotas_sizes.project
+      isoft = local.default_pod.user_quotas_inodes.project
+      ihard = local.default_pod.user_quotas_inodes.project
+    }
+    scratch = {
+      bsoft = local.default_pod.user_quotas_sizes.scratch
+      bhard = local.default_pod.user_quotas_sizes.scratch
+      isoft = local.default_pod.user_quotas_inodes.scratch
+      ihard = local.default_pod.user_quotas_inodes.scratch
+    }
+  }
+}
 
 module "openstack" {
   source         = "git::https://github.com/calculquebec/magic_castle_formation.git//openstack?ref=edx"
@@ -51,11 +86,12 @@ module "openstack" {
   image        = "AlmaLinux-9"
 
   instances = {
-    mgmt   = { type = "p4-7.5gb", tags = ["mgmt", "nfs"], count = 1, disk_size=100 }
+    mgmt   = { type = "p4-7.5gb", tags = ["mgmt", "nfs", "mgmt_extra"], count = 1, disk_size=100 }
     puppet = { type = "p4-7.5gb", tags = ["puppet"], count = 1 }
     login  = { type = "p2-3.75gb", tags = ["login", "public"], count = 1}
     caddy = { type = "p2-3.75gb", tags = ["public", "proxy"], count = 1}
     jupyter = { type = "p2-3.75gb", tags = ["jupyterhub"], count = 1}
+    cip101- = { type = "c2-7.5gb", tags = ["node", "pool"], feature = ["cip101"], image = "snapshot-cpunode-2025.3-A9.6", count = 10 }
     node   = { type = "c2-7.5gb", tags = ["node"], count = 1 }
     nodepool   = { type = "c2-7.5gb", tags = ["node", "pool"], count = 1, image = "snapshot-cpunode-2025.3-A9.6" }
     evolo = { type = "p2-3.75gb", tags = ["internal_login"], count = 1, disk_type="volumes-ec"}
@@ -70,9 +106,9 @@ module "openstack" {
 
   volumes = {
         nfs = {
-          home     = { size = 100, type = "volumes-ec"  }
-          project  = { size = 100, type = "volumes-ec"  }
-          scratch  = { size = 100, type = "volumes-ec"  }
+          home     = { size = 100, type = "volumes-ec", quota = local.user_quotas.home  }
+          project  = { size = 100, type = "volumes-ec", quota = local.user_quotas.project  }
+          scratch  = { size = 100, type = "volumes-ec", quota = local.user_quotas.scratch  }
         }
   }
 
