@@ -53,7 +53,7 @@ module "openstack" {
   instances = {
     mgmt   = { type = "p4-7.5gb", tags = ["mgmt", "nfs"], count = 1, disk_size=100 }
     puppet = { type = "p4-7.5gb", tags = ["puppet"], count = 1 }
-    login  = { type = "p4-7.5gb", tags = ["login", "public"], count = 1}
+    login  = { type = "p2-3.75gb", tags = ["login", "public"], count = 1}
     caddy = { type = "p2-3.75gb", tags = ["public", "proxy"], count = 1}
     jupyter = { type = "p2-3.75gb", tags = ["jupyterhub"], count = 1}
     node   = { type = "c2-7.5gb", tags = ["node"], count = 1 }
