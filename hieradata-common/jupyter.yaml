@@ -24,7 +24,7 @@ jupyterhub::jupyterhub_config_hash:
           memory: '512'
           oversubscribe: true
           ui: 'terminal'
-          partition: 'node'
+          partition: 'cip101-'
   SbatchForm:
     account:
       def: 'def-sponsor00'
