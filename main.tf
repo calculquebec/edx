@@ -46,7 +46,7 @@ module "openstack" {
   config_git_url = "https://github.com/calculquebec/puppet-magic_castle_formation.git"
   config_version = "ca1ebf9"
 
-  cluster_name = "edu${var.suffix}"
+  cluster_name = "evolo${var.suffix}"
   domain       = "calculquebec.cloud"
   image        = "AlmaLinux-9"
 
@@ -86,7 +86,7 @@ module "openstack" {
     "profile::slurm::controller::tfe_workspace" = data.tfe_workspace.test.id
     "profile::slurm::controller::tfe_token" =  var.tfe_token
     "suffix" = var.suffix
-    "cluster_name" = "edu${var.suffix}"
+    "cluster_name" = "evolo${var.suffix}"
     "prometheus_password" = var.prometheus_password
     "cloud_name" = var.cloud_name
   },
