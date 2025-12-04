@@ -67,6 +67,18 @@ jupyterhub::jupyterhub_config_hash:
         "Secure": true
   ServerApp:
     nbserver_extensions: { "nbgitpuller": True }
+    logging_config:
+      handlers:
+        logfile:
+          class: "logging.FileHandler"
+          level: "DEBUG"
+          filename: "jupyter_server.log"
+      loggers:
+        ServerApp:
+          level: "DEBUG"
+          handlers:
+            - "console"
+            - "logfile"
 
 jupyterhub::jupyter_notebook_config_hash:
   ServerApp:
