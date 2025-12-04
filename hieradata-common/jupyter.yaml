@@ -58,7 +58,7 @@ jupyterhub::jupyterhub_config_hash:
       def: 'CIP101'
       choices: ['CIP101']
     partition:
-      lock: false
+      lock: true
   JupyterHub:
     shutdown_on_logout: true
     tornado_settings:
