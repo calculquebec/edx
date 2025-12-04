@@ -1,6 +1,4 @@
 magic_castle::site::tags:
-  haproxy:
-    - haproxy
   edx:
     - restic
     - cqedu
@@ -14,6 +12,12 @@ magic_castle::site::tags:
     - profile::ssh::hostbased_auth::server
     - profile::nfs
     - profile::software_stack
+  proxy:
+    - profile::reverse_proxy
+    - profile::prometheus::caddy_exporter
+  jupyterhub:
+    - profile::jupyterhub::hub
+    - profile::jupyterhub::hub::keytab
 
 lookup_options:
   tutor::config:
@@ -37,6 +41,7 @@ profile::users::ldap::groups:
     automember: true
     hbac_rules: ["internal_login:sshd", 'node:sshd', 'proxy:jupyterhub-login']
 
+profile::freeipa::server::enable_mokey: false
 
 profile::reverse_proxy::subdomains:
   edx: "http://edx1.int.%{lookup('terraform.data.domain_name')}"
@@ -45,8 +50,9 @@ profile::reverse_proxy::subdomains:
   apps.edx: "http://edx1.int.%{lookup('terraform.data.domain_name')}"
   data.edx: "http://edx1.int.%{lookup('terraform.data.domain_name')}"
   superset.edx: "http://edx1.int.%{lookup('terraform.data.domain_name')}"
-  jupyter: "https://127.0.0.1:8000"
+  jupyter: "%{lookup('jupyterhub::bind_url')}"
 profile::reverse_proxy::main2sub_redir: "edx"
+jupyterhub::bind_url: "https://jupyter1.int.%{lookup('terraform.data.domain_name')}:8000"
 
 prometheus::global_config:
     scrape_interval: '1m'
