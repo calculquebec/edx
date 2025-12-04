@@ -153,6 +153,7 @@ module "dns" {
    name             = module.openstack.cluster_name
    domain           = module.openstack.domain
    public_instances = module.openstack.public_instances
+   domain_tag       = "proxy"
    vhosts           = ["*.edx", "edx", "ipa", "jupyter", "mokey", "explore"]
    dkim_public_key  = file("keys/dkim_public.pem")
 }
