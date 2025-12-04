@@ -49,9 +49,9 @@ profile::reverse_proxy::subdomains:
   apps.edx: "http://edx1.int.%{lookup('terraform.data.domain_name')}"
   data.edx: "http://edx1.int.%{lookup('terraform.data.domain_name')}"
   superset.edx: "http://edx1.int.%{lookup('terraform.data.domain_name')}"
-  jupyter: "https://jupyter1.int.%{lookup('terraform.data.domain_name')}:8000" #127.0.0.1:8000"
+  jupyter: "%{lookup('jupyterhub::bind_url')}"
 profile::reverse_proxy::main2sub_redir: "edx"
-jupyterhub::bind_url: "https://jupyter1.int.%{lookup('terraform.data.domain_name)}:8000" 
+jupyterhub::bind_url: "https://jupyter1.int.%{lookup('terraform.data.domain_name')}:8000"
 
 prometheus::global_config:
     scrape_interval: '1m'
