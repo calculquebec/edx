@@ -58,14 +58,3 @@ restic::repositories:
     restore_path: "/backups/test"
     restore_timer: "Mon..Sun 3:30:00"
 
-cron::job:
-  restore:
-    command: '#/usr/local/bin/tutor local restore'
-    minute: '30'
-    hour: '4'
-    date: '*'
-    month: '*'
-    weekday: '*'
-    user: tutor
-    description: 'Restore backup of EdX prod'
-
