@@ -1,6 +1,7 @@
 magic_castle::site::tags:
   mgmt_extra:
     - cqedu::mgmt
+    - cron
   edx:
     - restic
     - cqedu
