@@ -1,4 +1,6 @@
 magic_castle::site::tags:
+  mgmt_extra:
+    - cqedu::mgmt
   edx:
     - restic
     - cqedu

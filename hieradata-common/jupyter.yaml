@@ -1,5 +1,5 @@
 jupyterhub::authenticator_class: "ipa-lti11"
-jupyterhub::spawner_class: "batchspawner.SlurmSpawner"
+jupyterhub::spawner_class: "slurmformspawner.SlurmFormSpawner"
 jupyterhub::idle_timeout: 1800
 
 jupyterhub::jupyterhub_config_hash:
@@ -9,13 +9,56 @@ jupyterhub::jupyterhub_config_hash:
   LocalAuthenticator:
     create_system_users: true
     default_group: ''
-  SlurmSpawner:
-    req_srun: ''
-    req_account: "def-sponsor00"
-    req_memory: "2048"
-    req_nprocs: "1"
-    req_runtime: "08:00:00"
-    req_options: "--oversubscribe"
+  SlurmFormSpawner:
+    start_timeout: 900
+    http_timeout: 900
+    ui_args:
+      lab:
+        modules: ['jupyterlab-apps']
+    profile_args:
+      CIP101:
+        name: 'CIP101 - Premiers pas sur les superordinateurs'
+        params: 
+          nprocs: 1
+          runtime: 3
+          memory: '512'
+          oversubscribe: true
+          ui: 'terminal'
+          partition: 'cip101-'
+  SbatchForm:
+    account:
+      def: 'def-sponsor00'
+      lock: true
+    runtime:
+      min: 3.5
+      def: 4.0
+      max: 5.0
+      lock: true
+    nprocs:
+      min: 1
+      def: 1
+      max: 4
+      lock: true
+    memory:
+      min: 1024
+      max: 2048
+      def: 2048
+      lock: true
+    oversubscribe:
+      def: true
+      lock: true
+    ui:
+      def: 'lab'
+      lock: true
+    gpus:
+      lock: true
+    reservation:
+      lock: true
+    profile:
+      def: 'CIP101'
+      choices: ['CIP101']
+    partition:
+      lock: true
   JupyterHub:
     shutdown_on_logout: true
     tornado_settings:
@@ -37,13 +80,14 @@ jupyterhub::jupyter_notebook_config_hash:
 # StdEnv/2023 and mii are automatically loaded
 lookup_options:
   profile::software_stack::lmod_default_modules:
-    merge: deep
+    merge: first
 
-profile::software_stack::lmod_default_modules:
-    - jupyterlab-apps/1.0
+profile::software_stack::initial_profile: /home/.skel/.bashrc
+profile::software_stack::extra_site_env_vars:
+  JUPYTER_CONFIG_PATH: /cvmfs/soft.computecanada.ca/config/jupyterhub_node/v7/etc/jupyter
 
-jupyterhub::node::install_method: 'none'
-jupyterhub::node::install::prefix: /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/jupyterhub_node/6.8.2
+  #jupyterhub::node::install_method: 'none'
+  #jupyterhub::node::prefix: /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/jupyterhub_node/7.0.1
 jupyterhub::kernel::venv::kernel_name: 'ospython'
 jupyterhub::kernel::venv::display_name: 'Python bundle'
 
