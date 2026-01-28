@@ -84,12 +84,12 @@ tutor::plugins:
     reboot_on_change: true
 
 plugin_slots_version: 'v21.0.0-20'
-theme_version: 'v21.0.0-20'
+theme_version: '21.0.0-20'
 tutor::themes:
   indigocq:
     enabled: true
     source_url: 'https://github.com/calculquebec/tutor-plugins/archive/refs/tags/'
-    archive_name: '%{lookup("theme_version")}.tar.gz'
+    archive_name: 'v%{lookup("theme_version")}.tar.gz'
     extract_options: '--strip-components=3 tutor-plugins-%{lookup("theme_version")}/theming/templates'
 
 tutor::registration_email_patterns_allowed:
