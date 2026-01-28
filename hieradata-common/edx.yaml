@@ -79,7 +79,7 @@ tutor::plugins:
   plugin_slots:
     dep:
       source: 'https://github.com/calculquebec/tutor-plugins/archive/refs/tags/%{lookup("plugin_slots_version")}.tar.gz'
-      filename: 'plugins-%{lookup("plugin_slots_version")}.tar.gz'
+      filename: 'tutor-plugins-%{lookup("plugin_slots_version")}.tar.gz'
     images: ['mfe']
     reboot_on_change: true
 
@@ -89,7 +89,7 @@ tutor::themes:
   indigocq:
     enabled: true
     source_url: 'https://github.com/calculquebec/tutor-plugins/archive/refs/tags/'
-    archive_name: 'theme-%{lookup("theme_version")}.tar.gz'
+    archive_name: '%{lookup("theme_version")}.tar.gz'
     extract_options: '--strip-components=3 tutor-plugins-%{lookup("theme_version")}/theming/templates'
 
 tutor::registration_email_patterns_allowed:
