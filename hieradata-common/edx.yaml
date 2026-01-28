@@ -64,11 +64,6 @@ tutor::plugins:
       name: 'tutor-mfe'
       ensure: '21.0.0'
     reboot_on_change: true
-  indigo:
-    dep:
-      name: 'tutor-indigo'
-      ensure: '21.0.0'
-    reboot_on_change: true
   aspects:
     dep:
       name: 'tutor-contrib-aspects'
@@ -88,7 +83,7 @@ tutor::plugins:
     images: ['mfe']
     reboot_on_change: true
 
-plugin_slots_version: 'v21.0.0-16'
+plugin_slots_version: 'v21.0.0-17'
 theme_version: 'cq-v21.0.0.2'
 tutor::themes:
   indigocq:
