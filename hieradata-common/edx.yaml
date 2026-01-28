@@ -83,7 +83,7 @@ tutor::plugins:
     images: ['mfe']
     reboot_on_change: true
 
-plugin_slots_version: 'v21.0.0-17'
+plugin_slots_version: 'v21.0.0-19'
 theme_version: 'cq-v21.0.0.2'
 tutor::themes:
   indigocq:
