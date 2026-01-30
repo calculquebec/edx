@@ -1,5 +1,5 @@
-tutor::version: '20.0.2'
-tutor::tutor_contrib_backup_version: '4.4.0'
+tutor::version: '21.0.0'
+tutor::tutor_contrib_backup_version: '4.5.0'
 tutor::admin_email: "noreply@calculquebec.ca"
 tutor::admin_password: "%{alias('edx_admin_password')}"
 
@@ -53,7 +53,7 @@ tutor::env_patches:
       #    - "MFE_CONFIG['MARKETING_EMAILS_OPT_IN'] = True"
 
 tutor::openedx_extra_pip_requirements:
-  - 'h5p-xblock==0.2.17'
+  - 'h5p-xblock==0.2.18'
   - 'jupytermc-xblock @ git+https://github.com/calculquebec/jupytermc-xblock.git@de02a88db319428e464caeef08660dd165d88caf'
   - 'feedback-xblock==2.1.0'
   - 'flow-control-xblock @ git+https://github.com/eduNEXT/flow-control-xblock.git@v2.2.0'
@@ -62,39 +62,35 @@ tutor::plugins:
   mfe:
     dep:
       name: 'tutor-mfe'
-      ensure: '20.1.0'
-    reboot_on_change: true
-  indigo:
-    dep:
-      name: 'tutor-indigo'
-      ensure: '20.0.1'
+      ensure: '21.0.0'
     reboot_on_change: true
   aspects:
     dep:
       name: 'tutor-contrib-aspects'
-      ensure: '2.5.0'
+      ensure: '2.5.1'
     images: ["aspects", "aspects-superset"]
     reinit_on_change: true
   forum:
     dep:
       name: 'tutor-forum'
-      ensure: '20.0.0'
+      ensure: '21.0.0'
     reinit_on_change: true
     reboot_on_change: true
   plugin_slots:
     dep:
-      source: 'https://github.com/calculquebec/tutor-plugins/archive/refs/tags/v20.0.0-2.tar.gz'
-      filename: 'tutor-plugins-v20.0.0-2.tar.gz'
+      source: 'https://github.com/calculquebec/tutor-plugins/archive/refs/tags/%{lookup("plugin_slots_version")}.tar.gz'
+      filename: 'tutor-plugins-%{lookup("plugin_slots_version")}.tar.gz'
     images: ['mfe']
     reboot_on_change: true
 
-theme_version: 'cq-v20.0.1.11'
+plugin_slots_version: 'v21.0.0-36'
+theme_version: '21.0.0-28'
 tutor::themes:
   indigocq:
     enabled: true
-    source_url: 'https://github.com/calculquebec/tutor-indigo/archive/refs/tags/'
-    archive_name: '%{lookup("theme_version")}.tar.gz'
-    extract_options: '--strip-components=4 tutor-indigo-%{lookup("theme_version")}/tutorindigo/templates/indigo'
+    source_url: 'https://github.com/calculquebec/tutor-plugins/archive/refs/tags/'
+    archive_name: 'v%{lookup("theme_version")}.tar.gz'
+    extract_options: '--strip-components=3 tutor-plugins-%{lookup("theme_version")}/theming/templates'
 
 tutor::registration_email_patterns_allowed:
   - "^([\\w.-]+)@.*acadiau.ca$"
