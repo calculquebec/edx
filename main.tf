@@ -18,6 +18,10 @@ variable "cloud_name" {
   type = string
   default = ""
 }
+variable "config_type" {
+  type = string
+  default = ""
+}
 variable "subnet_id" {
   type = string
   default = ""
@@ -74,6 +78,50 @@ locals {
       ihard = local.default_pod.user_quotas_inodes.scratch
     }
   }
+
+  instances_type_map = {
+      prod = {
+        mgmt = "ha4-7.5gb"
+	puppet = "ha4-7.5gb"
+        login = "ha2-3.75gb"
+	caddy = "ha2-3.75gb"
+        jupyter = "ha2-3.75gb"
+	cip101 = "c1-3.75gb"
+	node = "c1-3.75gb"
+	edx = "ha16-60gb"
+      }
+      test = {
+        mgmt = "c1-3.75gb"
+	puppet = "c1-3.75gb"
+        login = "c1-3.75gb"
+	caddy = "c1-3.75gb"
+        jupyter = "c1-3.75gb"
+	cip101 = "c1-3.75gb"
+	node = "c1-3.75gb"
+	edx = "c8-30gb"
+      }
+      dev = {
+        mgmt = "p2-3.5gb"
+	puppet = "p2-3.5gb"
+        login = "p2-3.75gb"
+	caddy = "p2-3.75gb"
+        jupyter = "p2-3.75gb"
+	cip101 = "c2-7.5gb"
+	node = "c2-7.5gb"
+	edx = "c8-60gb"
+      }
+  }
+
+  volumes = {
+    test = {
+        nfs = {
+          home     = { size = 100, quota = local.user_quotas.home, mkfs_options = "-K", enable_resize = true }
+          project  = { size = 100, quota = local.user_quotas.project, mkfs_options = "-K", enable_resize = true }
+          scratch  = { size = 100, quota = local.user_quotas.scratch, mkfs_options = "-K", enable_resize = true  }
+        }
+    }
+  }
+  image = "AlmaLinux-9"
 }
 
 module "openstack" {
@@ -86,16 +134,16 @@ module "openstack" {
   image        = "AlmaLinux-9"
 
   instances = {
-    mgmt   = { type = "p4-7.5gb", tags = ["mgmt", "nfs", "mgmt_extra"], count = 1, disk_size=100 }
-    puppet = { type = "p4-7.5gb", tags = ["puppet"], count = 1 }
-    login  = { type = "p2-3.75gb", tags = ["login", "public"], count = 1}
-    caddy = { type = "p2-3.75gb", tags = ["public", "proxy"], count = 1}
-    jupyter = { type = "p2-3.75gb", tags = ["jupyterhub"], count = 1}
-    cip101- = { type = "c2-7.5gb", tags = ["node", "pool"], feature = ["cip101"], image = "snapshot-cpunode-2025.3-A9.6", count = 5 }
-    node   = { type = "c2-7.5gb", tags = ["node"], count = 0 }
-    nodepool   = { type = "c2-7.5gb", tags = ["node", "pool"], image = "snapshot-cpunode-2025.3-A9.6", count = 5 }
-    evolo = { type = "p2-3.75gb", tags = ["internal_login"], count = 1, disk_type="volumes-ec"}
-    edx = { type = "c8-60gb", tags = ["edx"], count = 1, disk_size = 500 }
+    mgmt   = { type = local.instances_type_map[var.config_type].mgmt, tags = ["mgmt", "nfs", "mgmt_extra"], count = 1, disk_size=100 }
+    puppet = { type = local.instances_type_map[var.config_type].puppet, tags = ["puppet"], count = 1 }
+    login  = { type = local.instances_type_map[var.config_type].login, tags = ["login", "public"], count = 1}
+    caddy = { type = local.instances_type_map[var.config_type].caddy, tags = ["public", "proxy"], count = 1}
+    jupyter = { type = local.instances_type_map[var.config_type].jupyter, tags = ["jupyterhub"], count = 1}
+    cip101- = { type = local.instances_type_map[var.config_type].cip101, tags = ["node", "pool"], feature = ["cip101"], image = local.image, count = 5 }
+    node   = { type = local.instances_type_map[var.config_type].node, tags = ["node"], count = 0 }
+    nodepool   = { type = local.instances_type_map[var.config_type].node, tags = ["node", "pool"], image = local.image, count = 5 }
+    evolo = { type = local.instances_type_map[var.config_type].login, tags = ["internal_login"], count = 1 }
+    edx = { type = local.instances_type_map[var.config_type].edx, tags = ["edx"], count = 1, disk_size = 500 }
   }
 
   # var.pool is managed by Slurm through Terraform REST API.
@@ -104,13 +152,7 @@ module "openstack" {
   # Refer to Magic Castle Documentation - Enable Magic Castle Autoscaling
   pool = var.pool
 
-  volumes = {
-        nfs = {
-          home     = { size = 100, type = "volumes-ec", quota = local.user_quotas.home  }
-          project  = { size = 100, type = "volumes-ec", quota = local.user_quotas.project  }
-          scratch  = { size = 100, type = "volumes-ec", quota = local.user_quotas.scratch  }
-        }
-  }
+  volumes = local.volumes[var.config_type]
 
   public_keys = compact(concat(split("\n", file("keys/sshkeys.pub")), ))
 
