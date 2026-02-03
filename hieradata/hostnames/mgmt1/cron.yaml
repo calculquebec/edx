@@ -1,0 +1,10 @@
+cron::job:
+  keep_idle:
+    command: '/usr/sbin/keep_idle.py 1 cip101-'
+    minute: '*/5'
+    hour: '*'
+    date: '*'
+    month: '*'
+    weekday: '*'
+    user: centos
+    description: 'Check and keep a minimum number of nodes idle'
