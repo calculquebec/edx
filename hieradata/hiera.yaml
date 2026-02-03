@@ -5,7 +5,7 @@ cqedu::patch_domain_before_restore: true
 cqedu::source_domain: 'edu.calculquebec.cloud'
 cqedu::target_domain: 'evolo.calculquebec.cloud'
 
-tutor::upgrade_from: 'sumac'
+tutor::upgrade_from: 'teak'
 
 
 restic::repositories:
