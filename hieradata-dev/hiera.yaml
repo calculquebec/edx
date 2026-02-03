@@ -2,7 +2,7 @@ tutor::env_patches:
   openedx-lms-common-settings:
   common-env-features:
 
-tutor::upgrade_from: 'sumac'
+tutor::upgrade_from: 'teak'
 tutor::plugins:
 
 tutor::openedx_extra_pip_requirements:
