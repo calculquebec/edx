@@ -39,7 +39,7 @@ restic::repositories:
     key: "%{alias('s3_key')}"
     password: "%{alias('restic_password')}"
     host: "object-arbutus.cloud.computecanada.ca"
-    bucket: "cq-backup-edx%{lookup('suffix')}"
+    bucket: "cq-backup-edx-dev"
     enable_restore: true
     restore_path: "/backups/dev"
     restore_timer: "Mon..Sun 3:30:00"
@@ -49,7 +49,7 @@ restic::repositories:
     key: "%{alias('s3_key')}"
     password: "%{alias('restic_password')}"
     host: "object-arbutus.cloud.computecanada.ca"
-    bucket: "cq-backup-edx%{lookup('suffix')}"
+    bucket: "cq-backup-edx-test"
     enable_restore: true
     restore_path: "/backups/test"
     restore_timer: "Mon..Sun 3:30:00"
