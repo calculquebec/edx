@@ -82,33 +82,33 @@ locals {
   instances_type_map = {
       prod = {
         mgmt = "ha2-4gb"
-	puppet = "ha2-4gb"
+        puppet = "ha2-4gb"
         login = "ha1-2gb"
-	caddy = "ha1-1.25gb"
+        caddy = "ha1-1.25gb"
         jupyter = "ha1-2gb"
-	cip101 = "c1-3.75gb"
-	node = "c1-3.75gb"
-	edx = "ha16-60gb"
+        cip101 = "c1-3.75gb"
+        node = "c1-3.75gb"
+        edx = "ha16-60gb"
       }
       test = {
         mgmt = "c1-3.75gb"
-	puppet = "c1-3.75gb"
+        puppet = "c1-3.75gb"
         login = "c1-3.75gb"
-	caddy = "c1-3.75gb"
+        caddy = "c1-3.75gb"
         jupyter = "c1-3.75gb"
-	cip101 = "c1-3.75gb"
-	node = "c1-3.75gb"
-	edx = "c8-30gb"
+        cip101 = "c1-3.75gb"
+        node = "c1-3.75gb"
+        edx = "c8-30gb"
       }
       dev = {
         mgmt = "p2-3.5gb"
-	puppet = "p2-3.5gb"
+        puppet = "p2-3.5gb"
         login = "p2-3.75gb"
-	caddy = "p2-3.75gb"
+        caddy = "p2-3.75gb"
         jupyter = "p2-3.75gb"
-	cip101 = "c2-7.5gb"
-	node = "c2-7.5gb"
-	edx = "c8-60gb"
+        cip101 = "c2-7.5gb"
+        node = "c2-7.5gb"
+        edx = "c8-60gb"
       }
   }
 
