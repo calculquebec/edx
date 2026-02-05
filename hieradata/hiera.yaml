@@ -1,9 +1,9 @@
 tutor::backup_to_restore:
   date: '2026-02-05'
   path: '/backups/prod/tutor/.local/share/tutor/env/backup/'
-cqedu::patch_domain_before_restore: true
-cqedu::source_domain: 'evolo.calculquebec.cloud'
-cqedu::target_domain: "evolo%{lookup('suffix')}.calculquebec.cloud"
+#cqedu::patch_domain_before_restore: true
+#cqedu::source_domain: 'evolo.calculquebec.cloud'
+#cqedu::target_domain: "evolo%{lookup('suffix')}.calculquebec.cloud"
 profile::freeipa::base::ipa_domain: 'int.evolo.calculquebec.cloud'
 
 #tutor::upgrade_from: 'teak'
