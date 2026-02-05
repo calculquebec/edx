@@ -14,6 +14,20 @@ cqedu::source_domain: 'edu-dev.calculquebec.cloud'
 cqedu::target_domain: 'edu-test.calculquebec.cloud'
 
 restic::repositories:
+  backup_edx_repo_juno:
+    enable_backup: true
+    id: "a7e8f4f3cb9c4e5bb49218bf48896525"
+    key: "%{alias('s3_key_juno')}"
+    password: "%{alias('restic_password')}"
+    host: "objets.juno.calculquebec.ca"
+    bucket: "cq-backup-evolo%{lookup('suffix')}"
+    backup_path: "/tutor/.local/share/tutor/env/backup/"
+    backup_timer: Mon..Sun 4:00:00
+    enable_forget: true
+    forget_timer: Mon..Sun 5:00:00
+    prune: true
+    forget:
+      keep-last: 1
   backup_edx_repo:
     enable_backup: true
     id: "e3ce310620c4437286e29893ddac1537"
