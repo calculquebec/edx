@@ -94,7 +94,7 @@ tutor::plugins:
     reboot_on_change: true
 
 plugin_slots_version: 'v21.0.2'
-theme_version: '21.0.1'
+theme_version: '21.0.2'
 tutor::themes:
   indigocq:
     enabled: true
