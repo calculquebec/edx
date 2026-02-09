@@ -127,6 +127,13 @@ locals {
           scratch  = { size = 100, quota = local.user_quotas.scratch, mkfs_options = "-K", enable_resize = true  }
         }
     }
+    dev = {
+        nfs = {
+          home     = { size = 100, quota = local.user_quotas.home, mkfs_options = "-K", enable_resize = true }
+          project  = { size = 100, quota = local.user_quotas.project, mkfs_options = "-K", enable_resize = true }
+          scratch  = { size = 100, quota = local.user_quotas.scratch, mkfs_options = "-K", enable_resize = true  }
+        }
+    }
   }
   image = "snapshot-cpunode-2026.1-A9.7"
 }
