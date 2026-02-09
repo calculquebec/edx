@@ -135,7 +135,7 @@ locals {
         }
     }
   }
-  image = "snapshot-cpunode-2026.1-A9.7"
+  image = "AlmaLinux-9"
 }
 
 module "openstack" {
