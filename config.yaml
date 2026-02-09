@@ -47,15 +47,15 @@ profile::users::ldap::groups:
 profile::freeipa::server::enable_mokey: false
 
 profile::reverse_proxy::subdomains:
-  edx: "http://edx1.int.%{lookup('terraform.data.domain_name')}"
-  preview.edx: "http://edx1.int.%{lookup('terraform.data.domain_name')}"
-  studio.edx: "http://edx1.int.%{lookup('terraform.data.domain_name')}"
-  apps.edx: "http://edx1.int.%{lookup('terraform.data.domain_name')}"
-  data.edx: "http://edx1.int.%{lookup('terraform.data.domain_name')}"
-  superset.edx: "http://edx1.int.%{lookup('terraform.data.domain_name')}"
+  edx: "http://edx1.%{lookup('profile::freeipa::base::ipa_domain')}"
+  preview.edx: "http://edx1.%{lookup('profile::freeipa::base::ipa_domain')}"
+  studio.edx: "http://edx1.%{lookup('profile::freeipa::base::ipa_domain')}"
+  apps.edx: "http://edx1.%{lookup('profile::freeipa::base::ipa_domain')}"
+  data.edx: "http://edx1.%{lookup('profile::freeipa::base::ipa_domain')}"
+  superset.edx: "http://edx1.%{lookup('profile::freeipa::base::ipa_domain')}"
   jupyter: "%{lookup('jupyterhub::bind_url')}"
 profile::reverse_proxy::main2sub_redir: "edx"
-jupyterhub::bind_url: "https://jupyter1.int.%{lookup('terraform.data.domain_name')}:8000"
+jupyterhub::bind_url: "https://jupyter1.%{lookup('profile::freeipa::base::ipa_domain')}:8000"
 
 prometheus::global_config:
     scrape_interval: '1m'
