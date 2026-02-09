@@ -81,11 +81,11 @@ locals {
 
   instances_type_map = {
       prod = {
-        mgmt = "ha4-7.5gb"
-        puppet = "ha4-7.5gb"
-        login = "ha2-3.75gb"
-        caddy = "ha2-3.75gb"
-        jupyter = "ha2-3.75gb"
+        mgmt = "ha2-4gb"
+        puppet = "ha2-4gb"
+        login = "ha1-2gb"
+        caddy = "ha1-1.25gb"
+        jupyter = "ha1-2gb"
         cip101 = "c1-3.75gb"
         node = "c1-3.75gb"
         edx = "ha16-60gb"
@@ -113,6 +113,13 @@ locals {
   }
 
   volumes = {
+    prod = {
+        nfs = {
+          home     = { size = 100, quota = local.user_quotas.home, mkfs_options = "-K", enable_resize = true }
+          project  = { size = 100, quota = local.user_quotas.project, mkfs_options = "-K", enable_resize = true }
+          scratch  = { size = 100, quota = local.user_quotas.scratch, mkfs_options = "-K", enable_resize = true  }
+        }
+    }
     test = {
         nfs = {
           home     = { size = 100, quota = local.user_quotas.home, mkfs_options = "-K", enable_resize = true }
@@ -121,7 +128,7 @@ locals {
         }
     }
   }
-  image = "AlmaLinux-9"
+  image = "snapshot-cpunode-2026.1-A9.7"
 }
 
 module "openstack" {
@@ -171,7 +178,7 @@ module "openstack" {
   yamldecode(file("config.yaml")),
   ))
 
-  hieradata_dir = "hieradata${var.suffix}"
+  hieradata_dir = "hieradata"
   software_stack = "alliance"
   eyaml_key = base64decode(var.eyaml_key)
 
