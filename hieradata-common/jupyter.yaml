@@ -99,7 +99,7 @@ profile::software_stack::extra_site_env_vars:
   JUPYTER_CONFIG_PATH: /cvmfs/soft.computecanada.ca/config/jupyterhub_node/v7/etc/jupyter
 
 jupyterhub::node::install_method: 'venv'
-jupyterhub::node::prefix: /opt/jupyterhub_node/bin
+jupyterhub::node::prefix: '/opt/jupyterhub_node'
 jupyterhub::kernel::venv::kernel_name: 'ospython'
 jupyterhub::kernel::venv::display_name: 'Python bundle'
 
