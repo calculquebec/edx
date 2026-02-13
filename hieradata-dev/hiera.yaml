@@ -1,3 +1,4 @@
+profile::freeipa::base::ipa_domain: int.evolo-dev.calculquebec.cloud
 tutor::env_patches:
   openedx-lms-common-settings:
   common-env-features:
