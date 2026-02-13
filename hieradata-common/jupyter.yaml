@@ -98,8 +98,8 @@ profile::software_stack::initial_profile: /home/.skel/.bashrc
 profile::software_stack::extra_site_env_vars:
   JUPYTER_CONFIG_PATH: /cvmfs/soft.computecanada.ca/config/jupyterhub_node/v7/etc/jupyter
 
-  #jupyterhub::node::install_method: 'none'
-  #jupyterhub::node::prefix: /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/jupyterhub_node/7.0.1
+jupyterhub::node::install_method: 'none'
+jupyterhub::node::prefix: /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/jupyterhub_node/7.2.1
 jupyterhub::kernel::venv::kernel_name: 'ospython'
 jupyterhub::kernel::venv::display_name: 'Python bundle'
 
