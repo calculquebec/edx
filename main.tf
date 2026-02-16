@@ -185,7 +185,7 @@ module "openstack" {
   yamldecode(file("config.yaml")),
   ))
 
-  hieradata_dir = "hieradata"
+  hieradata_dir = "hieradata${var.suffix}"
   software_stack = "alliance"
   eyaml_key = base64decode(var.eyaml_key)
 
