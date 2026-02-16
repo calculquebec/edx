@@ -1,4 +1,5 @@
-profile::freeipa::base::ipa_domain: int.evolo-dev.calculquebec.cloud
+profile::freeipa::base::ipa_domain: 'int.evolo-dev.calculquebec.cloud'
+
 tutor::env_patches:
   openedx-lms-common-settings:
   common-env-features:
@@ -13,65 +14,5 @@ tutor::backup_to_restore:
   path: '/backups/prod/tutor/.local/share/tutor/env/backup/'
 cqedu::patch_domain_before_restore: true
 cqedu::source_domain: 'evolo.calculquebec.cloud'
-cqedu::target_domain: "evolo%{lookup('suffix')}.calculquebec.cloud"
-
-restic::repositories:
-  backup_edx_repo_juno:
-    enable_backup: true
-    id: "a7e8f4f3cb9c4e5bb49218bf48896525"
-    key: "%{alias('s3_key_juno')}"
-    password: "%{alias('restic_password')}"
-    host: "objets.juno.calculquebec.ca"
-    bucket: "cq-backup-evolo%{lookup('suffix')}"
-    backup_path: "/tutor/.local/share/tutor/env/backup/"
-    backup_timer: Mon..Sun 4:00:00
-    enable_forget: true
-    forget_timer: Mon..Sun 5:00:00
-    prune: true
-    forget:
-      keep-last: 1
-  backup_edx_repo:
-    enable_backup: true
-    id: "e3ce310620c4437286e29893ddac1537"
-    key: "%{alias('s3_key')}"
-    password: "%{alias('restic_password')}"
-    host: "object-arbutus.cloud.computecanada.ca"
-    bucket: "cq-backup-edx%{lookup('suffix')}"
-    backup_path: "/tutor/.local/share/tutor/env/backup/"
-    backup_timer: Mon..Sun 4:00:00
-    enable_forget: true
-    forget_timer: Mon..Sun 5:00:00
-    prune: true
-    forget:
-      keep-last: 1
-  restore_edx_repo:
-    enable_backup: false
-    id: "e3ce310620c4437286e29893ddac1537"
-    key: "%{alias('s3_key')}"
-    password: "%{alias('restic_password')}"
-    host: "object-arbutus.cloud.computecanada.ca"
-    bucket: "cq-backup-edx"
-    enable_restore: true
-    restore_path: "/backups/prod"
-    restore_timer: "Mon..Sun 3:30:00"
-  restore_edx_dev_repo:
-    enable_backup: false
-    id: "e3ce310620c4437286e29893ddac1537"
-    key: "%{alias('s3_key')}"
-    password: "%{alias('restic_password')}"
-    host: "object-arbutus.cloud.computecanada.ca"
-    bucket: "cq-backup-edx-dev"
-    enable_restore: true
-    restore_path: "/backups/dev"
-    restore_timer: "Mon..Sun 3:30:00"
-  restore_edx_test_repo:
-    enable_backup: false
-    id: "e3ce310620c4437286e29893ddac1537"
-    key: "%{alias('s3_key')}"
-    password: "%{alias('restic_password')}"
-    host: "object-arbutus.cloud.computecanada.ca"
-    bucket: "cq-backup-edx-test"
-    enable_restore: true
-    restore_path: "/backups/test"
-    restore_timer: "Mon..Sun 3:30:00"
+cqedu::target_domain: "evolo-dev.calculquebec.cloud"
 
