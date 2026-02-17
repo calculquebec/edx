@@ -84,7 +84,7 @@ locals {
         mgmt = "ha2-4gb"
         puppet = "ha2-4gb"
         login = "ha1-2gb"
-        caddy = "ha1-1.25gb"
+        caddy = "ha1-2gb"
         jupyter = "ha1-2gb"
         cip101 = "c1-3.75gb"
         node = "c1-3.75gb"
