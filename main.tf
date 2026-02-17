@@ -101,8 +101,8 @@ locals {
         edx = "c8-30gb"
       }
       dev = {
-        mgmt = "p2-3.5gb"
-        puppet = "p2-3.5gb"
+        mgmt = "p2-3.75gb"
+        puppet = "p2-3.75gb"
         login = "p2-3.75gb"
         caddy = "p2-3.75gb"
         jupyter = "p2-3.75gb"
@@ -127,14 +127,21 @@ locals {
           scratch  = { size = 100, quota = local.user_quotas.scratch, mkfs_options = "-K", enable_resize = true  }
         }
     }
+    dev = {
+        nfs = {
+          home     = { size = 100, quota = local.user_quotas.home, mkfs_options = "-K", enable_resize = true }
+          project  = { size = 100, quota = local.user_quotas.project, mkfs_options = "-K", enable_resize = true }
+          scratch  = { size = 100, quota = local.user_quotas.scratch, mkfs_options = "-K", enable_resize = true  }
+        }
+    }
   }
   image = "snapshot-cpunode-2026.1-A9.7"
 }
 
 module "openstack" {
   source         = "git::https://github.com/calculquebec/magic_castle_formation.git//openstack?ref=edx"
-  config_git_url = "https://github.com/calculquebec/puppet-magic_castle_formation.git"
-  config_version = "012a4ba"
+  config_git_url = "https://github.com/computecanada/puppet-magic_castle.git"
+  config_version = "15.2.0"
 
   cluster_name = "evolo${var.suffix}"
   domain       = "calculquebec.cloud"
@@ -178,7 +185,7 @@ module "openstack" {
   yamldecode(file("config.yaml")),
   ))
 
-  hieradata_dir = "hieradata"
+  hieradata_dir = "hieradata${var.suffix}"
   software_stack = "alliance"
   eyaml_key = base64decode(var.eyaml_key)
 

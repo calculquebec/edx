@@ -1,4 +1,4 @@
-tutor::version: '21.0.0'
+tutor::version: '21.0.1'
 tutor::tutor_contrib_backup_version: '4.5.0'
 tutor::admin_email: "noreply@calculquebec.ca"
 tutor::admin_password: "%{alias('edx_admin_password')}"
@@ -87,8 +87,8 @@ tutor::plugins:
     images: ['mfe']
     reboot_on_change: true
 
-plugin_slots_version: 'v21.0.3'
-theme_version: '21.0.2'
+plugin_slots_version: 'v21.0.4'
+theme_version: '21.0.4'
 tutor::themes:
   indigocq:
     enabled: true
