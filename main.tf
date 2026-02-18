@@ -101,7 +101,7 @@ locals {
         edx = "c8-30gb"
       }
       dev = {
-        mgmt = "p2-3.75gb"
+        mgmt = "p4-7.5gb"
         puppet = "p2-3.75gb"
         login = "p2-3.75gb"
         caddy = "p2-3.75gb"
