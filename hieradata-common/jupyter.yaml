@@ -16,12 +16,21 @@ jupyterhub::jupyterhub_config_hash:
       lab:
         modules: ['jupyterlab-apps']
     profile_args:
+      LAB101:
+        name: 'LAB101 - JupyterLab sur les superordinateurs'
+        params:
+          nprocs: 1
+          runtime: 3
+          memory: '1024'
+          oversubscribe: true
+          ui: 'lab'
+          partition: 'nodepool'
       CIP101:
         name: 'CIP101 - Premiers pas sur les superordinateurs'
         params: 
           nprocs: 1
           runtime: 3
-          memory: '512'
+          memory: '256'
           oversubscribe: true
           ui: 'terminal'
           partition: 'cip101-'
