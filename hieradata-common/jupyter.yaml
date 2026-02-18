@@ -69,7 +69,7 @@ jupyterhub::jupyterhub_config_hash:
       lock: true
     profile:
       def: 'CIP101'
-      choices: ['CIP101']
+      choices: ['CIP101', 'LAB101']
     partition:
       lock: true
   JupyterHub:
