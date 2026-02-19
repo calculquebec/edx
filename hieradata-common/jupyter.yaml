@@ -10,6 +10,8 @@ jupyterhub::jupyterhub_config_hash:
   LocalAuthenticator:
     create_system_users: true
     default_group: ''
+  LocalFreeIPAAuthenticator:
+    pre_spawn_check_home: false
   SlurmFormSpawner:
     start_timeout: 900
     http_timeout: 900
