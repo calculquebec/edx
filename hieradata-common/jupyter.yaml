@@ -1,6 +1,7 @@
 jupyterhub::authenticator_class: "ipa-lti11"
 jupyterhub::spawner_class: "slurmformspawner.SlurmFormSpawner"
 jupyterhub::idle_timeout: 1800
+jupyterhub::slurmformspawner::version: '2.11.1'
 
 jupyterhub::jupyterhub_config_hash:
   LTI11Authenticator:
