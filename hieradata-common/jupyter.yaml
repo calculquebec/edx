@@ -35,7 +35,7 @@ jupyterhub::jupyterhub_config_hash:
           runtime: 3
           memory: '256'
           oversubscribe: true
-          ui: 'terminal'
+          ui: 'lab'
           partition: 'cip101-'
   SbatchForm:
     account:
