@@ -1,6 +1,8 @@
 jupyterhub::authenticator_class: "ipa-lti11"
 jupyterhub::spawner_class: "slurmformspawner.SlurmFormSpawner"
 jupyterhub::idle_timeout: 1800
+jupyterhub::slurmformspawner::version: '2.11.1'
+jupyterhub::oauth2freeipa::version: '2.1.0'
 
 jupyterhub::jupyterhub_config_hash:
   LTI11Authenticator:
@@ -9,6 +11,8 @@ jupyterhub::jupyterhub_config_hash:
   LocalAuthenticator:
     create_system_users: true
     default_group: ''
+  LocalFreeIPAAuthenticator:
+    pre_spawn_check_home: false
   SlurmFormSpawner:
     start_timeout: 900
     http_timeout: 900
@@ -16,22 +20,31 @@ jupyterhub::jupyterhub_config_hash:
       lab:
         modules: ['jupyterlab-apps']
     profile_args:
+      LAB101:
+        name: 'LAB101 - JupyterLab sur les superordinateurs'
+        params:
+          nprocs: 1
+          runtime: 3
+          memory: '1024'
+          oversubscribe: true
+          ui: 'lab'
+          partition: 'nodepool'
       CIP101:
         name: 'CIP101 - Premiers pas sur les superordinateurs'
         params: 
           nprocs: 1
           runtime: 3
-          memory: '512'
+          memory: '256'
           oversubscribe: true
-          ui: 'terminal'
+          ui: 'lab'
           partition: 'cip101-'
   SbatchForm:
     account:
       def: 'def-sponsor00'
       lock: true
     runtime:
-      min: 3.5
-      def: 4.0
+      min: 1.0
+      def: 2.0
       max: 5.0
       lock: true
     nprocs:
@@ -40,7 +53,7 @@ jupyterhub::jupyterhub_config_hash:
       max: 4
       lock: true
     memory:
-      min: 1024
+      min: 256
       max: 2048
       def: 2048
       lock: true
@@ -103,10 +116,11 @@ profile::software_stack::initial_profile: /home/.skel/.bashrc
 profile::software_stack::extra_site_env_vars:
   JUPYTER_CONFIG_PATH: /cvmfs/soft.computecanada.ca/config/jupyterhub_node/v7/etc/jupyter
 
-jupyterhub::node::install_method: 'venv'
-jupyterhub::node::prefix: '/opt/jupyterhub_node/'
-  #jupyterhub::node::install_method: 'none'
-  #jupyterhub::node::prefix: '/cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/jupyterhub_node/7.2.1'
+    #jupyterhub::node::install_method: 'venv'
+    #jupyterhub::node::prefix: '/opt/jupyterhub_node/'
+
+jupyterhub::node::install_method: 'none'
+jupyterhub::node::prefix: '/cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/jupyterhub_node/7.2.1'
 jupyterhub::kernel::venv::kernel_name: 'ospython'
 jupyterhub::kernel::venv::display_name: 'Python bundle'
 

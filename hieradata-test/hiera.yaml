@@ -10,9 +10,9 @@ tutor::plugins:
 tutor::openedx_extra_pip_requirements:
 
 tutor::backup_to_restore:
-  date: '2026-02-15'
-  path: '/backups/test/tutor/.local/share/tutor/env/backup/'
+  date: '2026-02-18'
+  path: '/backups/prod/tutor/.local/share/tutor/env/backup/'
 cqedu::patch_domain_before_restore: true
-cqedu::source_domain: 'evolo-test.calculquebec.cloud'
+cqedu::source_domain: 'evolo.calculquebec.cloud'
 cqedu::target_domain: 'evolo-test.calculquebec.cloud'
 
