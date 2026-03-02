@@ -34,6 +34,7 @@ tutor::env_patches:
     - "'SHOW_REGISTRATION_LINKS': False"
     - "'CERTIFICATES_HTML_VIEW': True"
     - "'ENABLE_COOKIE_CONSENT': False"
+    - "'ENABLE_EDX_USERNAME_CHANGER': True"
   openedx-lms-common-settings:
     - "AUTHENTICATION_BACKENDS += ['social_core.backends.open_id_connect.OpenIdConnectAuth']"
     - "LTI_DEFAULT_JUPYTER_HUB_URL = 'https://jupyter.%{lookup('terraform.data.domain_name')}'"
@@ -62,6 +63,7 @@ tutor::openedx_extra_pip_requirements:
   - 'feedback-xblock==2.1.0'
   - 'flow-control-xblock @ git+https://github.com/eduNEXT/flow-control-xblock.git@v2.2.0'
   - 'lti-consumer-xblock @ git+https://github.com/calculquebec/xblock-lti-consumer.git@33b600ae217a07c33878643a6b532416add0b5cc'
+  - 'edx-username-changer==0.5.0'
 
 tutor::plugins:
   mfe:
@@ -88,7 +90,7 @@ tutor::plugins:
     images: ['mfe']
     reboot_on_change: true
 
-plugin_slots_version: 'v21.0.6'
+plugin_slots_version: 'v21.0.7'
 theme_version: '21.0.5'
 tutor::themes:
   indigocq:
