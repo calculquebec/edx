@@ -90,7 +90,7 @@ tutor::plugins:
     images: ['mfe']
     reboot_on_change: true
 
-plugin_slots_version: 'v21.0.0-75'
+plugin_slots_version: 'v21.0.0-76'
 theme_version: '21.0.0-72'
 tutor::themes:
   indigocq:
