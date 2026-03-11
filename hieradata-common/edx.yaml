@@ -63,7 +63,7 @@ tutor::openedx_extra_pip_requirements:
   - 'jupytermc-xblock @ git+https://github.com/calculquebec/jupytermc-xblock.git@49a4a135e995d173305fc5ee0f2bed141a4f7692'
   - 'feedback-xblock==2.1.0'
   - 'flow-control-xblock @ git+https://github.com/eduNEXT/flow-control-xblock.git@v2.2.0'
-  - 'lti-consumer-xblock @ git+https://github.com/calculquebec/xblock-lti-consumer.git@33b600ae217a07c33878643a6b532416add0b5cc'
+  - 'lti-consumer-xblock @ git+https://github.com/calculquebec/xblock-lti-consumer.git@e819a78134e2b43a74e4ab588ce22325a35a2127'
   - 'edx-username-changer==0.5.0'
 
 tutor::plugins:
