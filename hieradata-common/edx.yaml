@@ -1,5 +1,6 @@
 tutor::version: '21.0.1'
 tutor::tutor_contrib_backup_version: '4.5.0'
+tutor::aspects_version: '3.0.3'
 tutor::admin_email: "noreply@calculquebec.ca"
 tutor::admin_password: "%{alias('edx_admin_password')}"
 
@@ -25,7 +26,10 @@ tutor::config:
   SMTP_USERNAME: ""
   SMTP_PASSWORD: ""
   ATLAS_REVISION: "main"
-
+  SUPERSET_ENABLE_PROXY_FIX: 'true'
+  SUPERSET_OAUTH2_CLIENT_ID: '0jl2Lx79dFlWEyHX'
+  SUPERSET_OAUTH2_CLIENT_ID_DEV: 'gyy2vRUreIf7dpI8'
+  SUPERSET_OAUTH2_CLIENT_SECRET: "%{alias('superset_oauth2_client_secret')}"'
 
 tutor::env_patches:
   common-env-features:
@@ -71,12 +75,6 @@ tutor::plugins:
       name: 'tutor-mfe'
       ensure: '21.0.0'
     reboot_on_change: true
-  aspects:
-    dep:
-      name: 'tutor-contrib-aspects'
-      ensure: '2.5.1'
-    images: ["aspects", "aspects-superset"]
-    reinit_on_change: true
   forum:
     dep:
       name: 'tutor-forum'
