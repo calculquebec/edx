@@ -98,7 +98,7 @@ locals {
         jupyter = "c1-3.75gb"
         cip101 = "c1-3.75gb"
         node = "c1-3.75gb"
-        edx = "c8-30gb"
+        edx = "c8-60gb"
       }
       dev = {
         mgmt = "p4-7.5gb"
