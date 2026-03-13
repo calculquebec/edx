@@ -30,6 +30,7 @@ tutor::config:
   SUPERSET_OAUTH2_CLIENT_ID: '0jl2Lx79dFlWEyHX'
   SUPERSET_OAUTH2_CLIENT_ID_DEV: 'gyy2vRUreIf7dpI8'
   SUPERSET_OAUTH2_CLIENT_SECRET: "%{alias('superset_oauth2_client_secret')}"
+  ASPECTS_ENABLE_PII: 'true'
 
 tutor::env_patches:
   common-env-features:
