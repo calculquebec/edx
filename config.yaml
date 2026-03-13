@@ -65,7 +65,7 @@ prometheus::global_config:
         cluster: "%{alias('cluster_name')}"
         cloud: "%{alias('cloud_name')}"
         team: 'calculquebec'
-        purpose: "formation"
+        purpose: "evolo"
         replica: '1'
 
 prometheus::remote_write_configs:
