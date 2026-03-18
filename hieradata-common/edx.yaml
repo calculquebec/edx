@@ -64,7 +64,7 @@ tutor::env_patches:
 
 tutor::openedx_extra_pip_requirements:
   - 'h5p-xblock==0.2.18'
-  - 'jupytermc-xblock @ git+https://github.com/calculquebec/jupytermc-xblock.git@012060162f3995d5a6568c57133f91c64aa266eb'
+  - 'jupytermc-xblock @ git+https://github.com/calculquebec/jupytermc-xblock.git@ab2bbd7ec162b7e606dac8b46966ba8909ca09af'
   - 'feedback-xblock==2.1.0'
   - 'flow-control-xblock @ git+https://github.com/eduNEXT/flow-control-xblock.git@v2.2.0'
   - 'lti-consumer-xblock @ git+https://github.com/calculquebec/xblock-lti-consumer.git@e819a78134e2b43a74e4ab588ce22325a35a2127'
