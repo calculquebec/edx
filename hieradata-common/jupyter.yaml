@@ -34,7 +34,7 @@ jupyterhub::jupyterhub_config_hash:
         params: 
           nprocs: 1
           runtime: 3
-          memory: '256'
+          memory: '900'
           oversubscribe: true
           ui: 'lab'
           partition: 'cip101-'
