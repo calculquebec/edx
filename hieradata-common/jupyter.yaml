@@ -22,7 +22,7 @@ jupyterhub::jupyterhub_config_hash:
     profile_args:
       LAB101:
         name: 'LAB101 - JupyterLab sur les superordinateurs'
-        admin_only: true
+        required_scope: 'read:services'
         params:
           nprocs: 1
           runtime: 3
@@ -40,7 +40,7 @@ jupyterhub::jupyterhub_config_hash:
           ui: 'lab'
           partition: 'cip101-'
   SbatchForm:
-    unlock_for_admins: true
+    unlocked_for_scope: 'read:services'
     account:
       def: 'def-sponsor00'
       lock: true
