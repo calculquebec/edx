@@ -102,6 +102,7 @@ tutor::themes:
 tutor::registration_email_patterns_allowed:
   - "^([\\w.-]+)@.*acadiau.ca$"
   - "^([\\w.-]+)@.*alliancecan.ca$"
+  - "^([\\w.-]+)@.*ace-net.ca$"
   - "^([\\w.-]+)@.*athabascau.ca$"
   - "^([\\w.-]+)@.*baycrest.org$"
   - "^([\\w.-]+)@.*bccrc.ca$"
