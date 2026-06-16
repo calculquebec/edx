@@ -89,6 +89,7 @@ locals {
         cip101 = "c2-7.5gb"
         node = "c2-7.5gb"
         edx = "ha16-60gb"
+        metrix = "ha1-1.25gb"
       }
       test = {
         mgmt = "c1-3.75gb"
@@ -99,6 +100,7 @@ locals {
         cip101 = "c1-3.75gb"
         node = "c1-3.75gb"
         edx = "c8-60gb"
+        metrix = "c1-3.75gb"
       }
       dev = {
         mgmt = "p4-7.5gb"
@@ -109,6 +111,7 @@ locals {
         cip101 = "c2-7.5gb"
         node = "c2-7.5gb"
         edx = "c8-60gb"
+        metrix = "p2-3.75gb"
       }
   }
 
@@ -141,7 +144,7 @@ locals {
 module "openstack" {
   source         = "git::https://github.com/calculquebec/magic_castle_formation.git//openstack?ref=edx"
   config_git_url = "https://github.com/computecanada/puppet-magic_castle.git"
-  config_version = "15.2.1"
+  config_version = "0d1881e97cdccd3643bd350e331165f79c24f2ce"
 
   cluster_name = "evolo${var.suffix}"
   domain       = "calculquebec.cloud"
@@ -158,6 +161,7 @@ module "openstack" {
     nodepool   = { type = local.instances_type_map[var.config_type].node, tags = ["node", "pool"], image = local.image, count = 5 }
     evolo = { type = local.instances_type_map[var.config_type].login, tags = ["internal_login"], count = 1 }
     edx = { type = local.instances_type_map[var.config_type].edx, tags = ["edx"], count = 1, disk_size = 500 }
+    metrix = { type = local.instances_type_map[var.config_type].metrix, tags = ["metrix"], count = 1 }
   }
 
   # var.pool is managed by Slurm through Terraform REST API.
@@ -210,7 +214,7 @@ module "dns" {
    domain           = module.openstack.domain
    public_instances = module.openstack.public_instances
    domain_tag       = "proxy"
-   vhosts           = ["*.edx", "edx", "ipa", "jupyter", "mokey", "explore"]
+   vhosts           = ["*.edx", "edx", "ipa", "jupyter", "mokey", "explore", "metrix"]
    dkim_public_key  = file("keys/dkim_public.pem")
 }
 

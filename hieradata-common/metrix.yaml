@@ -1,0 +1,13 @@
+mysql::server::override_options:
+  mysqld:
+    bind-address: "0.0.0.0"
+
+metrix::slurm_db_ip: "%{lookup('terraform.tag_ip.mgmt.0')}"
+metrix::slurm_password: "%{alias('metrix_slurm_password')}"
+
+profile::slurm::accounting::db_users:
+  - username: "%{alias('metrix::slurm_user')}"
+    password: "%{alias('metrix::slurm_password')}"
+    privileges: ['SELECT']
+    host: "%{lookup('terraform.tag_ip.metrix.0')}"
+
