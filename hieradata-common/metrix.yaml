@@ -5,6 +5,25 @@ mysql::server::override_options:
 metrix::slurm_db_ip: "%{lookup('terraform.tag_ip.mgmt.0')}"
 metrix::slurm_password: "%{alias('metrix_slurm_password')}"
 
+metrix::install::source_url: 'https://github.com/mboisson/TrailblazingTurtle/archive/e1c65ea78a46f23bfd12b55c169804db86b5f747.tar.gz'
+
+metrix::auth_type: 'oauth2jwt'
+metrix::auth::oauth2jwt::authorization_url: "https://edx.%{lookup('terraform.data.domain_name')}/oauth2/authorize/"
+metrix::auth::oauth2jwt::token_url: "https://edx.%{lookup('terraform.data.domain_name')}/oauth2/access_token/"
+metrix::auth::oauth2jwt::client_id: "BVkQ3RTppNvyiKZ1zwzDV2eu0zTnCvj0kaNerc6D"
+metrix::auth::oauth2jwt::client_secret: ENC[PKCS7,MIICUwYJKoZIhvcNAQcDoIICRDCCAkACAQAxggF5MIIBdQIBADBdMEUxCzAJBgNVBAYTAkFVMRMwEQYDVQQIDApTb21lLVN0YXRlMSEwHwYDVQQKDBhJbnRlcm5ldCBXaWRnaXRzIFB0eSBMdGQCFCV0FyMOSGQkwPauGCRwFHCPXuV8MA0GCSqGSIb3DQEBAQUABIIBAHDr6binYNVb02krvEqhYk09tZU0qjx4nQTuAnwArH4iyWh3Wc2U0DVqNRjDOs+a9+++1UIemaXIDPJn29VJOaymILJ500T5baOs0UnSdsct246V5nq2eWFpD+V1MsT+cwI0R6MzdeI5/ffVuSaR96O+5bhyUQ5sHhj53sZ/CO8QF1zrBdVhz4jBt7azuHww8+7Nfyp2TbrHOx15e4kTLhVaJDYR0ypQSbh+kvE32mfzRmyHCmcGnTfRoNOD2ecnpE7Qh2/L+ajjmRjysbo0eZ4PMNXy34SGNdn42rCCb/zapy28mB6q4AI9MpZZLfE+FBkm/euv8nb0bdXyO+iOa30wgb0GCSqGSIb3DQEHATAdBglghkgBZQMEASoEEKEAJJALvF03A9wFRt6qtEuAgZDlilhxPwg7kp5X/fraAvbWk6MMM072yGFzSR5vgetSZLxV+eJ7cwLOxLhVgBY5sx6nQcukfGdW0c+uZ/CJy0o0r+LTtXm2aAM69w/5zUMUP+Pkst/Ly0SmTngAP3aGr00yQPyuaO1nz9yRSsTQEXs/R3OF1BZ0oIi9HhOSXbSpe7qyJQwKNBj8qbBkI/mqv/E=]
+metrix::auth::oauth2jwt::extra_token_params:
+  'token_type': 'jwt'
+metrix::auth::oauth2jwt::proxied: true
+metrix::required_access_attributes:
+  - is_restricted: 'False'
+metrix::staff_attributes:
+  - administrator: 'True'
+    superuser: 'True'
+
+metrix::slurm_db_ip: "%{lookup('terraform.tag_ip.mgmt.0')}"
+metrix::slurm_password: "%{alias('metrix_slurm_password')}"
+
 profile::slurm::accounting::db_users:
   - username: "%{alias('metrix::slurm_user')}"
     password: "%{alias('metrix::slurm_password')}"
