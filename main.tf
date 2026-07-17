@@ -151,17 +151,17 @@ module "openstack" {
   image        = "AlmaLinux-9"
 
   instances = {
-    mgmt   = { type = local.instances_type_map[var.config_type].mgmt, tags = ["mgmt", "nfs", "mgmt_extra", "yum_cron"], count = 1, disk_size=100 }
-    puppet = { type = local.instances_type_map[var.config_type].puppet, tags = ["puppet", "yum_cron"], count = 1 }
-    login  = { type = local.instances_type_map[var.config_type].login, tags = ["login", "public", "yum_cron"], count = 1}
-    caddy = { type = local.instances_type_map[var.config_type].caddy, tags = ["public", "proxy", "yum_cron"], count = 1}
-    jupyter = { type = local.instances_type_map[var.config_type].jupyter, tags = ["jupyterhub", "yum_cron"], count = 1}
+    mgmt   = { type = local.instances_type_map[var.config_type].mgmt, tags = ["mgmt", "nfs", "mgmt_extra"], count = 1, disk_size=100 }
+    puppet = { type = local.instances_type_map[var.config_type].puppet, tags = ["puppet"], count = 1 }
+    login  = { type = local.instances_type_map[var.config_type].login, tags = ["login", "public"], count = 1}
+    caddy = { type = local.instances_type_map[var.config_type].caddy, tags = ["public", "proxy"], count = 1}
+    jupyter = { type = local.instances_type_map[var.config_type].jupyter, tags = ["jupyterhub"], count = 1}
     cip101- = { type = local.instances_type_map[var.config_type].cip101, tags = ["node", "pool"], feature = ["cip101"], image = local.image, count = 5 }
     node   = { type = local.instances_type_map[var.config_type].node, tags = ["node"], count = 0 }
     nodepool   = { type = local.instances_type_map[var.config_type].node, tags = ["node", "pool"], image = local.image, count = 5 }
-    evolo = { type = local.instances_type_map[var.config_type].login, tags = ["internal_login", "yum_cron"], count = 1 }
-    edx = { type = local.instances_type_map[var.config_type].edx, tags = ["edx", "yum_cron"], count = 1, disk_size = 500 }
-    metrix = { type = local.instances_type_map[var.config_type].metrix, tags = ["metrix", "yum_cron"], count = 1 }
+    evolo = { type = local.instances_type_map[var.config_type].login, tags = ["internal_login"], count = 1 }
+    edx = { type = local.instances_type_map[var.config_type].edx, tags = ["edx"], count = 1, disk_size = 500 }
+    metrix = { type = local.instances_type_map[var.config_type].metrix, tags = ["metrix"], count = 1 }
   }
 
   # var.pool is managed by Slurm through Terraform REST API.

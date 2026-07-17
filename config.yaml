@@ -23,8 +23,6 @@ magic_castle::site::tags:
     - profile::jupyterhub::hub::keytab
   metrix:
     - profile::metrix
-  yum_cron:
-    - yum_cron
 
 
 lookup_options:
