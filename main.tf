@@ -142,7 +142,7 @@ locals {
 }
 
 module "openstack" {
-  source         = "git::https://github.com/computecanada/magic_castle.git//openstack?ref=fd21639"
+  source         = "git::https://github.com/computecanada/magic_castle.git//openstack?ref=15.6.1"
   config_git_url = "https://github.com/computecanada/puppet-magic_castle.git"
   config_version = "987c322"
 
@@ -210,7 +210,7 @@ output "public_ip" {
 
 ## Uncomment to register your domain name with CloudFlare
 module "dns" {
-   source           = "git::https://github.com/computecanada/magic_castle.git//dns/cloudflare?ref=fd21639"
+   source           = "git::https://github.com/computecanada/magic_castle.git//dns/cloudflare?ref=15.6.1"
    name             = module.openstack.cluster_name
    domain           = module.openstack.domain
    public_instances = module.openstack.public_instances
