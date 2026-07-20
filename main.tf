@@ -90,6 +90,7 @@ locals {
         node = "c1-3.75gb"
         edx = "ha16-60gb"
         metrix = "ha1-1.25gb"
+        dtn = "ha2-4gb"
       }
       test = {
         mgmt = "c1-3.75gb"
@@ -101,6 +102,7 @@ locals {
         node = "c1-3.75gb"
         edx = "c8-60gb"
         metrix = "c1-3.75gb"
+        dtn = "c1-3.75gb"
       }
       dev = {
         mgmt = "p4-7.5gb"
@@ -112,6 +114,7 @@ locals {
         node = "c2-7.5gb"
         edx = "c8-60gb"
         metrix = "p2-3.75gb"
+        dtn = "p2-3.75gb"
       }
   }
 
@@ -142,7 +145,7 @@ locals {
 }
 
 module "openstack" {
-  source         = "git::https://github.com/computecanada/magic_castle.git//openstack?ref=fd21639"
+  source         = "git::https://github.com/computecanada/magic_castle.git//openstack?ref=15.6.1"
   config_git_url = "https://github.com/computecanada/puppet-magic_castle.git"
   config_version = "987c322"
 
@@ -162,6 +165,7 @@ module "openstack" {
     evolo = { type = local.instances_type_map[var.config_type].login, tags = ["internal_login"], count = 1 }
     edx = { type = local.instances_type_map[var.config_type].edx, tags = ["edx"], count = 1, disk_size = 500 }
     metrix = { type = local.instances_type_map[var.config_type].metrix, tags = ["metrix"], count = 1 }
+    dtn = { type = local.instances_type_map[var.config_type].dtn, tags = ["dtn", "public"], count = 1 }
   }
 
   # var.pool is managed by Slurm through Terraform REST API.
