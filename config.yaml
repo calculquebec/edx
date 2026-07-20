@@ -59,6 +59,7 @@ profile::reverse_proxy::subdomains:
   meilisearch.edx: "http://edx1.%{lookup('profile::freeipa::base::ipa_domain')}"
   jupyter: "%{lookup('jupyterhub::bind_url')}"
   metrix: "http://metrix1.%{lookup('profile::freeipa::base::ipa_domain')}:9000"
+  ipa: "ipa.%{lookup('profile::freeipa::base::ipa_domain')}"
 profile::reverse_proxy::main2sub_redir: "edx"
 jupyterhub::bind_url: "https://jupyter1.%{lookup('profile::freeipa::base::ipa_domain')}:8000"
 
