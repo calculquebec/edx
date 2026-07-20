@@ -78,7 +78,6 @@ prometheus::remote_write_configs:
           username: 'cqformation'
           password: "%{alias('prometheus_password')}"
 
-profile::slurm::base::slurm_version: '24.11'
 profile::slurm::base::suspend_time: 900
 profile::slurm::base::resume_timeout: 900
 profile::slurm::base::suspend_rate: 80
