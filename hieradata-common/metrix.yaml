@@ -5,8 +5,6 @@ mysql::server::override_options:
 metrix::slurm_db_ip: "%{lookup('terraform.tag_ip.mgmt.0')}"
 metrix::slurm_password: "%{alias('metrix_slurm_password')}"
 
-metrix::install::source_url: 'https://github.com/mboisson/TrailblazingTurtle/archive/e1c65ea78a46f23bfd12b55c169804db86b5f747.tar.gz'
-
 metrix::auth_type: 'oauth2jwt'
 metrix::auth::oauth2jwt::authorization_url: "https://edx.%{lookup('terraform.data.domain_name')}/oauth2/authorize/"
 metrix::auth::oauth2jwt::token_url: "https://edx.%{lookup('terraform.data.domain_name')}/oauth2/access_token/"
