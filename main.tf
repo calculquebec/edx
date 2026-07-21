@@ -89,7 +89,7 @@ locals {
         cip101 = "c2-7.5gb"
         node = "c2-7.5gb"
         edx = "ha16-60gb"
-        metrix = "ha1-1.25gb"
+        metrix = "ha2-4gb"
       }
       test = {
         mgmt = "c1-3.75gb"
