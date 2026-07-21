@@ -144,7 +144,7 @@ locals {
 module "openstack" {
   source         = "git::https://github.com/computecanada/magic_castle.git//openstack?ref=15.6.1"
   config_git_url = "https://github.com/computecanada/puppet-magic_castle.git"
-  config_version = "987c322"
+  config_version = "6eb919e"
 
   cluster_name = "evolo${var.suffix}"
   domain       = "calculquebec.cloud"
