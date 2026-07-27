@@ -46,6 +46,9 @@ tutor::env_patches:
     - "AUTHENTICATION_BACKENDS += ['social_core.backends.open_id_connect.OpenIdConnectAuth']"
     - "LTI_DEFAULT_JUPYTER_HUB_URL = 'https://jupyter.%{lookup('terraform.data.domain_name')}'"
     - "LTI_DEFAULT_JUPYTER_PASSPORT_ID = 'jupyterhub'"
+    - "SOCIAL_SHARING_SETTINGS['CUSTOM_COURSE_URLS'] = True"
+    - "CERTIFICATE_LINKEDIN = True"
+    - "CERTIFICATE_LINKEDIN_DEFAULTS_TO_COURSE_ORGANIZATION_NAME = True"
   openedx-cms-common-settings:
     - "LTI_DEFAULT_JUPYTER_HUB_URL = 'https://jupyter.%{lookup('terraform.data.domain_name')}'"
     - "LTI_DEFAULT_JUPYTER_PASSPORT_ID = 'jupyterhub'"
