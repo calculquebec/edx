@@ -52,7 +52,7 @@ tutor::env_patches:
     - "SOCIAL_SHARING_SETTINGS['CERTIFICATE_FACEBOOK_TEXT'] = 'Partager sur Facebook'"
     - "SOCIAL_SHARING_SETTINGS['CERTIFICATE_LINKEDIN'] = True"
       #    - "SOCIAL_SHARING_SETTINGS['CERTIFICATE_LINKEDIN_DEFAULTS_TO_COURSE_ORGANIZATION_NAME'] = True"
-    - "SOCIAL_SHARING_SETTINGS['LINKEDIN_COMPANY_ID'] = '5351297'"
+    - "SOCIAL_SHARING_SETTINGS['LINKEDIN_COMPANY_ID'] = 5351297"
   openedx-cms-common-settings:
     - "LTI_DEFAULT_JUPYTER_HUB_URL = 'https://jupyter.%{lookup('terraform.data.domain_name')}'"
     - "LTI_DEFAULT_JUPYTER_PASSPORT_ID = 'jupyterhub'"
