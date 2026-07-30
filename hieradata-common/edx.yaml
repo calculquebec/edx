@@ -1,6 +1,6 @@
-tutor::version: '21.0.8'
+tutor::version: '22.0.0'
 tutor::tutor_contrib_backup_version: '4.5.0'
-tutor::aspects_version: '3.0.3'
+tutor::aspects_version: '4.0.0'
 tutor::admin_email: "noreply@calculquebec.ca"
 tutor::admin_password: "%{alias('edx_admin_password')}"
 
@@ -74,9 +74,10 @@ tutor::env_patches:
     - "MFE_CONFIG['GOOGLE_ANALYTICS_4_ID'] = 'G-TWV0D2MS0D'"
 
 tutor::openedx_extra_pip_requirements:
+  - 'xblocks-extra==1.7.0'
+#  - 'xblocks-contrib==1.0.3'
   - 'h5p-xblock==0.2.18'
   - 'jupytermc-xblock @ git+https://github.com/calculquebec/jupytermc-xblock.git@ab2bbd7ec162b7e606dac8b46966ba8909ca09af'
-  - 'feedback-xblock==3.0.1'
   - 'flow-control-xblock @ git+https://github.com/eduNEXT/flow-control-xblock.git@v2.2.0'
   - 'lti-consumer-xblock @ git+https://github.com/calculquebec/xblock-lti-consumer.git@85ec38410037ab9e3bd23c187972f4c1d608e5a6'
   - 'edx-username-changer==0.5.0'
@@ -85,12 +86,12 @@ tutor::plugins:
   mfe:
     dep:
       name: 'tutor-mfe'
-      ensure: '21.0.0'
+      ensure: '22.0.0'
     reboot_on_change: true
   forum:
     dep:
       name: 'tutor-forum'
-      ensure: '21.0.0'
+      ensure: '22.0.0'
     reinit_on_change: true
     reboot_on_change: true
   plugin_slots:
@@ -100,8 +101,8 @@ tutor::plugins:
     images: ['mfe']
     reboot_on_change: true
 
-plugin_slots_version: 'v21.0.0-97'
-theme_version: '21.0.0-97'
+plugin_slots_version: 'v22.0.0-1'
+theme_version: '22.0.0-1'
 tutor::themes:
   indigocq:
     enabled: true
