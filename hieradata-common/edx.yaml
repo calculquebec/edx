@@ -1,6 +1,7 @@
 tutor::version: '22.0.0'
-tutor::tutor_contrib_backup_version: '4.5.0'
-tutor::aspects_version: '4.0.0'
+tutor::tutor_contrib_backup_version: 'verawood'
+tutor::tutor_contrib_backup_source_url: 'git+https://github.com/calculquebec/tutor-contrib-backup'
+#tutor::aspects_version: '4.0.0'
 tutor::admin_email: "noreply@calculquebec.ca"
 tutor::admin_password: "%{alias('edx_admin_password')}"
 
@@ -88,12 +89,12 @@ tutor::plugins:
       name: 'tutor-mfe'
       ensure: '22.0.0'
     reboot_on_change: true
-  forum:
-    dep:
-      name: 'tutor-forum'
-      ensure: '22.0.0'
-    reinit_on_change: true
-    reboot_on_change: true
+#  forum:
+#    dep:
+#      name: 'tutor-forum'
+#      ensure: '22.0.0'
+#    reinit_on_change: true
+#    reboot_on_change: true
   plugin_slots:
     dep:
       source: 'https://github.com/calculquebec/tutor-plugins/archive/refs/tags/%{lookup("plugin_slots_version")}.tar.gz'
