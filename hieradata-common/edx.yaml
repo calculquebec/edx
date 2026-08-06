@@ -73,6 +73,7 @@ tutor::env_patches:
   mfe-lms-common-settings:
     - "MFE_CONFIG['EXTERNAL_SCRIPTS'] = {}"
     - "MFE_CONFIG['EXTERNAL_SCRIPTS']['cookieyes'] = 'https://cdn-cookieyes.com/client_data/8e6d217a9bb547e1fbe6dca7733bf748/script.js'"
+    - "MFE_CONFIG['EXTERNAL_SCRIPTS']['calculquebec'] = 'https://edx.evolo.calculquebec.cloud/asset-v1:CQ+evolo101+v1+type@asset+block@cq.js'"
     - "FRONTEND_SITE_CONFIG['commonAppConfig']['EXTERNAL_SCRIPTS'] = MFE_CONFIG['EXTERNAL_SCRIPTS']"
     - "MFE_CONFIG['GOOGLE_ANALYTICS_4_ID'] = 'G-TWV0D2MS0D'"
 
@@ -104,7 +105,7 @@ tutor::plugins:
     images: ['mfe']
     reboot_on_change: true
 
-plugin_slots_version: 'v22.0.0-9'
+plugin_slots_version: 'v22.0.0-10'
 theme_version: '22.0.0-7'
 tutor::themes:
   indigocq:
