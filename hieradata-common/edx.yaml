@@ -71,6 +71,8 @@ tutor::env_patches:
   openedx-common-settings:
     - "GOOGLE_ANALYTICS_4_ID = 'G-TWV0D2MS0D'"
     - "COOKIEYES_SCRIPT_URL = 'https://cdn-cookieyes.com/client_data/8e6d217a9bb547e1fbe6dca7733bf748/script.js'"
+    - "MFE_CONFIG['GOOGLE_ANALYTICS_4_ID'] = 'G-TWV0D2MS0D'"
+    - "MFE_CONFIG['COOKIEYES_SCRIPT_URL'] = 'https://cdn-cookieyes.com/client_data/8e6d217a9bb547e1fbe6dca7733bf748/script.js'"
   mfs-lms-common-settings:
     - "MFE_CONFIG['GOOGLE_ANALYTICS_4_ID'] = 'G-TWV0D2MS0D'"
 
