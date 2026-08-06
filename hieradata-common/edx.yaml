@@ -73,6 +73,7 @@ tutor::env_patches:
   mfe-lms-common-settings:
     - "MFE_CONFIG['COOKIEYES_SCRIPT_URL'] = 'https://cdn-cookieyes.com/client_data/8e6d217a9bb547e1fbe6dca7733bf748/script.js'"
     - "MFE_CONFIG['GOOGLE_ANALYTICS_4_ID'] = 'G-TWV0D2MS0D'"
+    - "FRONTEND_SITE_CONFIG['commonAppConfig']['COOKIEYES_SCRIPT_URL'] = MFE_CONFIG['COOKIEYES_SCRIPT_URL']"
 
 tutor::openedx_extra_pip_requirements:
   - 'xblocks-extra==1.7.0'
