@@ -62,7 +62,10 @@ tutor::env_patches:
       #    - "MFE_CONFIG['MARKETING_EMAILS_OPT_IN'] = True"
   openedx-common-settings:
     - "GOOGLE_ANALYTICS_4_ID = 'G-TWV0D2MS0D'"
-  mfs-lms-common-settings:
+  mfe-lms-common-settings:
+    - "MFE_CONFIG['EXTERNAL_SCRIPTS'] = {}"
+    - "MFE_CONFIG['EXTERNAL_SCRIPTS']['cookieyes'] = 'https://cdn-cookieyes.com/client_data/8e6d217a9bb547e1fbe6dca7733bf748/script.js'"
+    - "FRONTEND_SITE_CONFIG['commonAppConfig']['EXTERNAL_SCRIPTS'] = MFE_CONFIG['EXTERNAL_SCRIPTS']"
     - "MFE_CONFIG['GOOGLE_ANALYTICS_4_ID'] = 'G-TWV0D2MS0D'"
 
 tutor::openedx_extra_pip_requirements:
@@ -93,8 +96,13 @@ tutor::plugins:
     images: ['mfe']
     reboot_on_change: true
 
+<<<<<<< HEAD
 plugin_slots_version: 'v22.0.0-1'
 theme_version: '22.0.0-1'
+=======
+plugin_slots_version: 'v22.0.0-9'
+theme_version: '22.0.0-7'
+>>>>>>> e24720e (use EXTERNAL_SCRIPTS more general loader)
 tutor::themes:
   indigocq:
     enabled: true
