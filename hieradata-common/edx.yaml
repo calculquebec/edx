@@ -55,7 +55,6 @@ tutor::env_patches:
       #    - "SOCIAL_SHARING_SETTINGS['CERTIFICATE_LINKEDIN_DEFAULTS_TO_COURSE_ORGANIZATION_NAME'] = True"
     - "SOCIAL_SHARING_SETTINGS['LINKEDIN_COMPANY_ID'] = 5351297"
     - "LINKEDIN_COMPANY_ID = '5351297'"
-    - "COOKIEYES_SCRIPT_URL = 'https://cdn-cookieyes.com/client_data/8e6d217a9bb547e1fbe6dca7733bf748/script.js'"
   openedx-cms-common-settings:
     - "LTI_DEFAULT_JUPYTER_HUB_URL = 'https://jupyter.%{lookup('terraform.data.domain_name')}'"
     - "LTI_DEFAULT_JUPYTER_PASSPORT_ID = 'jupyterhub'"
@@ -71,6 +70,7 @@ tutor::env_patches:
       #    - "MFE_CONFIG['MARKETING_EMAILS_OPT_IN'] = True"
   openedx-common-settings:
     - "GOOGLE_ANALYTICS_4_ID = 'G-TWV0D2MS0D'"
+    - "COOKIEYES_SCRIPT_URL = 'https://cdn-cookieyes.com/client_data/8e6d217a9bb547e1fbe6dca7733bf748/script.js'"
   mfs-lms-common-settings:
     - "MFE_CONFIG['GOOGLE_ANALYTICS_4_ID'] = 'G-TWV0D2MS0D'"
 
