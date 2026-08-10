@@ -43,6 +43,7 @@ tutor::env_patches:
     - "'ENABLE_COOKIE_CONSENT': False"
     - "'ENABLE_EDX_USERNAME_CHANGER': True"
     - "'ENABLE_CREATOR_GROUP': True"
+    - "'ENABLE_DATES_COURSE_APP': True"
   openedx-lms-common-settings:
     - "AUTHENTICATION_BACKENDS += ['social_core.backends.open_id_connect.OpenIdConnectAuth']"
     - "LTI_DEFAULT_JUPYTER_HUB_URL = 'https://jupyter.%{lookup('terraform.data.domain_name')}'"
