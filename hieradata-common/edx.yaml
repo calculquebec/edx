@@ -102,7 +102,7 @@ tutor::plugins:
     images: ['mfe']
     reboot_on_change: true
 
-plugin_slots_version: 'v22.0.2'
+plugin_slots_version: 'v22.0.3'
 theme_version: '22.0.1'
 tutor::themes:
   indigocq:
