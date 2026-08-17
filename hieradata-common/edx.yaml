@@ -65,7 +65,11 @@ tutor::env_patches:
   mfe-lms-common-settings:
     - "MFE_CONFIG['EXTERNAL_SCRIPTS'] = {}"
     - "MFE_CONFIG['EXTERNAL_SCRIPTS']['cookieyes'] = 'https://cdn-cookieyes.com/client_data/8e6d217a9bb547e1fbe6dca7733bf748/script.js'"
+    - "MFE_CONFIG['EXTERNAL_SCRIPTS']['calculquebec'] = 'https://edx.evolo.calculquebec.cloud/asset-v1:CQ+Assets101+2026+type@asset+block@cq.js'"
     - "FRONTEND_SITE_CONFIG['commonAppConfig']['EXTERNAL_SCRIPTS'] = MFE_CONFIG['EXTERNAL_SCRIPTS']"
+    - "MFE_CONFIG['EXTERNAL_STYLESHEETS'] = {}"
+    - "MFE_CONFIG['EXTERNAL_STYLESHEETS']['calculquebec'] = 'https://edx.evolo.calculquebec.cloud/asset-v1:CQ+Assets101+2026+type@asset+block@calculquebec.css'"
+    - "FRONTEND_SITE_CONFIG['commonAppConfig']['EXTERNAL_STYLESHEETS'] = MFE_CONFIG['EXTERNAL_STYLESHEETS']"
     - "MFE_CONFIG['GOOGLE_ANALYTICS_4_ID'] = 'G-TWV0D2MS0D'"
 
 tutor::openedx_extra_pip_requirements:
@@ -96,13 +100,8 @@ tutor::plugins:
     images: ['mfe']
     reboot_on_change: true
 
-<<<<<<< HEAD
-plugin_slots_version: 'v22.0.0-1'
-theme_version: '22.0.0-1'
-=======
-plugin_slots_version: 'v22.0.0-9'
-theme_version: '22.0.0-7'
->>>>>>> e24720e (use EXTERNAL_SCRIPTS more general loader)
+plugin_slots_version: 'v22.0.4'
+theme_version: '22.0.4'
 tutor::themes:
   indigocq:
     enabled: true
