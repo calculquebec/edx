@@ -6,5 +6,5 @@ tutor::backup_to_restore:
 #cqedu::source_domain: 'evolo.calculquebec.cloud'
 #cqedu::target_domain: "evolo%{lookup('suffix')}.calculquebec.cloud"
 
-#tutor::upgrade_from: 'teak'
+tutor::upgrade_from: 'ulmo'
 
