@@ -209,15 +209,15 @@ output "public_ip" {
 }
 
 ## Uncomment to register your domain name with CloudFlare
-module "dns" {
-   source           = "git::https://github.com/computecanada/magic_castle.git//dns/cloudflare?ref=15.6.1"
-   name             = module.openstack.cluster_name
-   domain           = module.openstack.domain
-   public_instances = module.openstack.public_instances
-   domain_tag       = "proxy"
-   vhosts           = ["*.edx", "edx", "ipa", "jupyter", "mokey", "explore", "metrix"]
-   dkim_public_key  = file("keys/dkim_public.pem")
-}
+#module "dns" {
+#   source           = "git::https://github.com/computecanada/magic_castle.git//dns/cloudflare?ref=15.6.1"
+#   name             = module.openstack.cluster_name
+#   domain           = module.openstack.domain
+#   public_instances = module.openstack.public_instances
+#   domain_tag       = "proxy"
+#   vhosts           = ["*.edx", "edx", "ipa", "jupyter", "mokey", "explore", "metrix"]
+#   dkim_public_key  = file("keys/dkim_public.pem")
+#}
 
 ## Uncomment to register your domain name with Google Cloud
 # module "dns" {
