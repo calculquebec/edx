@@ -86,8 +86,8 @@ locals {
         login = "ha1-2gb"
         caddy = "ha1-2gb"
         jupyter = "ha1-2gb"
-        cip101 = "c1-3.75gb"
-        node = "c1-3.75gb"
+        cip101 = "c2-7.5gb"
+        node = "c2-7.5gb"
         edx = "ha16-60gb"
         metrix = "ha1-1.25gb"
       }
@@ -97,8 +97,8 @@ locals {
         login = "c1-3.75gb"
         caddy = "c1-3.75gb"
         jupyter = "c1-3.75gb"
-        cip101 = "c1-3.75gb"
-        node = "c1-3.75gb"
+        cip101 = "c2-7.5gb"
+        node = "c2-7.5gb"
         edx = "c8-60gb"
         metrix = "c1-3.75gb"
       }
