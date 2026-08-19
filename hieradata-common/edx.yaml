@@ -1,5 +1,5 @@
 tutor::version: '22.0.0'
-tutor::tutor_contrib_backup_version: '4.5.0'
+tutor::tutor_contrib_backup_version: '4.6.0'
 #tutor::tutor_contrib_backup_source_url: 'git+https://github.com/calculquebec/tutor-contrib-backup'
 tutor::aspects_version: '4.0.0'
 tutor::admin_email: "noreply@calculquebec.ca"
