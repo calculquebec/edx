@@ -100,8 +100,8 @@ tutor::plugins:
     images: ['mfe']
     reboot_on_change: true
 
-plugin_slots_version: 'v22.0.5'
-theme_version: '22.0.5'
+plugin_slots_version: 'v22.0.6'
+theme_version: '22.0.6'
 tutor::themes:
   indigocq:
     enabled: true
