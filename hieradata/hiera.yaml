@@ -7,4 +7,8 @@ tutor::backup_to_restore:
 #cqedu::target_domain: "evolo%{lookup('suffix')}.calculquebec.cloud"
 
 tutor::upgrade_from: 'ulmo'
-
+# allow indexing the platform by robots
+profile::reverse_proxy::robots_txt: |
+  User-agent: *
+  Disallow:
+  Crawl-delay: 120
