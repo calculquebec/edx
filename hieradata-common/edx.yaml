@@ -91,7 +91,7 @@ tutor::openedx_extra_pip_requirements:
   - 'jupytermc-xblock @ git+https://github.com/calculquebec/jupytermc-xblock.git@ab2bbd7ec162b7e606dac8b46966ba8909ca09af'
   - 'flow-control-xblock @ git+https://github.com/eduNEXT/flow-control-xblock.git@v2.2.0'
   - 'lti-consumer-xblock @ git+https://github.com/calculquebec/xblock-lti-consumer.git@85ec38410037ab9e3bd23c187972f4c1d608e5a6'
-  - 'custom-extra-fields @ git+https://github.com/calculquebec/custom-extra-fields.git@1582ea47ad5e8f3474f3b9fd57c5f8593a21f5dc'
+  - 'custom-extra-fields @ git+https://github.com/calculquebec/custom-extra-fields.git@8a22b7725154e6d314ed33fb5c9dd2e301a444f0'
   - 'edx-username-changer==0.5.0'
 
 tutor::plugins:
