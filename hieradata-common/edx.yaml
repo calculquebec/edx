@@ -39,8 +39,10 @@ tutor::env_patches:
     - "'ENABLE_COMBINED_LOGIN_REGISTRATION': True"
     - "'SHOW_REGISTRATION_LINKS': False"
     - "'CERTIFICATES_HTML_VIEW': True"
+    - "'CUSTOM_CERTIFICATE_TEMPLATES_ENABLED': True"
     - "'ENABLE_COOKIE_CONSENT': False"
     - "'ENABLE_EDX_USERNAME_CHANGER': True"
+    - "'ENABLE_CREATOR_GROUP': True"
     - "'ENABLE_DATES_COURSE_APP': True"
   openedx-lms-common-settings:
     - "AUTHENTICATION_BACKENDS += ['social_core.backends.open_id_connect.OpenIdConnectAuth']"
@@ -50,6 +52,9 @@ tutor::env_patches:
   openedx-cms-common-settings:
     - "LTI_DEFAULT_JUPYTER_HUB_URL = 'https://jupyter.%{lookup('terraform.data.domain_name')}'"
     - "LTI_DEFAULT_JUPYTER_PASSPORT_ID = 'jupyterhub'"
+  openedx-common-settings:
+    - "PROFILE_EXTENSION_FORM = 'custom_extra_fields.forms.CustomExtraFieldsForm'"
+    - "ENABLE_DYNAMIC_REGISTRATION_FIELDS = True"
   openedx-auth:
     - "'SOCIAL_AUTH_OIDC_OIDC_ENDPOINT': 'https://cilogon.org/'"
     - "'SOCIAL_AUTH_OIDC_KEY': 'cilogon:/client_id/87a7ddddf2a5f4b70ecaab5dbe5f118'"
@@ -58,19 +63,29 @@ tutor::env_patches:
   mfe-lms-production-settings:
     - "MFE_CONFIG['ALLOW_PUBLIC_ACCOUNT_CREATION'] = True"
     - "MFE_CONFIG['SHOW_REGISTRATION_LINKS'] = False"
-    - "MFE_CONFIG['ENABLE_DYNAMIC_REGISTRATION_FIELDS'] = True"
       #    - "MFE_CONFIG['MARKETING_EMAILS_OPT_IN'] = True"
   openedx-common-settings:
     - "GOOGLE_ANALYTICS_4_ID = 'G-TWV0D2MS0D'"
   mfe-lms-common-settings:
     - "MFE_CONFIG['EXTERNAL_SCRIPTS'] = {}"
-    - "MFE_CONFIG['EXTERNAL_SCRIPTS']['cookieyes'] = 'https://cdn-cookieyes.com/client_data/8e6d217a9bb547e1fbe6dca7733bf748/script.js'"
-    - "MFE_CONFIG['EXTERNAL_SCRIPTS']['calculquebec'] = 'https://edx.evolo.calculquebec.cloud/asset-v1:CQ+Assets101+2026+type@asset+block@cq.js'"
+    - "MFE_CONFIG['EXTERNAL_SCRIPTS']['cookieyes'] = {'src': 'https://cdn-cookieyes.com/client_data/8e6d217a9bb547e1fbe6dca7733bf748/script.js'}"
+    - "MFE_CONFIG['EXTERNAL_SCRIPTS']['calculquebec'] = {'src': 'https://edx.evolo.calculquebec.cloud/asset-v1:CQ+Assets101+2026+type@asset+block@cq.js'}"
+    - "MFE_CONFIG['EXTERNAL_SCRIPTS']['registration'] = {'src': 'https://edx.evolo.calculquebec.cloud/asset-v1:CQ+Assets101+2026+type@asset+block@registration.js', 'defer': True}"
     - "FRONTEND_SITE_CONFIG['commonAppConfig']['EXTERNAL_SCRIPTS'] = MFE_CONFIG['EXTERNAL_SCRIPTS']"
     - "MFE_CONFIG['EXTERNAL_STYLESHEETS'] = {}"
     - "MFE_CONFIG['EXTERNAL_STYLESHEETS']['calculquebec'] = 'https://edx.evolo.calculquebec.cloud/asset-v1:CQ+Assets101+2026+type@asset+block@calculquebec.css'"
     - "FRONTEND_SITE_CONFIG['commonAppConfig']['EXTERNAL_STYLESHEETS'] = MFE_CONFIG['EXTERNAL_STYLESHEETS']"
     - "MFE_CONFIG['GOOGLE_ANALYTICS_4_ID'] = 'G-TWV0D2MS0D'"
+    - "REGISTRATION_EXTRA_FIELDS['wants_newletter'] = 'optional'"
+    - "REGISTRATION_EXTRA_FIELDS['position'] = 'optional'"
+    - "REGISTRATION_EXTRA_FIELDS['research_area'] = 'optional'"
+    - "REGISTRATION_EXTRA_FIELDS['year_of_birth'] = 'hidden'"
+    - "REGISTRATION_EXTRA_FIELDS['level_of_education'] = 'hidden'"
+    - "REGISTRATION_EXTRA_FIELDS['gender'] = 'hidden'"
+    - "REGISTRATION_EXTRA_FIELDS['mailing_address'] = 'hidden'"
+    - "REGISTRATION_EXTRA_FIELDS['goals'] = 'hidden'"
+    - "MFE_CONFIG['ENABLE_DYNAMIC_REGISTRATION_FIELDS'] = True"
+    - "FRONTEND_SITE_CONFIG['commonAppConfig']['ENABLE_DYNAMIC_REGISTRATION_FIELDS'] = True"
 
 tutor::openedx_extra_pip_requirements:
   - 'xblocks-extra==1.7.0'
@@ -79,6 +94,7 @@ tutor::openedx_extra_pip_requirements:
   - 'jupytermc-xblock @ git+https://github.com/calculquebec/jupytermc-xblock.git@ab2bbd7ec162b7e606dac8b46966ba8909ca09af'
   - 'flow-control-xblock @ git+https://github.com/eduNEXT/flow-control-xblock.git@v2.2.0'
   - 'lti-consumer-xblock @ git+https://github.com/calculquebec/xblock-lti-consumer.git@85ec38410037ab9e3bd23c187972f4c1d608e5a6'
+  - 'custom-extra-fields @ git+https://github.com/calculquebec/custom-extra-fields.git@8a22b7725154e6d314ed33fb5c9dd2e301a444f0'
   - 'edx-username-changer==0.5.0'
 
 tutor::plugins:
@@ -100,8 +116,8 @@ tutor::plugins:
     images: ['mfe']
     reboot_on_change: true
 
-plugin_slots_version: 'v22.0.6'
-theme_version: '22.0.6'
+lugin_slots_version: 'v22.0.7'
+theme_version: '22.0.7'
 tutor::themes:
   indigocq:
     enabled: true
