@@ -37,7 +37,6 @@ tutor::env_patches:
   common-env-features:
     - "'ENABLE_THIRD_PARTY_AUTH': True"
     - "'ENABLE_COMBINED_LOGIN_REGISTRATION': True"
-    - "'SHOW_REGISTRATION_LINKS': False"
     - "'CERTIFICATES_HTML_VIEW': True"
     - "'CUSTOM_CERTIFICATE_TEMPLATES_ENABLED': True"
     - "'ENABLE_COOKIE_CONSENT': False"
@@ -63,7 +62,12 @@ tutor::env_patches:
     - "'SOCIAL_AUTH_OAUTH_SECRETS': { 'oidc': '%{lookup('oidc_secret')}'}"
   mfe-lms-production-settings:
     - "MFE_CONFIG['ALLOW_PUBLIC_ACCOUNT_CREATION'] = True"
-    - "MFE_CONFIG['SHOW_REGISTRATION_LINKS'] = False"
+    - "FRONTEND_SITE_CONFIG['apps'] = []"
+    - "AUTHN_CONFIG = {}"
+    - "AUTHN_CONFIG['SHOW_REGISTRATION_LINKS'] = False"
+    - "AUTHN_CONFIG['ENABLE_PROGRESSIVE_PROFILING_ON_AUTHN'] = True"
+    - "AUTHN_CONFIG['ENABLE_DYNAMIC_REGISTRATION_FIELDS'] = True"
+    - "FRONTEND_SITE_CONFIG['apps'].append({'appId': 'org.openedx.frontend.app.authn', 'config': AUTHN_CONFIG})"
       #    - "MFE_CONFIG['MARKETING_EMAILS_OPT_IN'] = True"
   mfe-lms-common-settings:
     - "MFE_CONFIG['EXTERNAL_SCRIPTS'] = {}"
@@ -83,8 +87,6 @@ tutor::env_patches:
     - "REGISTRATION_EXTRA_FIELDS['gender'] = 'hidden'"
     - "REGISTRATION_EXTRA_FIELDS['mailing_address'] = 'hidden'"
     - "REGISTRATION_EXTRA_FIELDS['goals'] = 'hidden'"
-    - "MFE_CONFIG['ENABLE_DYNAMIC_REGISTRATION_FIELDS'] = True"
-    - "FRONTEND_SITE_CONFIG['commonAppConfig']['ENABLE_DYNAMIC_REGISTRATION_FIELDS'] = True"
 
 tutor::openedx_extra_pip_requirements:
   - 'xblocks-extra==1.7.0'
@@ -115,7 +117,7 @@ tutor::plugins:
     images: ['mfe']
     reboot_on_change: true
 
-plugin_slots_version: 'v22.0.7'
+plugin_slots_version: 'v22.0.8'
 theme_version: '22.0.7'
 tutor::themes:
   indigocq:
