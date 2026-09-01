@@ -75,6 +75,7 @@ tutor::env_patches:
     - "AUTHN_CONFIG['ENABLE_PROGRESSIVE_PROFILING_ON_AUTHN'] = True"
     - "AUTHN_CONFIG['ENABLE_DYNAMIC_REGISTRATION_FIELDS'] = True"
     - "FRONTEND_SITE_CONFIG['apps'].append({'appId': 'org.openedx.frontend.app.authn', 'config': AUTHN_CONFIG})"
+    - 'ACCOUNT_VISIBILITY_CONFIGURATION["admin_fields"] += ["position", "research_area", "wants_newsletter"]'
       #    - "MFE_CONFIG['MARKETING_EMAILS_OPT_IN'] = True"
       #  openedx-common-settings:
       #    - "GOOGLE_ANALYTICS_4_ID = 'G-TWV0D2MS0D'"
