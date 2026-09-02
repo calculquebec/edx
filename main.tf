@@ -193,6 +193,7 @@ module "openstack" {
     "cluster_name" = "evolo${var.suffix}"
     "prometheus_password" = var.prometheus_password
     "cloud_name" = var.cloud_name
+    "cluster_purpose" = "evolo"
     "gitlab_token" = var.gitlab_token
   },
   yamldecode(file("config.yaml")),
