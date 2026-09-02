@@ -1,0 +1,5 @@
+dnf2git::gitlab_token: "%{lookup('gitlab_token')}"
+dnf2git::gitlab_url: 'https://git.computecanada.ca'
+dnf2git::subdirectory: "%{lookup('cluster_purpose')}/%{lookup('cluster_name')}/software"
+dnf2git::domain: ".%{lookup('profile::freeipa::base::ipa_domain')}"
+dnf2git::gitlab_repository: 'calculquebec/formation-assets'
