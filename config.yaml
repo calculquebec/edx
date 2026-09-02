@@ -23,6 +23,8 @@ magic_castle::site::tags:
     - profile::jupyterhub::hub::keytab
   metrix:
     - profile::metrix
+  allcq:
+    - dnf2git
 
 
 lookup_options:
