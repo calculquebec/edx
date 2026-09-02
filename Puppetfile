@@ -6,3 +6,7 @@ mod 'syseleven-restic', '2.7.0'
 mod 'puppet-cqedu', 
     :git => 'https://github.com/calculquebec/puppet-cqedu.git',
     :ref => 'main'
+mod 'puppet-dnf2git',
+    :git => 'https://github.com/computecanada/puppet-dnf2git.git',
+    :ref => 'main'
+
