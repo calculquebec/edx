@@ -146,7 +146,7 @@ locals {
         }
     }
   }
-  image = "snapshot-cpunode-MC16-A9.8-1"
+  image = "snapshot-cpunode-MC16-A9.8-"
 }
 
 module "openstack" {
