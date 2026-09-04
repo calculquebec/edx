@@ -247,7 +247,7 @@ locals {
         },
         service = {
           "name" = module.openstack.cluster_name,
-          "state" = "production",
+          "state" = "test",
           "type" = "Magic castle cluster for evolo",
         },
         location = {
