@@ -47,6 +47,10 @@ variable "gitlab_token" {
   type = string
   default = ""
 }
+variable "gitlab_project_name" {
+  type = string
+  default = ""
+}
 data "tfe_workspace" "test" {
   name         = var.TFC_WORKSPACE_NAME
   organization = "CalculQuebec"
@@ -264,15 +268,97 @@ output "assets" {
 }
 
 resource "gitlab_repository_file" "assets_file" {
-  project = "calculquebec/formation-assets"
+  project = var.gitlab_project_name
   file_path = "evolo/${module.openstack.cluster_name}/assets/${module.openstack.cluster_name}-assets.json"
   branch = "main"
   encoding = "text"
   content = provider::prettyjson::jsonprettyprint(jsonencode(local.assets))
   author_email = var.support_email
   author_name = "Terraform"
-  commit_message = "Automatic update of assets"
+  update_commit_message = "Automatic update of assets for cluster ${module.openstack.cluster_name}"
+  create_commit_message = "Creating cluster ${module.openstack.cluster_name}"
+  delete_commit_message = "Deleting cluster ${module.openstack.cluster_name}"
 }
+resource "terraform_data" "software_file" {
+  for_each = { for asset in local.assets: asset.host.name => asset}
+
+  input = {
+    fqdn = each.value.host.name
+    support_email = var.support_email
+    cluster_name = module.openstack.cluster_name
+    folder = "evolo/${module.openstack.cluster_name}/software"
+  }
+
+  triggers_replace = {
+    uuid = each.value.host.uuid
+  }
+
+  provisioner "local-exec" {
+    when = create
+    command = <<-EOT
+        if [ -z "$UUID" ]; then
+	  echo "Nothing to create"
+	else
+	  python3 -c 'import time; import random; time.sleep(random.uniform(0,5))'
+          curl --request POST \
+            --header "PRIVATE-TOKEN: $GITLAB_TOKEN" \
+            --header "Content-Type: application/json" \
+            --data "$API_PAYLOAD" \
+            "$GITLAB_BASE_URL/projects/$GITLAB_PROJECT_ID/repository/commits"
+	fi
+    EOT
+
+    environment = {
+      API_PAYLOAD = jsonencode({
+        branch        = "main"
+        author_name   = "Terraform GitLab Bot"
+        author_email  = self.input.support_email
+        commit_message = "Automated preparation: creating software file for ${self.input.fqdn}"
+
+        # Build the dynamic delete actions array completely from self-contained trigger state
+	actions = [{
+	  action = "create"
+	  file_path = "${self.input.folder}/${self.input.fqdn}.txt"
+	  content = ""
+	}]
+      })
+      UUID = self.triggers_replace.uuid
+    }
+  }
+
+  provisioner "local-exec" {
+    when = destroy
+    command = <<-EOT
+        if [ -z "$UUID" ]; then
+	  echo "Nothing to delete"
+	else
+	    python3 -c 'import time; import random; time.sleep(random.uniform(0,5))'
+            curl --request POST \
+            --header "PRIVATE-TOKEN: $GITLAB_TOKEN" \
+            --header "Content-Type: application/json" \
+            --data "$API_PAYLOAD" \
+            "$GITLAB_BASE_URL/projects/$GITLAB_PROJECT_ID/repository/commits"
+	fi
+    EOT
+
+    environment = {
+      API_PAYLOAD = jsonencode({
+        branch        = "main"
+        author_name   = "Terraform GitLab Bot"
+        author_email  = self.input.support_email
+        commit_message = "Automated cleanup: removing software file for ${self.input.fqdn}"
+
+        # Build the dynamic delete actions array completely from self-contained trigger state
+	actions = [{
+	  action = "delete"
+	  file_path = "${self.input.folder}/${self.input.fqdn}.txt"
+	}]
+      })
+      UUID = self.triggers_replace.uuid
+    }
+  }
+}
+
 ## Uncomment to register your domain name with CloudFlare
 module "dns" {
    source           = "git::https://github.com/computecanada/magic_castle.git//dns/cloudflare?ref=4ae5ab9"
