@@ -103,7 +103,7 @@ tutor::plugins:
   mfe:
     dep:
       name: 'tutor-mfe'
-      ensure: '22.0.0'
+      ensure: '22.1.0'
     reboot_on_change: true
   forum:
     dep:
