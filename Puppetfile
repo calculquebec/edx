@@ -9,4 +9,6 @@ mod 'puppet-cqedu',
 mod 'puppet-dnf2git',
     :git => 'https://github.com/computecanada/puppet-dnf2git.git',
     :ref => 'main'
-
+mod 'puppet-dockerpkgs2git',
+    :git => 'https://github.com/computecanada/puppet-dockerpkgs2git.git',
+    :ref => 'main'
