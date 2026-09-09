@@ -8,6 +8,7 @@ magic_castle::site::tags:
     - tutor
     - cron
     - profile::mail
+    - dockerpkgs2git
   internal_login:
     - motd
     - profile::slurm::submitter
