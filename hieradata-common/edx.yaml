@@ -1,4 +1,4 @@
-tutor::version: '22.0.0'
+tutor::version: '22.0.2'
 tutor::tutor_contrib_backup_version: '4.5.0'
 tutor::aspects_version: '4.0.0'
 tutor::admin_email: "noreply@calculquebec.ca"
@@ -119,8 +119,8 @@ tutor::plugins:
     images: ['mfe']
     reboot_on_change: true
 
-plugin_slots_version: 'v22.0.8'
-theme_version: '22.0.7'
+plugin_slots_version: 'v22.0.9'
+theme_version: '22.0.9'
 tutor::themes:
   indigocq:
     enabled: true
