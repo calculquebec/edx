@@ -98,6 +98,9 @@ tutor::env_patches:
     - "REGISTRATION_EXTRA_FIELDS['mailing_address'] = 'hidden'"
     - "REGISTRATION_EXTRA_FIELDS['goals'] = 'hidden'"
     - "REGISTRATION_EXTRA_FIELDS['sla_acceptance'] = 'optional'"
+    - "CUSTOM_EXTRA_FIELDS_SLA_URL = FRONTEND_SITE_CONFIG['baseUrl'] + '/sla'"
+    - "CUSTOM_EXTRA_FIELDS_SLA_VERSION = '1.0'"
+    - "MIDDLEWARE.insert(MIDDLEWARE.index('openedx.core.djangoapps.cache_toolbox.middleware.CacheBackedAuthenticationMiddleware') + 1, 'custom_extra_fields.middleware.SlaAcceptanceMiddleware')"
 
 tutor::openedx_extra_pip_requirements:
   - 'xblocks-extra==1.7.0'
@@ -106,7 +109,7 @@ tutor::openedx_extra_pip_requirements:
   - 'jupytermc-xblock @ git+https://github.com/calculquebec/jupytermc-xblock.git@ab2bbd7ec162b7e606dac8b46966ba8909ca09af'
   - 'flow-control-xblock @ git+https://github.com/eduNEXT/flow-control-xblock.git@v2.2.0'
   - 'lti-consumer-xblock @ git+https://github.com/calculquebec/xblock-lti-consumer.git@85ec38410037ab9e3bd23c187972f4c1d608e5a6'
-  - 'custom-extra-fields @ git+https://github.com/calculquebec/custom-extra-fields.git@f985951870d9c15b9a911bcc824fe4e4297a41aa'
+  - 'custom-extra-fields @ git+https://github.com/calculquebec/custom-extra-fields.git@88ac063d5bc8f2e1c5d2557d88657760b236bc01'
   - 'edx-username-changer==0.5.0'
 
 tutor::plugins:
