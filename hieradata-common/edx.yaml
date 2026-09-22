@@ -97,7 +97,7 @@ tutor::env_patches:
     - "REGISTRATION_EXTRA_FIELDS['gender'] = 'hidden'"
     - "REGISTRATION_EXTRA_FIELDS['mailing_address'] = 'hidden'"
     - "REGISTRATION_EXTRA_FIELDS['goals'] = 'hidden'"
-    - "REGISTRATION_EXTRA_FIELDS['sla_acceptance'] = 'required'"
+    - "REGISTRATION_EXTRA_FIELDS['sla_acceptance'] = 'optional'"
 
 tutor::openedx_extra_pip_requirements:
   - 'xblocks-extra==1.7.0'
