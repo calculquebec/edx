@@ -22,7 +22,7 @@ jupyterhub::jupyterhub_config_hash:
     profile_args:
       LAB101:
         name: 'LAB101 - JupyterLab sur les superordinateurs'
-        required_scope: 'read:services'
+        required_scope: 'write:services'
         params:
           nprocs: 1
           runtime: 3
