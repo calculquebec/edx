@@ -82,7 +82,7 @@ prometheus::remote_write_configs:
           password: "%{alias('prometheus_password')}"
 
 profile::slurm::base::suspend_time: 900
-profile::slurm::base::resume_timeout: 900
+profile::slurm::base::resume_timeout: 1800
 profile::slurm::base::suspend_rate: 80
 profile::slurm::base::resume_rate: 80
 
