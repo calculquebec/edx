@@ -1,7 +1,7 @@
 restic::repositories:
   backup_edx_repo_juno:
     enable_backup: true
-    id: "a7e8f4f3cb9c4e5bb49218bf48896525"
+    id: "e0878921516d48858a23514b174e9811"
     key: "%{alias('s3_key_juno')}"
     password: "%{alias('restic_password')}"
     host: "objets.juno.calculquebec.ca"
@@ -15,7 +15,7 @@ restic::repositories:
       keep-last: 1
   restore_edx_repo:
     enable_backup: false
-    id: "a7e8f4f3cb9c4e5bb49218bf48896525"
+    id: "e0878921516d48858a23514b174e9811"
     key: "%{alias('s3_key_juno')}"
     host: "objets.juno.calculquebec.ca"
     bucket: "cq-backup-evolo"
@@ -25,7 +25,7 @@ restic::repositories:
     restore_timer: "Mon..Sun 3:30:00"
   restore_edx_dev_repo:
     enable_backup: false
-    id: "a7e8f4f3cb9c4e5bb49218bf48896525"
+    id: "e0878921516d48858a23514b174e9811"
     key: "%{alias('s3_key_juno')}"
     host: "objets.juno.calculquebec.ca"
     bucket: "cq-backup-evolo-dev"
@@ -35,7 +35,7 @@ restic::repositories:
     restore_timer: "Mon..Sun 3:30:00"
   restore_edx_test_repo:
     enable_backup: false
-    id: "a7e8f4f3cb9c4e5bb49218bf48896525"
+    id: "e0878921516d48858a23514b174e9811"
     key: "%{alias('s3_key_juno')}"
     host: "objets.juno.calculquebec.ca"
     bucket: "cq-backup-evolo-test"

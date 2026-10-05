@@ -39,6 +39,18 @@ variable "suffix" {
   type = string
   default = ""
 }
+variable "support_email" {
+  type = string
+  default = ""
+}
+variable "gitlab_token" {
+  type = string
+  default = ""
+}
+variable "gitlab_project_name" {
+  type = string
+  default = ""
+}
 data "tfe_workspace" "test" {
   name         = var.TFC_WORKSPACE_NAME
   organization = "CalculQuebec"
@@ -141,31 +153,31 @@ locals {
         }
     }
   }
-  image = "snapshot-cpunode-2026.2-A9.7"
+  image = "snapshot-cpunode-MC16-A9.8-"
 }
 
 module "openstack" {
-  source         = "git::https://github.com/computecanada/magic_castle.git//openstack?ref=15.6.1"
+  source         = "git::https://github.com/computecanada/magic_castle.git//openstack?ref=2dace5d"
   config_git_url = "https://github.com/computecanada/puppet-magic_castle.git"
-  config_version = "987c322"
+  config_version = "16.0.2"
 
   cluster_name = "evolo${var.suffix}"
   domain       = "calculquebec.cloud"
   image        = "AlmaLinux-9"
 
   instances = {
-    mgmt   = { type = local.instances_type_map[var.config_type].mgmt, tags = ["mgmt", "nfs", "mgmt_extra"], count = 1, disk_size=100 }
-    puppet = { type = local.instances_type_map[var.config_type].puppet, tags = ["puppet"], count = 1 }
-    login  = { type = local.instances_type_map[var.config_type].login, tags = ["login", "public"], count = 1}
-    caddy = { type = local.instances_type_map[var.config_type].caddy, tags = ["public", "proxy"], count = 1}
-    jupyter = { type = local.instances_type_map[var.config_type].jupyter, tags = ["jupyterhub"], count = 1}
-    cip101- = { type = local.instances_type_map[var.config_type].cip101, tags = ["node", "pool"], feature = ["cip101"], image = local.image, count = 5 }
-    node   = { type = local.instances_type_map[var.config_type].node, tags = ["node"], count = 0 }
-    nodepool   = { type = local.instances_type_map[var.config_type].node, tags = ["node", "pool"], image = local.image, count = 5 }
-    evolo = { type = local.instances_type_map[var.config_type].login, tags = ["internal_login"], count = 1 }
-    edx = { type = local.instances_type_map[var.config_type].edx, tags = ["edx"], count = 1, disk_size = 500 }
-    metrix = { type = local.instances_type_map[var.config_type].metrix, tags = ["metrix"], count = 1 }
-    dtn = { type = local.instances_type_map[var.config_type].dtn, tags = ["dtn", "public"], count = 1 }
+    mgmt   = { type = local.instances_type_map[var.config_type].mgmt, tags = ["mgmt", "nfs", "mgmt_extra", "allcq"], count = 1, disk_size=100 }
+    puppet = { type = local.instances_type_map[var.config_type].puppet, tags = ["puppet", "allcq"], count = 1 }
+    login  = { type = local.instances_type_map[var.config_type].login, tags = ["login", "public", "allcq"], count = 1}
+    caddy = { type = local.instances_type_map[var.config_type].caddy, tags = ["public", "proxy", "allcq"], count = 1}
+    jupyter = { type = local.instances_type_map[var.config_type].jupyter, tags = ["jupyterhub", "allcq"], count = 1}
+    cip101- = { type = local.instances_type_map[var.config_type].cip101, tags = ["node", "pool", "allcq"], feature = ["cip101"], image = local.image, count = 5 }
+    node   = { type = local.instances_type_map[var.config_type].node, tags = ["node", "allcq"], count = 0 }
+    nodepool   = { type = local.instances_type_map[var.config_type].node, tags = ["node", "pool", "allcq"], image = local.image, count = 5 }
+    evolo = { type = local.instances_type_map[var.config_type].login, tags = ["internal_login", "allcq"], count = 1 }
+    edx = { type = local.instances_type_map[var.config_type].edx, tags = ["edx", "allcq"], count = 1, disk_size = 500 }
+    metrix = { type = local.instances_type_map[var.config_type].metrix, tags = ["metrix", "allcq"], count = 1 }
+    dtn = { type = local.instances_type_map[var.config_type].dtn, tags = ["dtn", "public", "allcq"], count = 1 }
   }
 
   # var.pool is managed by Slurm through Terraform REST API.
@@ -189,6 +201,8 @@ module "openstack" {
     "cluster_name" = "evolo${var.suffix}"
     "prometheus_password" = var.prometheus_password
     "cloud_name" = var.cloud_name
+    "cluster_purpose" = "evolo"
+    "gitlab_token" = var.gitlab_token
   },
   yamldecode(file("config.yaml")),
   ))
@@ -212,9 +226,113 @@ output "public_ip" {
   value = module.openstack.public_ip
 }
 
+terraform {
+  required_providers {
+    gitlab = {
+      source = "gitlabhq/gitlab"
+    }
+    prettyjson = {
+      source = "graysievert/prettyjson"
+    }
+  }
+}
+
+locals {
+  assets = [
+    for host in keys(module.openstack.assets): {
+        host = {
+          "name" = "${host}.int.${module.openstack.cluster_name}.${module.openstack.domain}",
+          "id"   = "CQ/${host}.int.${module.openstack.cluster_name}.${module.openstack.domain}"
+          "uuid" = module.openstack.assets[host].uuid,
+          "ip"   = compact([module.openstack.assets[host].local_ip, try(module.openstack.assets[host].public_ip, "")]),
+          "exposure" = coalesce(
+            contains(module.openstack.assets[host].tags, "login") ? "login" : "",
+            contains(module.openstack.assets[host].tags, "proxy") ? "portal" : "",
+	    contains(module.openstack.assets[host].tags, "node") ? "node" : "",
+            "infra"
+          ),
+          "type" = "virtual",
+        },
+        service = {
+          "name" = module.openstack.cluster_name,
+          "state" = "development",
+          "type" = "Magic castle cluster for evolo",
+        },
+        location = {
+          "site" = "${var.cloud_name} cloud"
+        },
+        user = {
+          "email" = var.support_email
+        },
+      }
+    ]
+}
+output "assets" {
+  value = local.assets
+}
+
+resource "gitlab_repository_file" "assets_file" {
+  project = var.gitlab_project_name
+  file_path = "evolo/${module.openstack.cluster_name}/assets/${module.openstack.cluster_name}-assets.json"
+  branch = "main"
+  encoding = "text"
+  content = provider::prettyjson::jsonprettyprint(jsonencode(local.assets))
+  author_email = var.support_email
+  author_name = "Terraform"
+  update_commit_message = "Automatic update of assets for cluster ${module.openstack.cluster_name}"
+  create_commit_message = "Creating cluster ${module.openstack.cluster_name}"
+  delete_commit_message = "Deleting cluster ${module.openstack.cluster_name}"
+}
+resource "terraform_data" "software_file" {
+  for_each = { for asset in local.assets: asset.host.name => asset}
+
+  input = {
+    fqdn = each.value.host.name
+    support_email = var.support_email
+    cluster_name = module.openstack.cluster_name
+    folder = "evolo/${module.openstack.cluster_name}/software"
+  }
+
+  triggers_replace = {
+    uuid = each.value.host.uuid
+  }
+
+  provisioner "local-exec" {
+    when = destroy
+    command = <<-EOT
+        if [ -z "$UUID" ]; then
+	  echo "Nothing to delete"
+	else
+	    python3 -c 'import time; import random; time.sleep(random.uniform(0,5))'
+            curl --request POST \
+            --header "PRIVATE-TOKEN: $GITLAB_TOKEN" \
+            --header "Content-Type: application/json" \
+            --data "$API_PAYLOAD" \
+            "$GITLAB_BASE_URL/projects/$GITLAB_PROJECT_ID/repository/commits"
+	fi
+    EOT
+
+    environment = {
+      API_PAYLOAD = jsonencode({
+        branch        = "main"
+        author_name   = "Terraform GitLab Bot"
+        author_email  = self.input.support_email
+        commit_message = "Automated cleanup: removing software file for ${self.input.fqdn}"
+
+        # Build the dynamic delete actions array completely from self-contained trigger state
+	actions = [{
+	  action = "delete"
+	  file_path = "${self.input.folder}/${self.input.fqdn}.txt"
+	}]
+      })
+      UUID = self.triggers_replace.uuid
+    }
+  }
+}
+
 ## Uncomment to register your domain name with CloudFlare
 module "dns" {
-   source           = "git::https://github.com/computecanada/magic_castle.git//dns/cloudflare?ref=15.6.1"
+   source           = "git::https://github.com/computecanada/magic_castle.git//dns/cloudflare?ref=4ae5ab9"
    name             = module.openstack.cluster_name
    domain           = module.openstack.domain
    public_instances = module.openstack.public_instances

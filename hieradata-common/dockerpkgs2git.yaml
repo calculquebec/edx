@@ -1,0 +1,6 @@
+dockerpkgs2git::gitlab_token: "%{lookup('gitlab_token')}"
+dockerpkgs2git::gitlab_url: 'https://git.computecanada.ca'
+dockerpkgs2git::subdirectory: "%{lookup('cluster_purpose')}/%{lookup('cluster_name')}/software/edx1/containers"
+dockerpkgs2git::domain: ".%{lookup('profile::freeipa::base::ipa_domain')}"
+dockerpkgs2git::gitlab_repository: 'calculquebec/formation-assets'
+

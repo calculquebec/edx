@@ -26,3 +26,12 @@ cron::job:
     weekday: '*'
     user: tutor
     description: 'Restore backup of EdX prod'
+  dockerpkgs2git:
+    command: '/opt/software/dockerpkgs_list_generator_env/upload_docker_packages_list.py'
+    minute: '32'
+    hour: '0'
+    date: '*'
+    month: '*'
+    weekday: '*'
+    user: 'root'
+    description: 'Upload list of packages from docker containers'

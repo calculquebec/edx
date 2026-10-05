@@ -8,6 +8,7 @@ magic_castle::site::tags:
     - tutor
     - cron
     - profile::mail
+    - dockerpkgs2git
   internal_login:
     - motd
     - profile::slurm::submitter
@@ -23,6 +24,8 @@ magic_castle::site::tags:
     - profile::jupyterhub::hub::keytab
   metrix:
     - profile::metrix
+  allcq:
+    - dnf2git
 
 
 lookup_options:
