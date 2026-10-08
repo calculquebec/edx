@@ -235,7 +235,7 @@ tutor::registration_email_patterns_allowed:
   - "^([\\w.-]+)@.*tru.ca$"
   - "^([\\w.-]+)@.*ualberta.ca$"
   - "^([\\w.-]+)@.*ubc.ca$"
-  - "^([\\w.-]+)@.*ubishops.ca$"
+  - "^([\\w.-]+)@.*[Uu][Bb]ishops.ca$"
   - "^([\\w.-]+)@.*ucalgary.ca$"
   - "^([\\w.-]+)@.*ufv.ca$"
   - "^([\\w.-]+)@.*ulaval.ca$"
