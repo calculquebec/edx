@@ -62,6 +62,7 @@ tutor::env_patches:
   openedx-common-settings:
     - "PROFILE_EXTENSION_FORM = 'custom_extra_fields.forms.CustomExtraFieldsForm'"
     - "ENABLE_DYNAMIC_REGISTRATION_FIELDS = True"
+    - 'FEATURES["ENABLE_FEEDBACK_INSTRUCTOR_VIEW"] = True'
   openedx-auth:
     - "'SOCIAL_AUTH_OIDC_OIDC_ENDPOINT': 'https://cilogon.org/'"
     - "'SOCIAL_AUTH_OIDC_KEY': 'cilogon:/client_id/87a7ddddf2a5f4b70ecaab5dbe5f118'"
@@ -103,7 +104,7 @@ tutor::env_patches:
     - "MIDDLEWARE.insert(MIDDLEWARE.index('openedx.core.djangoapps.cache_toolbox.middleware.CacheBackedAuthenticationMiddleware') + 1, 'custom_extra_fields.middleware.SlaAcceptanceMiddleware')"
 
 tutor::openedx_extra_pip_requirements:
-  - 'xblocks-extra @ git+https://github.com/calculquebec/xblocks-extra.git@9b875b06eb639173ecbe97b014cc83868a2b49aa'
+  - 'xblocks-extra @ git+https://github.com/calculquebec/xblocks-extra.git@ba01d9a71d1f0c53020e58bfd9bfb5ee4ed5359e'
 #  - 'xblocks-contrib==1.0.3'
   - 'h5p-xblock==0.2.18'
   - 'jupytermc-xblock @ git+https://github.com/calculquebec/jupytermc-xblock.git@ab2bbd7ec162b7e606dac8b46966ba8909ca09af'
