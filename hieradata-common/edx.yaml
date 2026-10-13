@@ -104,7 +104,7 @@ tutor::env_patches:
     - "MIDDLEWARE.insert(MIDDLEWARE.index('openedx.core.djangoapps.cache_toolbox.middleware.CacheBackedAuthenticationMiddleware') + 1, 'custom_extra_fields.middleware.SlaAcceptanceMiddleware')"
 
 tutor::openedx_extra_pip_requirements:
-  - 'xblocks-extra @ git+https://github.com/calculquebec/xblocks-extra.git@37d68ec2906f4e5c650d529e405b1e464b9c48f3'
+  - 'xblocks-extra @ git+https://github.com/calculquebec/xblocks-extra.git@d18abff498326553cb8563fcd3a04ab44e1df6d8'
 #  - 'xblocks-contrib==1.0.3'
   - 'h5p-xblock==0.2.18'
   - 'jupytermc-xblock @ git+https://github.com/calculquebec/jupytermc-xblock.git@ab2bbd7ec162b7e606dac8b46966ba8909ca09af'
@@ -132,8 +132,8 @@ tutor::plugins:
     images: ['mfe']
     reboot_on_change: true
 
-plugin_slots_version: 'v22.0.0-49'
-theme_version: '22.0.0-39'
+plugin_slots_version: 'v22.0.0-50'
+theme_version: '22.0.0-50'
 tutor::themes:
   indigocq:
     enabled: true
