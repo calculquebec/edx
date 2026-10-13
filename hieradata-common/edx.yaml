@@ -54,6 +54,7 @@ tutor::env_patches:
   openedx-common-settings:
     - "PROFILE_EXTENSION_FORM = 'custom_extra_fields.forms.CustomExtraFieldsForm'"
     - "ENABLE_DYNAMIC_REGISTRATION_FIELDS = True"
+    - 'FEATURES["ENABLE_FEEDBACK_INSTRUCTOR_VIEW"] = True'
   openedx-auth:
     - "'SOCIAL_AUTH_OIDC_OIDC_ENDPOINT': 'https://cilogon.org/'"
     - "'SOCIAL_AUTH_OIDC_KEY': 'cilogon:/client_id/87a7ddddf2a5f4b70ecaab5dbe5f118'"
