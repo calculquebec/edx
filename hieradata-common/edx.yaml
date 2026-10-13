@@ -104,7 +104,7 @@ tutor::env_patches:
     - "MIDDLEWARE.insert(MIDDLEWARE.index('openedx.core.djangoapps.cache_toolbox.middleware.CacheBackedAuthenticationMiddleware') + 1, 'custom_extra_fields.middleware.SlaAcceptanceMiddleware')"
 
 tutor::openedx_extra_pip_requirements:
-  - 'xblocks-extra @ git+https://github.com/calculquebec/xblocks-extra.git@ba01d9a71d1f0c53020e58bfd9bfb5ee4ed5359e'
+  - 'xblocks-extra @ git+https://github.com/calculquebec/xblocks-extra.git@37d68ec2906f4e5c650d529e405b1e464b9c48f3'
 #  - 'xblocks-contrib==1.0.3'
   - 'h5p-xblock==0.2.18'
   - 'jupytermc-xblock @ git+https://github.com/calculquebec/jupytermc-xblock.git@ab2bbd7ec162b7e606dac8b46966ba8909ca09af'
