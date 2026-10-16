@@ -176,6 +176,7 @@ tutor::registration_email_patterns_allowed:
   - "^([\\w.-]+)@.*etsmtl.ca$"
   - "^([\\w.-]+)@.*fanshaweonline.ca$"
   - "^([\\w.-]+)@.*georgebrown.ca$"
+  - "^([\\w.-]+)@.*gouv.qc.ca$"
   - "^([\\w.-]+)@.*hec.ca$"
   - "^([\\w.-]+)@.*imar.ca$"
   - "^([\\w.-]+)@.*inrs.ca$"
