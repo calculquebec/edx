@@ -1,4 +1,4 @@
-tutor::version: '22.0.2'
+tutor::version: '22.0.3'
 tutor::tutor_contrib_backup_version: '4.5.0'
 tutor::aspects_version: '4.0.0'
 tutor::admin_email: "noreply@calculquebec.ca"
@@ -109,7 +109,7 @@ tutor::plugins:
   mfe:
     dep:
       name: 'tutor-mfe'
-      ensure: '22.1.0'
+      ensure: '22.1.1'
     reboot_on_change: true
   forum:
     dep:
