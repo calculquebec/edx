@@ -59,6 +59,7 @@ tutor::env_patches:
   openedx-cms-common-settings:
     - "LTI_DEFAULT_JUPYTER_HUB_URL = 'https://jupyter.%{lookup('terraform.data.domain_name')}'"
     - "LTI_DEFAULT_JUPYTER_PASSPORT_ID = 'jupyterhub'"
+    - "ENABLE_OTHER_COURSE_SETTINGS = True"
   openedx-common-settings:
     - "PROFILE_EXTENSION_FORM = 'custom_extra_fields.forms.CustomExtraFieldsForm'"
     - "ENABLE_DYNAMIC_REGISTRATION_FIELDS = True"
@@ -112,6 +113,7 @@ tutor::openedx_extra_pip_requirements:
   - 'lti-consumer-xblock @ git+https://github.com/calculquebec/xblock-lti-consumer.git@85ec38410037ab9e3bd23c187972f4c1d608e5a6'
   - 'custom-extra-fields @ git+https://github.com/calculquebec/custom-extra-fields.git@8a616416bfa976c334e6c70252231e3a35d53a24'
   - 'edx-username-changer==0.5.0'
+  - 'xblock-multilingual-text @ git+https://github.com/calculquebec/xblock-multilingual-text.git@e68457b75a2d70bde58ba09b68ee06b079f90220'
 
 tutor::plugins:
   mfe:
@@ -132,8 +134,8 @@ tutor::plugins:
     images: ['mfe']
     reboot_on_change: true
 
-plugin_slots_version: 'v22.0.0-53'
-theme_version: '22.0.0-52'
+plugin_slots_version: 'v22.0.0-54'
+theme_version: '22.0.0-54'
 tutor::themes:
   indigocq:
     enabled: true
