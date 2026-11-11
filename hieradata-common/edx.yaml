@@ -86,6 +86,7 @@ tutor::env_patches:
     - "MFE_CONFIG['EXTERNAL_SCRIPTS']['cookieyes'] = {'src': 'https://cdn-cookieyes.com/client_data/8e6d217a9bb547e1fbe6dca7733bf748/script.js'}"
     - "MFE_CONFIG['EXTERNAL_SCRIPTS']['calculquebec'] = {'src': 'https://edx.evolo.calculquebec.cloud/asset-v1:CQ+Assets101+2026+type@asset+block@cq.js'}"
     - "MFE_CONFIG['EXTERNAL_SCRIPTS']['registration'] = {'src': 'https://edx.evolo.calculquebec.cloud/asset-v1:CQ+Assets101+2026+type@asset+block@registration.js', 'defer': True}"
+    - "MFE_CONFIG['EXTERNAL_SCRIPTS']['multilingual'] = {'src': 'https://edx.evolo.calculquebec.cloud/asset-v1:CQ+Assets101+2026+type@asset+block@multilingual.js', 'defer': True}"
     - "FRONTEND_SITE_CONFIG['commonAppConfig']['EXTERNAL_SCRIPTS'] = MFE_CONFIG['EXTERNAL_SCRIPTS']"
     - "MFE_CONFIG['EXTERNAL_STYLESHEETS'] = {}"
     - "MFE_CONFIG['EXTERNAL_STYLESHEETS']['calculquebec'] = 'https://edx.evolo.calculquebec.cloud/asset-v1:CQ+Assets101+2026+type@asset+block@calculquebec.css'"
