@@ -116,7 +116,7 @@ tutor::openedx_extra_pip_requirements:
   - 'lti-consumer-xblock @ git+https://github.com/calculquebec/xblock-lti-consumer.git@85ec38410037ab9e3bd23c187972f4c1d608e5a6'
   - 'custom-extra-fields @ git+https://github.com/calculquebec/custom-extra-fields.git@8a616416bfa976c334e6c70252231e3a35d53a24'
   - 'edx-username-changer==0.5.0'
-  - 'xblock-multilingual-text @ git+https://github.com/calculquebec/xblock-multilingual-text.git@dc26b10b9e0bd267294759a99540e7ac7723a8c8'
+  - 'xblock-multilingual-text @ git+https://github.com/calculquebec/xblock-multilingual-text.git@edaa166dd74a416dc72b4b91411d62db8148c593'
 
 tutor::plugins:
   mfe:
