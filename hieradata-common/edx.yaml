@@ -52,6 +52,7 @@ tutor::env_patches:
   openedx-cms-common-settings:
     - "LTI_DEFAULT_JUPYTER_HUB_URL = 'https://jupyter.%{lookup('terraform.data.domain_name')}'"
     - "LTI_DEFAULT_JUPYTER_PASSPORT_ID = 'jupyterhub'"
+    - "ENABLE_OTHER_COURSE_SETTINGS = True"
   openedx-common-settings:
     - "PROFILE_EXTENSION_FORM = 'custom_extra_fields.forms.CustomExtraFieldsForm'"
     - "ENABLE_DYNAMIC_REGISTRATION_FIELDS = True"
@@ -78,6 +79,7 @@ tutor::env_patches:
     - "MFE_CONFIG['EXTERNAL_SCRIPTS']['cookieyes'] = {'src': 'https://cdn-cookieyes.com/client_data/8e6d217a9bb547e1fbe6dca7733bf748/script.js'}"
     - "MFE_CONFIG['EXTERNAL_SCRIPTS']['calculquebec'] = {'src': 'https://edx.evolo.calculquebec.cloud/asset-v1:CQ+Assets101+2026+type@asset+block@cq.js'}"
     - "MFE_CONFIG['EXTERNAL_SCRIPTS']['registration'] = {'src': 'https://edx.evolo.calculquebec.cloud/asset-v1:CQ+Assets101+2026+type@asset+block@registration.js', 'defer': True}"
+    - "MFE_CONFIG['EXTERNAL_SCRIPTS']['multilingual'] = {'src': 'https://edx.evolo.calculquebec.cloud/asset-v1:CQ+Assets101+2026+type@asset+block@multilingual.js', 'defer': True}"
     - "FRONTEND_SITE_CONFIG['commonAppConfig']['EXTERNAL_SCRIPTS'] = MFE_CONFIG['EXTERNAL_SCRIPTS']"
     - "MFE_CONFIG['EXTERNAL_STYLESHEETS'] = {}"
     - "MFE_CONFIG['EXTERNAL_STYLESHEETS']['calculquebec'] = 'https://edx.evolo.calculquebec.cloud/asset-v1:CQ+Assets101+2026+type@asset+block@calculquebec.css'"
@@ -98,6 +100,7 @@ tutor::env_patches:
 
 tutor::openedx_extra_pip_requirements:
   - 'xblocks-extra @ git+https://github.com/calculquebec/xblocks-extra.git@f7a1f180769bb0fee9ff63735aeec4dd5709b413'
+  - 'xblocks-contrib @ git+https://github.com/calculquebec/xblocks-core.git@e9e1f0b3516bfcfbb900e3ebbe751e613517ce9b#egg=xblocks-contrib'
 #  - 'xblocks-contrib==1.0.3'
   - 'h5p-xblock==0.2.18'
   - 'jupytermc-xblock @ git+https://github.com/calculquebec/jupytermc-xblock.git@ab2bbd7ec162b7e606dac8b46966ba8909ca09af'
@@ -105,6 +108,7 @@ tutor::openedx_extra_pip_requirements:
   - 'lti-consumer-xblock @ git+https://github.com/calculquebec/xblock-lti-consumer.git@85ec38410037ab9e3bd23c187972f4c1d608e5a6'
   - 'custom-extra-fields @ git+https://github.com/calculquebec/custom-extra-fields.git@8a616416bfa976c334e6c70252231e3a35d53a24'
   - 'edx-username-changer==0.5.0'
+  - 'xblock-multilingual-text @ git+https://github.com/calculquebec/xblock-multilingual-text.git@edaa166dd74a416dc72b4b91411d62db8148c593'
 
 tutor::plugins:
   mfe:
@@ -125,8 +129,8 @@ tutor::plugins:
     images: ['mfe']
     reboot_on_change: true
 
-plugin_slots_version: 'v22.0.11'
-theme_version: '22.0.10'
+plugin_slots_version: 'v22.0.12'
+theme_version: '22.0.12'
 tutor::themes:
   indigocq:
     enabled: true
